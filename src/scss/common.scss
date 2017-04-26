@@ -1,0 +1,86 @@
+html {height: 100%;}
+html, body {
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, img {
+	margin: 0;
+	padding: 0
+}
+body, button, input, select, textarea {
+	font-family: 'Open Sans',Arial,sans-serif;
+	border: none;
+}
+textarea, input, select {
+	-webkit-appearance: none
+}
+body {
+	min-width: 320px;
+	overflow-x: hidden;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:inherit|grayscale;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%
+}
+address, cite, dfn, em, var {
+	font-style: normal
+}
+code, kbd, pre, samp {
+	font-family: couriernew, courier, monospace
+}
+small {
+	font-size: 12px
+}
+em, i {
+	font-style: normal
+}
+ul, ol, li {
+	list-style: none
+}
+video {
+	background-color: #000
+}
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+	tap-highlight-color: transparent
+}
+a:link {
+	text-decoration: none
+}
+a:visited {
+	text-decoration: none
+}
+a:hover {
+	text-decoration: none
+}
+a:active {
+	text-decoration: none
+}
+sup {
+	vertical-align: text-top
+}
+sub {
+	vertical-align: text-bottom
+}
+legend {
+	color: #000
+}
+fieldset, img {
+	border: 0
+}
+img {
+	max-width: 100%;
+	vertical-align: middle
+}
+button, input, select, textarea {
+	font-size: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+.cf{zoom:1}
+.cf:after{content:'';display:block;clear:both;height:0;overflow:hidden;visibility:hidden}
