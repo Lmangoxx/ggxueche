@@ -1,4 +1,4 @@
-# ggxueche-project
+# ggxueche
 
 > A Vue.js project
 
