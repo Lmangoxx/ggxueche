@@ -1,12 +1,12 @@
 <template>
-  <div class="home-cell">
-    主页
+  <div class="city-cell">
+    城市
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'city',
   data () {
     return {
     }
