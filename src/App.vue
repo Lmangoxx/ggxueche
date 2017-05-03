@@ -7,13 +7,18 @@
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  export default {
+    name: 'app'
+  }
 </script>
 
 <style lang="scss">
-  @import './scss/common';
+  // 引入font-awesome字体
+  @import './fonts/font-awesome/css/font-awesome.css';
+  // 引入simple-line-icons字体
+  @import './fonts/simple-line-icons/css/simple-line-icons.css';
+  // 引入公共样式
+  @import './style/common';
   .router-fade-enter-active, .router-fade-leave-active {
     transition: opacity .3s;
   }

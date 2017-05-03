@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require("webpack")
 
 // 给出正确的绝对路径
 function resolve (dir) {
@@ -29,7 +30,8 @@ module.exports = {
         extensions: ['.js', '.vue', '.json', '.scss'],
         alias: {
         'vue$': 'vue/dist/vue.esm.js',
-        '@': resolve('src')
+        '@': resolve('src'),
+        'libs': resolve('src/libs')
         }
     },
     module: {
@@ -75,5 +77,14 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin('common'),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jquery: 'jquery',
+            'window.jQuery': 'jquery',
+            jQuery: 'jquery'
+        })
+    ]
 }

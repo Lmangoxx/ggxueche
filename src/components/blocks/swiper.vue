@@ -1,21 +1,16 @@
 <template>
-  <div class="home-cell" id="aaa">
-    <div class="banner-cell">
-      <router-link :to="'/city'" class="city">
-        <i class="icon-pointer pr-5"></i>城市
-      </router-link>
-      <img src="../images/banner1.jpg" alt="">
-    </div>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">slider1</div>
+    <div class="swiper-slide">slider2</div>
+    <div class="swiper-slide">slider3</div>
   </div>
 </template>
 
 <script>
   import $ from 'jquery'
-  $('#app').css({
-    'background-color': '#cf2626'
-  })
   export default {
-    name: 'home',
+    name: 'swiper',
+    props: ['data', 'options'],
     data () {
       return {
       }
