@@ -1,20 +1,9 @@
 //变量的值可以根据自己需求定义著作权归作者所有。
 $browser-default-font-size: 40px !default;
 
-@function pxTorem($px) {
+@function rem($px) {
 	@return $px / $browser-default-font-size * 1rem;
 }
-
-@for $i from 1 through 10 {
-  .pa-#{$i * 5} { padding: pxTorem(5px) * $i;}
-  .pt-#{$i * 5} { padding-top: pxTorem(5px) * $i;}
-  .pb-#{$i * 5} { padding-bottom: pxTorem(5px) * $i;}
-  .pl-#{$i * 5} { padding-left: pxTorem(5px) * $i;}
-  .pr-#{$i * 5} { padding-right: pxTorem(5px) * $i;}
-
-  .ma-#{$i * 5} { margin: pxTorem(5px) * $i;}
-  .mt-#{$i * 5} { margin-top: pxTorem(5px) * $i;}
-  .mb-#{$i * 5} { margin-bottom: pxTorem(5px) * $i;}
-  .ml-#{$i * 5} { margin-left: pxTorem(5px) * $i;}
-  .mr-#{$i * 5} { margin-right: pxTorem(5px) * $i;}
+@function border($px) {
+  @return rem($px) solid #e2e2e2;
 }

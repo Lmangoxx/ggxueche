@@ -19,6 +19,9 @@
   @import './fonts/simple-line-icons/css/simple-line-icons.css';
   // 引入公共样式
   @import './style/common';
+  body {
+    background-color: #f3f3f3;
+  }
   .router-fade-enter-active, .router-fade-leave-active {
     transition: opacity .3s;
   }
