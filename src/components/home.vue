@@ -62,7 +62,7 @@
           <li class="flex">好评</li>
         </ul>
         <ul class="con">
-          <li><router-link :to="''">
+          <li class="mb-10"><router-link :to="''">
             
           </router-link></li>
         </ul>
@@ -90,11 +90,6 @@
         borderColors: ['#f33422', '#ff9c00', '#00cdaa', '#009cff', '#7400d6', '#e740d9']
       }
     },
-    components: {
-      swiper,
-      swiperSlide,
-      footNav
-    },
     mounted () {
       this.$http.post('/login', {
         username: 'admin',
@@ -110,6 +105,11 @@
       }).then((response) => {
         console.log(response.body)
       })
+    },
+    components: {
+      swiper,
+      swiperSlide,
+      footNav
     }
   }
 </script>
@@ -232,6 +232,11 @@
         &:last-child {
           border: none;
         }
+      }
+    }
+    .con {
+      li {
+        background-color: #fff;
       }
     }
   }
