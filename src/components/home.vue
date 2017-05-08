@@ -19,26 +19,11 @@
       <!-- banner-cell / -->
       <!-- nav-cell -->
       <ul class="nav-cell display-flex">
-        <li class="flex"><router-link :to="''">
-          <span></span>
-          咨询客服
-        </router-link></li>
-        <li class="flex"><router-link :to="''">
-          <span></span>
-          年龄要求
-        </router-link></li>
-        <li class="flex"><router-link :to="''">
-          <span></span>
-          身体条件
-        </router-link></li>
-        <li class="flex"><router-link :to="''">
-          <span></span>
-          准备材料
-        </router-link></li>
-        <li class="flex"><router-link :to="''">
-          <span></span>
-          注意事项
-        </router-link></li>
+        <li class="flex"><router-link :to="''"><span></span>咨询客服</router-link></li>
+        <li class="flex"><router-link :to="''"><span></span>年龄要求</router-link></li>
+        <li class="flex"><router-link :to="''"><span></span>身体条件</router-link></li>
+        <li class="flex"><router-link :to="''"><span></span>准备材料</router-link></li>
+        <li class="flex"><router-link :to="''"><span></span>注意事项</router-link></li>
       </ul>
       <!-- nav-cell / -->
       <!-- find-cell -->
