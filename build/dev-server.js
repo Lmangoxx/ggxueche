@@ -28,8 +28,6 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
 var port = process.env.PORT || config.dev.port
 // 用于判断是否要自动打开浏览器的布尔变量，当配置文件中没有设置自动打开浏览器的时候其值为 false
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
-// 定义 HTTP 代理表，代理到 API 服务器
-var proxyTable = config.dev.proxyTable
 
 // 创建express 实例
 var app = express()
@@ -58,14 +56,27 @@ compiler.plugin('compilation', function (compilation) {
 })
 
 // 将 proxyTable 中的代理请求配置挂在到express服务器上
-Object.keys(proxyTable).forEach(function (context) {
-  var options = proxyTable[context]
-  // 格式化options，例如将'www.example.com'变成{ target: 'www.example.com' }
-  if (typeof options === 'string') {
-    options = { target: options }
-  }
-  app.use(proxyMiddleware(options.filter || context, options))
-})
+// Object.keys(proxyTable).forEach(function (context) {
+//   var options = proxyTable[context]
+//   // 格式化options，例如将'www.example.com'变成{ target: 'www.example.com' }
+//   if (typeof options === 'string') {
+//     options = { target: options }
+//   }
+//   app.use(proxyMiddleware(options.filter || context, options))
+// })
+
+// 定义API接口路径集合
+var context = config.dev.context
+// 定义 HTTP 代理表，代理到 API 服务器
+var proxypath = config.dev.proxypath
+
+var options = {
+  target: proxypath,
+  changeOrigin: true,
+}
+if (context.length) {
+  app.use(proxyMiddleware(context, options))
+}
 
 // handle fallback for HTML5 history API
 // 重定向不存在的URL，常用于SPA

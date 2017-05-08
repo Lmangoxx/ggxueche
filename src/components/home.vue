@@ -7,13 +7,13 @@
           <i class="icon-pointer pr-5"></i>城市
         </router-link>
         <swiper :options="swiperOption">
-          <swiper-slide v-for="swiper in swiperList">
+          <swiper-slide v-for="swiper in swiperList" :key="swiper">
             <img :src="swiper" alt="">
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
         <div class="border-colour cf">
-          <span v-for="i in borderColors" :style="{backgroundColor: i}"></span>
+          <span v-for="i in borderColors" :key="i" :style="{backgroundColor: i}"></span>
         </div>
       </div>
       <!-- banner-cell / -->
@@ -62,7 +62,9 @@
           <li class="flex">好评</li>
         </ul>
         <ul class="con">
-          <li><router-link :to="''"></router-link></li>
+          <li><router-link :to="''">
+            
+          </router-link></li>
         </ul>
       </div>
       <!-- school-list-cell / -->
@@ -94,6 +96,20 @@
       footNav
     },
     mounted () {
+      this.$http.post('/login', {
+        username: 'admin',
+        password: 'admin'
+      }).then((response) => {
+        console.log(response.body)
+      })
+      this.$http.get('/res/schoolQuota/listQuota', {
+        params: {
+          pageNumber: 1,
+          pageSize: 20
+        }
+      }).then((response) => {
+        console.log(response.body)
+      })
     }
   }
 </script>

@@ -17,11 +17,7 @@
 
 <script>
   export default {
-    name: 'foot-nav',
-    data () {
-      return {
-      }
-    }
+    name: 'foot-nav'
   }
 </script>
 

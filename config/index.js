@@ -27,7 +27,11 @@ module.exports = {
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    context: [ //代理路径
+        '/login',
+        '/res'
+    ],
+    proxypath: 'http://192.168.0.16:10002', // 代理服务器地址
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
