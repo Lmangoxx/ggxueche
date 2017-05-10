@@ -15,7 +15,7 @@ npm run build
 ```
 
 ## 开发中遇到的问题汇总：
-* 首先是eslint缩进规则的问题，很多人的缩进习惯不一样，有的人喜欢用space，有的人喜欢用tab，vue-cli默认的缩进规则是2个space,本人习惯使用tab，在项目开发的时候eslint报了大量的错误，很让人蛋疼，这里在本项目中把缩进规则给关闭了，在根目录下找到eslintrc.js文件，在rules里修改indent规则，具体rules文档请参考[eslint rules](http://eslint.org/docs/rules/)
+* 首先是eslint缩进规则的问题，很多人的缩进习惯不一样，有的人喜欢用space，有的人喜欢用tab，vue-cli默认的缩进规则是2个space，本人习惯使用tab，在项目开发的时候eslint报了大量的错误，很让人蛋疼，这里在本项目中把缩进规则给关闭了，在根目录下找到eslintrc.js文件，在rules里修改indent规则，具体rules文档请参考[eslint rules](http://eslint.org/docs/rules/)
 
 * jquery引入问题，虽然vue很强大，但是还是避免不了要使用到jquery，下面是jquery引入方法:
     ``` bash
@@ -35,6 +35,14 @@ npm run build
     
     # // 配置请求，解决请求获取不到参数问题
     Vue.http.options.emulateJSON = true
+
+    # // 在.vue文件中get请求数据
+    this.$http.get('/someUrl').then(response => {
+        // get body data
+        this.someData = response.body;
+    }, response => {
+        // error callback
+    })
     ```
 
 ---
