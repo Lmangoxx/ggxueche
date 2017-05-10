@@ -22,7 +22,7 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
 * IOS下a标签的:active失效问题处理:
     ``` bash
     <body ontouchstart="">
-        // 在body上添加ontouchstart即可
+        # // 在body上添加ontouchstart即可
     </body>
     ```
 
