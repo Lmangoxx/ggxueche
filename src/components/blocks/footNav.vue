@@ -3,7 +3,6 @@
     <router-link
         class="flex"
         v-for="footNav in footNavList"
-        :class="{'choose': $route.path.indexOf(footNav.url) !== -1}"
         :to="footNav.url"
         :key="footNav.$index">
         <span></span>{{footNav.name}}
@@ -12,7 +11,7 @@
 </template>
 
 <script>
-  export default {
+export default {
     name: 'foot-nav',
     data () {
         return {
@@ -24,7 +23,7 @@
             ]
         }
     }
-  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -64,19 +63,19 @@
         &:nth-child(4) span{
             background-position: 0 -3 *rem(46px);
         }
-        &.choose {
+        &.router-link-active {
             color: #0cc0a1;
         }
-        &:nth-child(1).choose span{
+        &:nth-child(1).router-link-active span{
             background-position: - rem(46px) 0;
         }
-        &:nth-child(2).choose span{
+        &:nth-child(2).router-link-active span{
             background-position: - rem(46px) -1 *rem(46px);
         }
-        &:nth-child(3).choose span{
+        &:nth-child(3).router-link-active span{
             background-position: - rem(47px) -2 *rem(46px);
         }
-        &:nth-child(4).choose span{
+        &:nth-child(4).router-link-active span{
             background-position: - rem(46px) -3 *rem(46px);
         }
     }
