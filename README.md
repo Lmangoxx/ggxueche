@@ -14,10 +14,17 @@ npm run dev
 npm run build
 ```
 ## 技术栈(基于vue-cli)
-vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass + flex
+vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
 
 ## 开发中遇到的问题汇总：
 * 首先是eslint缩进规则的问题，很多人的缩进习惯不一样，有的人喜欢用space，有的人喜欢用tab，vue-cli默认的缩进规则是2个space，本人习惯使用tab，在项目开发的时候eslint报了大量的错误，很让人蛋疼，这里在本项目中把缩进规则给关闭了，在根目录下找到eslintrc.js文件，在rules里修改indent规则，具体rules文档请参考[eslint rules](http://eslint.org/docs/rules/)
+
+* IOS下a标签的:active失效问题处理:
+    ``` bash
+    <body ontouchstart="">
+        // 在body上添加ontouchstart即可
+    </body>
+    ```
 
 * jquery引入问题，虽然vue很强大，但是还是避免不了要使用到jquery，下面是jquery引入方法:
     ``` bash
