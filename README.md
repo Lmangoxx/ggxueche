@@ -1,6 +1,6 @@
 # ggxueche
 
-> A Vue.js project
+> 基于vue+vue-router+vuex构建的驾校服务单页面项目
 
 ## 项目启动
 ``` bash
@@ -13,6 +13,8 @@ npm run dev
 # 生成线上版本
 npm run build
 ```
+## 技术栈(基于vue-cli)
+vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass + flex
 
 ## 开发中遇到的问题汇总：
 * 首先是eslint缩进规则的问题，很多人的缩进习惯不一样，有的人喜欢用space，有的人喜欢用tab，vue-cli默认的缩进规则是2个space，本人习惯使用tab，在项目开发的时候eslint报了大量的错误，很让人蛋疼，这里在本项目中把缩进规则给关闭了，在根目录下找到eslintrc.js文件，在rules里修改indent规则，具体rules文档请参考[eslint rules](http://eslint.org/docs/rules/)
@@ -38,10 +40,10 @@ npm run build
 
     # // 在.vue文件中get请求数据
     this.$http.get('/someUrl').then(response => {
-        // get body data
+        // 数据处理操作
         this.someData = response.body;
     }, response => {
-        // error callback
+        // 错误请求回调
     })
     ```
 
