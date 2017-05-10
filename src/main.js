@@ -15,8 +15,8 @@ Vue.http.options.emulateJSON = true
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  template: '<app/>',
-  components: { app }
+	el: '#app',
+	router,
+	template: '<app/>',
+	components: { app }
 })

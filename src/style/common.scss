@@ -1,3 +1,4 @@
+@import './mixin.scss';
 html {height: 100%;}
 html, body {
 	-webkit-text-size-adjust: 100%;
@@ -6,7 +7,7 @@ html, body {
 body {
   /*font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   font-family: "Source Sans Pro", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
-  font-size: 13px;
+  font-size: rem(22px);
   -webkit-font-smoothing: antialiased;
   line-height: 1.42857143;
   color: #58666e;
@@ -16,7 +17,7 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fo
 	margin: 0;
 	padding: 0
 }
-body, button, input, select, textarea {
+button, input, select, textarea {
 	font-family: 'Open Sans',Arial,sans-serif;
 	border: none;
 }
@@ -51,8 +52,8 @@ video {
 	background-color: #000
 }
 a {
+	color: #626262;
 	text-decoration: none;
-	-webkit-tap-highlight-color: transparent;
 	tap-highlight-color: transparent
 }
 a:link {
@@ -65,7 +66,7 @@ a:hover {
 	text-decoration: none
 }
 a:active {
-	text-decoration: none
+	color: #cf2626;
 }
 sup {
 	vertical-align: text-top
@@ -95,13 +96,9 @@ table {
 	display:flex
 }
 .flex{
-	-webkit-box-flex:1;
-	-webkit-flex:1;
-	-ms-flex:1;
 	flex:1
 }
 .box-sizing{
-	-webkit-box-sizing:border-box;
 	box-sizing:border-box
 }
 .over-ell{
@@ -112,8 +109,20 @@ table {
 }
 .cf{zoom:1}
 .cf:after{content:'';display:block;clear:both;height:0;overflow:hidden;visibility:hidden}
-
-@import './mixin.scss';
+.icon-bg {
+	background-image: url(./images/icon-bg.png);
+	background-size: rem(500px) rem(500px);
+	background-repeat: no-repeat;
+}
+// 文字颜色
+.text-red {
+	color: #fe6253;
+}
+// 按钮颜色
+.btn-blue {
+	background-color: #0cc0a1;
+	color: #fff;
+}
 @for $i from 1 through 10 {
   .pa-#{$i * 5} { padding: rem(5px) * $i;}
   .pt-#{$i * 5} { padding-top: rem(5px) * $i;}

@@ -1,9 +1,17 @@
-//变量的值可以根据自己需求定义著作权归作者所有。
+//变量的值可以根据自己需求定义
 $browser-default-font-size: 40px !default;
+$border-color: #e2e2e2 !default;
 
 @function rem($px) {
 	@return $px / $browser-default-font-size * 1rem;
 }
-@function border($px) {
-  @return rem($px) solid #e2e2e2;
+@function border($px, $color:$border-color) {
+    @return rem($px) solid $color;
+}
+@mixin lineClamp($n) {  
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:$n; 
 }

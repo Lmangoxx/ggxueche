@@ -8,18 +8,18 @@ import city from '@/components/city'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '',
-      redirect: '/home'
-    },
-    {
-      path: '/home',
-      component: home
-    },
-    {
-      path: '/city',
-      component: city
-    }
-  ]
+    routes: [
+        {
+            path: '',
+            redirect: '/home'
+        },
+        {
+            path: '/home',
+            component: home
+        },
+        {
+            path: '/city',
+            component: city
+        }
+    ]
 })

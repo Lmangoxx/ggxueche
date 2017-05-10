@@ -31,7 +31,8 @@ module.exports = {
         '/login',
         '/res'
     ],
-    proxypath: 'http://192.168.0.16:10002', // 代理服务器地址
+    proxypath: 'http://bumblebee.bj1580.top', // 线上代理服务器地址
+    //proxypath: 'http://192.168.0.16:10002', // 本地代理服务器地址
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
