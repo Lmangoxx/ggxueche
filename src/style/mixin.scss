@@ -1,12 +1,14 @@
 //变量的值可以根据自己需求定义
 $browser-default-font-size: 40px !default;
+$border-width: 1px !default;
+$border-style: solid !default;
 $border-color: #e2e2e2 !default;
 
 @function rem($px) {
 	@return $px / $browser-default-font-size * 1rem;
 }
-@function border($px, $color:$border-color) {
-    @return rem($px) solid $color;
+@function border($px:$border-width, $color:$border-color, $style:$border-style) {
+    @return rem($px) $style $color;
 }
 @mixin lineClamp($n) {  
     overflow:hidden; 

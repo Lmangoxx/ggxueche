@@ -92,11 +92,13 @@
         <!-- school-list-cell / -->
     </div>
     <foot-nav></foot-nav>
+    <loading></loading>
 </div>
 </template>
 
 <script>
 import {swiper, swiperSlide} from 'vue-awesome-swiper'
+import loading from './blocks/loading'
 import footNav from './blocks/footNav'
 import stars from './blocks/stars'
 export default {
@@ -138,12 +140,13 @@ export default {
             pageSize: 20
             }
         }).then((response) => {
-            console.log(response.body)
+            // console.log(response.body)
         })
     },
     components: {
         swiper,
         swiperSlide,
+        loading,
         stars,
         footNav
     }

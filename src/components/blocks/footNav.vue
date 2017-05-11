@@ -48,35 +48,36 @@ export default {
             width: rem(46px);
             height: rem(46px);
             background-image: url(../../images/foot-nav.png);
-            background-size: rem(93px) rem(184px);
+            background-size: rem(100px) rem(199px);
+            background-repeat: no-repeat;
             margin: 0 auto rem(5px);
         }
         &:nth-child(1) span{
             background-position: 0 0;
         }
         &:nth-child(2) span{
-            background-position: 0 -1 *rem(46px);
+            background-position: 0 -1*rem(51px);
         }
         &:nth-child(3) span{
-            background-position: 0 -2 *rem(46px);
+            background-position: 0 -2*rem(51px);
         }
         &:nth-child(4) span{
-            background-position: 0 -3 *rem(46px);
+            background-position: 0 -3*rem(51px);
         }
         &.router-link-active {
             color: #0cc0a1;
         }
         &:nth-child(1).router-link-active span{
-            background-position: - rem(46px) 0;
+            background-position: rem(-54px) 0;
         }
         &:nth-child(2).router-link-active span{
-            background-position: - rem(46px) -1 *rem(46px);
+            background-position: rem(-54px) -1*rem(51px);
         }
         &:nth-child(3).router-link-active span{
-            background-position: - rem(47px) -2 *rem(46px);
+            background-position: rem(-54px) -2*rem(51px);
         }
         &:nth-child(4).router-link-active span{
-            background-position: - rem(46px) -3 *rem(46px);
+            background-position: rem(-54px) -3*rem(51px);
         }
     }
 }
