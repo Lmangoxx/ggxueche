@@ -45,19 +45,24 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     Vue.use(VueResource)
     
     # // 配置请求，解决请求获取不到参数问题
-    Vue.http.options.emulateJSON = true
+    Vue.http.options.emulateJSON = true;
     # // http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
     Vue.http.interceptors.push((req, next) => {
-        req.method = 'POST'
+        // 请求发送前的处理逻辑
+        req.method = 'POST';
+
         next((res) => {
-            return res.body
+            // 请求发送后的处理逻辑
+            // 根据请求的状态，response参数会返回给successCallback或errorCallback
         })
     })
 
-    Vue.$http.get('/someUrl').then(response => {
-        this.someData = response;
+    # // 在.vue文件中get请求数据
+    this.$http.get('/someUrl').then(response => {
+        // 数据处理操作
+        this.someData = response.body;
     }, error => {
-        console.log(error)
+        // 错误请求回调
     })
     ```
 
