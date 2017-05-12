@@ -48,21 +48,21 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     Vue.http.options.emulateJSON = true;
     # // http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
     Vue.http.interceptors.push((req, next) => {
-        // 请求发送前的处理逻辑
+        # // 请求发送前的处理逻辑
         req.method = 'POST';
 
         next((res) => {
-            // 请求发送后的处理逻辑
-            // 根据请求的状态，response参数会返回给successCallback或errorCallback
+            # // 请求发送后的处理逻辑
+            # // 根据请求的状态，response参数会返回给successCallback或errorCallback
         })
     })
 
     # // 在.vue文件中get请求数据
     this.$http.get('/someUrl').then(response => {
-        // 数据处理操作
+        # // 数据处理操作
         this.someData = response.body;
     }, error => {
-        // 错误请求回调
+        # // 错误请求回调
     })
     ```
 
