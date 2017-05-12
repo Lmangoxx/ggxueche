@@ -16,6 +16,9 @@ npm run build
 ## 技术栈(基于vue-cli)
 vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
 
+## vue常用的组件汇总:
+[awesome-vue](https://github.com/vuejs/awesome-vue)
+
 ## 开发中遇到的问题汇总：
 * 首先是eslint缩进规则的问题，很多人的缩进习惯不一样，有的人喜欢用space，有的人喜欢用tab，vue-cli默认的缩进规则是2个space，本人习惯使用tab，在项目开发的时候eslint报了大量的错误，很让人蛋疼，这里在本项目中把缩进规则给关闭了，在根目录下找到eslintrc.js文件，在rules里修改indent规则，具体rules文档请参考[eslint rules](http://eslint.org/docs/rules/)
 
@@ -30,9 +33,8 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     ``` bash
     整理中...
     ```
-* swiper插件用的是[vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
 
-* 在使用v-for时，记得写:key，否则会有个警告提示
+* 在使用v-for时，记得写:key，利于代码性能，不加会有个警告提示，
 
 * 关于数据请求使用的是[vue-resource](https://github.com/pagekit/vue-resource)在main.js主文件里引入vue-resource并注入进vue并配置相关的参数，代码如下:
     ``` bash
@@ -46,10 +48,12 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     Vue.http.options.emulateJSON = true
     # // http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
     Vue.http.interceptors.push((req, next) => {
-        # // 请求发送前的处理逻辑
+        // 请求发送前的处理逻辑
+        req.method = 'POST'
+        
         next((res) => {
-            # // 请求发送后的处理逻辑
-            # // 根据请求的状态，response参数会返回给successCallback或errorCallback
+            // 请求发送后的处理逻辑
+            // 根据请求的状态，response参数会返回给successCallback或errorCallback
         })
     })
 

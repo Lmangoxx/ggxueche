@@ -1,21 +1,12 @@
 <template>
 <div class="loading-overlay">
-    <div class="sk-three-bounce">
-        <div class="sk-child sk-bounce1"></div>
-        <div class="sk-child sk-bounce2"></div>
-        <div class="sk-child sk-bounce3"></div>
-    </div>
+    <img src="../../images/loading.gif">
 </div>
 </template>
 
 <script>
 export default {
-    name: 'loading',
-    data () {
-        return {
-            showloading: false
-        }
-    }
+    name: 'loading'
 }
 </script>
 
@@ -23,10 +14,17 @@ export default {
 @import '../../style/mixin';
 .loading-overlay {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .5);
+    top: 50%;
+    left: 50%;
+    padding: rem(36px) rem(36px);
+    border-radius: rem(15px);
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 99999;
+    img {
+        width: rem(64px);
+        height: rem(64px);
+
+    }
 }
 </style>

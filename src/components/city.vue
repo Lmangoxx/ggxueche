@@ -10,7 +10,17 @@ export default {
 	data () {
 		return {
 		}
-	}
+	},
+	mounted () {
+        this.$http.get('/res/schoolQuota/listQuota', {
+            params: {
+            pageNumber: 1,
+            pageSize: 20
+            }
+        }).then((response) => {
+            // console.log(response.body)
+        })
+    }
 }
 </script>
 

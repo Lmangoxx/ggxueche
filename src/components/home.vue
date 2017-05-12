@@ -92,13 +92,11 @@
         <!-- school-list-cell / -->
     </div>
     <foot-nav></foot-nav>
-    <loading></loading>
 </div>
 </template>
 
 <script>
 import {swiper, swiperSlide} from 'vue-awesome-swiper'
-import loading from './blocks/loading'
 import footNav from './blocks/footNav'
 import stars from './blocks/stars'
 export default {
@@ -146,7 +144,6 @@ export default {
     components: {
         swiper,
         swiperSlide,
-        loading,
         stars,
         footNav
     }
