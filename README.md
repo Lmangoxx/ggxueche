@@ -54,12 +54,10 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
         })
     })
 
-    # // 在.vue文件中get请求数据
-    this.$http.get('/someUrl').then(response => {
-        // 数据处理操作
+    Vue.$http.get('/someUrl').then(response => {
         this.someData = response;
-    }, response => {
-        // 错误请求回调
+    }, error => {
+        console.log(error)
     })
     ```
 
