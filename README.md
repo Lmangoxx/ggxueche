@@ -34,7 +34,7 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     整理中...
     ```
 
-* 在使用v-for时，记得写:key，利于代码性能，不加会有个警告提示，
+* 在使用v-for时，记得写:key，利于代码性能，不加会有个警告提示
 
 * 关于数据请求使用的是[vue-resource](https://github.com/pagekit/vue-resource)在main.js主文件里引入vue-resource并注入进vue并配置相关的参数，代码如下:
     ``` bash
@@ -48,19 +48,16 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     Vue.http.options.emulateJSON = true
     # // http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
     Vue.http.interceptors.push((req, next) => {
-        // 请求发送前的处理逻辑
         req.method = 'POST'
-        
         next((res) => {
-            // 请求发送后的处理逻辑
-            // 根据请求的状态，response参数会返回给successCallback或errorCallback
+            return res.body
         })
     })
 
     # // 在.vue文件中get请求数据
     this.$http.get('/someUrl').then(response => {
         // 数据处理操作
-        this.someData = response.body;
+        this.someData = response;
     }, response => {
         // 错误请求回调
     })
