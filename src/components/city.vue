@@ -1,10 +1,12 @@
 <template>
 <div class="city-cell">
+	<headerCell :options="{'back': true, 'search': true}">城市</headerCell>
 城市
 </div>
 </template>
 
 <script>
+import headerCell from './blocks/header'
 export default {
 	name: 'city',
 	data () {
@@ -20,6 +22,9 @@ export default {
         }).then((response) => {
             // console.log(response.body)
         })
+    },
+    components: {
+		headerCell
     }
 }
 </script>
