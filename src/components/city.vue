@@ -1,6 +1,6 @@
 <template>
 <div class="city-cell">
-	<headerCell :options="{'back': true, 'search': true}">城市</headerCell>
+	<headerCell :options="{'back': true, 'search': false}">城市</headerCell>
 城市
 </div>
 </template>
