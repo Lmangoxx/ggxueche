@@ -123,6 +123,9 @@ table {
 	background-size: rem(500px) rem(500px);
 	background-repeat: no-repeat;
 }
+.con-cell {
+	margin-top: $header-height;
+}
 // 文字颜色
 .text-red {
 	color: #fe6253;

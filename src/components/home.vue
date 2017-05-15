@@ -321,15 +321,15 @@ export default {
 .school-list-cell {
     .nav {
         padding: rem(20px) 0 rem(15px);
-        border-top: border(1px);
-        border-bottom: border(1px);
+        border-top: border();
+        border-bottom: border();
         background-color: #fff;
         li {
             width: 25%;
             font-size: rem(26px);
             color: #3f3f3f;
             text-align: center;
-            border-right: border(1px);
+            border-right: border();
             &.choose {
                 color: $main-color;
             }
@@ -366,11 +366,11 @@ export default {
             }
             .border {
                 padding: rem(23px) 0;
-                border-bottom: border(1px);
+                border-bottom: border();
                 img {
                     width: rem(172px);
                     height: rem(96px);
-                    border: border(1px);
+                    border: border();
                     text-align: center;
                 }
                 .info {

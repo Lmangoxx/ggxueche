@@ -1,8 +1,8 @@
 <template>
-<div class="city-cell">
+<div>
 	<headerCell :options="{'back': true, 'search': true}">城市</headerCell>
     <!-- city-gps -->
-    <div class="city-gps">
+    <div class="city-gps con-cell">
         <p class="groups display-flex">当前定位城市：<em class="flex">定位不准时，请在城市列表中选择</em></p>
         <router-link tag="li" class="groups display-flex" :to="''">
             <span class="flex">北京</span>
@@ -18,6 +18,7 @@
         </ul>
     </div>
     <!-- city-hot / -->
+    <!--  -->
 </div>
 </template>
 
@@ -33,7 +34,6 @@ export default {
 	mounted () {
         this.$http.get('/static/data/hotCity.json').then((res) => {
             this.cityList = res.body
-            console.log(this.cityList)
         })
     },
     components: {
@@ -53,7 +53,7 @@ export default {
         }
     }
     li {
-        font-size: rem(30px);
+        font-size: rem(28px);
         padding: rem(15px) rem(20px);
         span {
             color: $main-color;

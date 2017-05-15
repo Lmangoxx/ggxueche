@@ -33,12 +33,15 @@ export default {
 <style lang="scss" scoped>
 @import '../../style/mixin';
 .header-cell {
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
     color: #fff;
     background-color: $main-color;
     .title {
-    	height: rem(78px);
-    	line-height: rem(78px);
+    	height: $header-height;
+    	line-height: $header-height;
     	margin: 0 rem(85px);
     	font-size: rem(32px);
 		text-align: center;
@@ -46,8 +49,8 @@ export default {
     i {
     	display: block;
     	width: rem(80px);
-    	height: rem(78px);
-    	line-height: rem(78px);
+    	height: $header-height;
+    	line-height: $header-height;
     	position: absolute;
     	top: 50%;
     	left: 0;
