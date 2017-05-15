@@ -107,8 +107,17 @@ table {
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
-.cf{zoom:1}
-.cf:after{content:'';display:block;clear:both;height:0;overflow:hidden;visibility:hidden}
+.cf{
+	zoom:1;
+}
+.cf:after{
+	content:'';
+	display:block;
+	clear:both;
+	height:0;
+	overflow:hidden;
+	visibility:hidden;
+}
 .icon-bg {
 	background-image: url(./images/icon-bg.png);
 	background-size: rem(500px) rem(500px);
@@ -120,8 +129,17 @@ table {
 }
 // 按钮颜色
 .btn-blue {
-	background-color: #0cc0a1;
+	background-color: $main-color;
 	color: #fff;
+}
+.groups {
+	padding: rem(20px);
+	background-color: #fff;
+	border-bottom: border(1px);
+}
+// swiper index颜色改为main-color主色
+.swiper-pagination-bullet-active {
+	background: $main-color !important;
 }
 @for $i from 1 through 10 {
   .pa-#{$i * 5} { padding: rem(5px) * $i;}

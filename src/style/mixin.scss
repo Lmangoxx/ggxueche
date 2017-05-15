@@ -3,6 +3,9 @@ $browser-default-font-size: 40px !default;
 $border-width: 1px !default;
 $border-style: solid !default;
 $border-color: #e2e2e2 !default;
+$main-color: #0cc0a1 !default;
+$sub-color: #b9b9b9 !default;
+$active-color: #f3f3f3 !default;
 
 @function rem($px) {
 	@return $px / $browser-default-font-size * 1rem;

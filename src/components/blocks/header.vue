@@ -1,9 +1,9 @@
 <template>
-<div class="header-cell display-flex">
-    <i class="icon-back" v-show="options.back" :click="goBack()">返回</i>
-    <div class="title flex"><slot></slot></div>
-    <span class="search" v-show="options.search">搜索</span>
-    <span class="collect" v-show="options.collect">收藏</span>
+<div class="header-cell">
+	<i class="fa fa-angle-left" v-if="options.back" @click="$router.go(-1)"></i>
+    <div class="title"><slot></slot></div>
+    <i class="icon-magnifier right" v-if="options.search"></i>
+    <i class="collect right" v-if="options.collect"></i>
 </div>
 </template>
 
@@ -26,10 +26,6 @@ export default {
 		}
 	},
 	methods: {
-		goBack () {
-			// history.go(-1)
-			console.log('1')
-		}
 	}
 }
 </script>
@@ -37,12 +33,34 @@ export default {
 <style lang="scss" scoped>
 @import '../../style/mixin';
 .header-cell {
-    height: rem(50px);
-    line-height: rem(50px);
+	position: relative;
     color: #fff;
-    background-color: #cf2626;
-    .title { 
+    background-color: $main-color;
+    .title {
+    	height: rem(78px);
+    	line-height: rem(78px);
+    	margin: 0 rem(85px);
+    	font-size: rem(32px);
 		text-align: center;
+    }
+    i {
+    	display: block;
+    	width: rem(80px);
+    	height: rem(78px);
+    	line-height: rem(78px);
+    	position: absolute;
+    	top: 50%;
+    	left: 0;
+    	transform: translateY(-50%);
+    	font-size: rem(48px);
+    	text-align: center;
+    	&.right {
+    		right: 0;
+    		left: auto;
+    	}
+    	&.icon-magnifier {
+    		font-size: rem(30px);
+    	}
     }
 }
 </style>

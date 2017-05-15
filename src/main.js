@@ -33,7 +33,7 @@ new Vue({
 			// 如果数据很快就加载完毕，这里就不再显示loading了
 			setTimeout(function () {
 				if (!vm.loaded) vm.loading = true
-			}, 200)
+			}, 80)
 			next((res) => {
 				vm.loaded = true
 				vm.loading = false

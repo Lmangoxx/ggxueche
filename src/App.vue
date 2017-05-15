@@ -30,7 +30,7 @@ body {
 	background-color: #f3f3f3;
 }
 .router-fade-enter-active, .router-fade-leave-active {
-	transition: opacity .3s;
+	transition: opacity .2s;
 }
 .router-fade-enter, .router-fade-leave-active {
 	opacity: 0;

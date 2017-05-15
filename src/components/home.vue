@@ -86,6 +86,44 @@
                     </div>
                     <router-link class="more" :to="''">查看更多班型 》</router-link>
                 </li>
+                <li class="mb-10">
+                    <div class="recommend"></div>
+                    <div class="border display-flex">
+                        <img src="../images/dome/s1.jpg" alt="">
+                        <div class="info flex">
+                            <div class="name">呱呱驾校</div>
+                            <stars num="2"></stars>
+                            <div class="detail">
+                                <span class="icon-bg icon-bus"></span>
+                                <span class="icon-bg icon-quan"></span>
+                            </div>
+                            <div class="gps">距离你 5.6km</div>
+                        </div>
+                    </div>
+                    <div class="border display-flex">
+                        <div class="class flex">
+                            <div class="name">VIP班 <span class="btn-blue">C1</span></div>
+                            <div class="text mt-5 mb-5">最快15天拿证，1人/车，班车接送。最快15天拿证，1人/车，班车接送最快15天拿证，1人/车，班车接送。最快15天拿证，1人/车，班车接送</div>
+                            <div class="text-red">¥3960</div>
+                        </div>
+                        <div class="btn ml-40 mt-10">
+                            <span>首付 ¥<b class="pl-5">250</b></span>
+                            <strong class="btn-blue">报名</strong>
+                        </div>
+                    </div>
+                    <div class="border display-flex">
+                        <div class="class flex">
+                            <div class="name">VIP班 <span class="btn-blue">C1</span></div>
+                            <div class="text mt-5 mb-5">最快15天拿证，1人/车，班车接送。最快15天拿证，1人/车，班车接送最快15天拿证，1人/车，班车接送。最快15天拿证，1人/车，班车接送</div>
+                            <div class="text-red">¥3960</div>
+                        </div>
+                        <div class="btn ml-40 mt-10">
+                            <span>首付 ¥<b class="pl-5">0</b></span>
+                            <strong class="btn-blue">报名</strong>
+                        </div>
+                    </div>
+                    <router-link class="more" :to="''">查看更多班型 》</router-link>
+                </li>
             </ul>
             <!-- con / -->
         </div>
@@ -104,8 +142,8 @@ export default {
     data () {
         return {
             swiperList: [
-                'http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/three_sisters_wilderness_0.jpg',
-                'http://cdn.gousa.cn/sites/default/files/styles/original_with_watermark/public/three_sisters_wilderness_0.jpg'
+                '/static/banner1.jpg',
+                '/static/banner1.jpg'
             ],
             swiperOption: {
                 pagination: '.swiper-pagination',
@@ -201,7 +239,7 @@ export default {
             font-size: rem(20px);
             color: #626262;
             &:active {
-                background-color: #f3f3f3;
+                background-color: $active-color;
             }
             span {
                 display: block;
@@ -293,7 +331,7 @@ export default {
             text-align: center;
             border-right: border(1px);
             &.choose {
-                color: #0dc0a2;
+                color: $main-color;
             }
             &:last-child {
                 border: none;
@@ -389,9 +427,9 @@ export default {
                 .btn {
                     width: rem(134px);
                     height: rem(98px);
-                    border: border(1px, #0dc0a2);
+                    border: border(1px, $main-color);
                     border-radius: rem(4px);
-                    color: #0dc0a2;
+                    color: $main-color;
                     text-align: center;
                     overflow: hidden;
                     span {

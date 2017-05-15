@@ -40,8 +40,8 @@ export default {
     a {
         display: block;
         font-size: rem(20px);
-        color: #626262;
-        padding: rem(17px) 0 rem(10px);
+        color: #333;
+        padding: rem(13px) 0 rem(10px);
         text-align: center;
         span {
             display: block;
@@ -50,7 +50,7 @@ export default {
             background-image: url(../../images/foot-nav.png);
             background-size: rem(100px) rem(199px);
             background-repeat: no-repeat;
-            margin: 0 auto rem(5px);
+            margin: 0 auto;
         }
         &:nth-child(1) span{
             background-position: rem(1px) 0;
@@ -65,7 +65,7 @@ export default {
             background-position: rem(1px) -3*rem(51px);
         }
         &.router-link-active {
-            color: #0cc0a1;
+            color: $main-color;
         }
         &:nth-child(1).router-link-active span{
             background-position: rem(-53px) 0;
