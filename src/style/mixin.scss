@@ -2,18 +2,28 @@
 @function rem($px) {
     @return $px / $browser-default-font-size * 1rem;
 }
+//浏览器默认字体大小，这个跟设计图宽度有关系
 $browser-default-font-size: 40px !default;
+//border-width默认宽度
 $border-width: 1px !default;
+//border-style默认样式
 $border-style: solid !default;
+//border-color默认颜色
 $border-color: #e2e2e2 !default;
+//项目主体颜色
 $main-color: #0cc0a1 !default;
+//项目附属颜色
 $sub-color: #b9b9b9 !default;
+//标签的active颜色
 $active-color: #f3f3f3 !default;
+//header高度
 $header-height: rem(78px) !default;
 
+//border快速制定
 @function border($px:$border-width, $color:$border-color, $style:$border-style) {
     @return rem($px) $style $color;
 }
+//多行超出隐藏
 @mixin lineClamp($n) {  
     overflow:hidden; 
     text-overflow:ellipsis;
