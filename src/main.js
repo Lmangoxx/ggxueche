@@ -2,9 +2,15 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-import app from './app'
+// 引入路由配置文件
 import router from './router'
+// 引入全局指令文件
+import './directive'
+// 引入rem初始化文件
 import './config/rem'
+// 引入app模块
+import app from './app'
+// 引入loading模块
 import loading from './components/blocks/loading'
 
 Vue.config.productionTip = false
@@ -37,7 +43,10 @@ new Vue({
 			next((res) => {
 				vm.loaded = true
 				vm.loading = false
-				return res
+				if (res.status === 504) {
+					// 逻辑
+				}
+				// return res
 			})
 		})
     },

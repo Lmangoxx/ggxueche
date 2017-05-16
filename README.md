@@ -31,7 +31,23 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
 
 * jquery引入问题，虽然vue很强大，但是还是避免不了要使用到jquery，下面是jquery引入方法:
     ``` bash
-    整理中...
+    # // 首先npm jquery
+    npm install jquery --save
+    # // 在build/webpack.base.conf.js的plugins里添加：
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jquery: 'jquery',
+            'window.jQuery': 'jquery',
+            jQuery: 'jquery'
+        })
+    ]
+    # // 在main.js设定jquery的全局函数，这样就不用在每个.vue里引入jquery
+    import $ from 'jquery'
+    Vue.prototype.$ = $
+
+    # // 在.vue文件里使用jquery
+    Vue.$('body').hide()
     ```
 
 * 在使用v-for时，记得写:key，利于代码性能，不加会有个警告提示

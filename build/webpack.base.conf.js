@@ -44,8 +44,7 @@ module.exports = {
                 include: [resolve('src'), resolve('test')],
                 options: {
                     formatter: require('eslint-friendly-formatter')
-                },
-                exclude: ['/node_modules/']
+                }
             },
             {
                 // 对所有.vue文件使用vue-loader
