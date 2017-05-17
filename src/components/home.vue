@@ -40,7 +40,7 @@
         <div class="school-list-cell">
             <!-- nav -->
             <ul class="nav display-flex">
-                <li class="choose flex" @click="abcde('true')">推荐</li>
+                <li class="choose flex" @click="abcde()">推荐</li>
                 <li class="flex">距离</li>
                 <li class="flex">价格</li>
                 <li class="flex">好评</li>
@@ -179,8 +179,9 @@ export default {
         })
     },
     methods: {
-        abcde (val) {
-            this.$emit('message', val)
+        abcde () {
+			this.$emit('message', {
+            })
         }
     },
     components: {

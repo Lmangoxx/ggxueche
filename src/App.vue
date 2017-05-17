@@ -14,7 +14,8 @@ export default {
 	name: 'app',
 	data () {
 		return {
-			messageType: false
+			messageType: false,
+			messageOptions: {}
 		}
 	},
 	mounted () {
@@ -27,9 +28,10 @@ export default {
 	methods: {
 		updataMessage (val) {
 			this.messageType = true
+			this.messageOptions = val
 			setTimeout(() => {
 				this.messageType = false
-			}, 2000)
+			}, this.messageOptions.closeTime || 2000)
 		}
 	}
 	// components: {
