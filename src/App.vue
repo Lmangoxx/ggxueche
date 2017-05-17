@@ -1,7 +1,10 @@
 <template>
 <div id="app">
 	<transition name="router-fade" mode="out-in">
-		<router-view></router-view>
+		<div>
+			<message v-show="messageType" :options="messageOptions"></message>
+			<router-view v-on:message="updataMessage"></router-view>
+		</div>
 	</transition>
 </div>
 </template>
@@ -9,13 +12,29 @@
 <script>
 export default {
 	name: 'app',
+	data () {
+		return {
+			messageType: false
+		}
+	},
 	mounted () {
-		this.$http.post('/login', {
-			username: 'admin',
-			password: 'admin'
-		}).then((response) => {
-		})
+		// this.$http.post('/login', {
+		// 	username: 'admin',
+		// 	password: 'admin'
+		// }).then((response) => {
+		// })
+	},
+	methods: {
+		updataMessage (val) {
+			this.messageType = true
+			setTimeout(() => {
+				this.messageType = false
+			}, 2000)
+		}
 	}
+	// components: {
+	// 	message
+	// }
 }
 </script>
 

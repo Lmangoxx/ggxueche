@@ -1,16 +1,13 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 // 引入路由配置文件
 import router from './router'
-// 引入全局指令文件
-import './directive'
+// 引入全局vue插件文件
+import './config/index'
 // 引入rem初始化文件
 import './config/rem'
-// 引入app模块
+// 引入模块
 import app from './app'
-// 引入loading模块
 import loading from './components/blocks/loading'
 
 Vue.config.productionTip = false
@@ -24,7 +21,12 @@ Vue.http.options.emulateJSON = true
 new Vue({
 	el: '#app',
 	router,
-	template: '<div><app/><loading v-show="loading"/></div>',
+	template: `
+		<div>
+			<app/>
+			<loading v-show="loading"/>
+		</div>
+	`,
 	data () {
 		return {
 			loading: false,
@@ -43,10 +45,16 @@ new Vue({
 			next((res) => {
 				vm.loaded = true
 				vm.loading = false
-				if (res.status === 504) {
-					// 逻辑
+				switch (res.status) {
+					case 504:
+						break
+					case 404:
+						break
+					case 302:
+						break
+					case 200:
+						return res
 				}
-				// return res
 			})
 		})
     },
