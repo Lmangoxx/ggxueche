@@ -135,8 +135,8 @@
 
 <script>
 import {swiper, swiperSlide} from 'vue-awesome-swiper'
-import footNav from './blocks/footNav'
-import stars from './blocks/stars'
+import footNav from '@/components/blocks/footNav'
+import stars from '@/components/blocks/stars'
 export default {
     name: 'home',
     data () {

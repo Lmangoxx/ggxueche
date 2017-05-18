@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// 默认主页
+
 import home from '@/components/home'
-// 城市选择
+import learn from '@/components/learn'
 import city from '@/components/city'
 
 Vue.use(Router)
@@ -16,6 +16,10 @@ export default new Router({
         {
             path: '/home',
             component: home
+        },
+        {
+            path: '/learn',
+            component: learn
         },
         {
             path: '/city',

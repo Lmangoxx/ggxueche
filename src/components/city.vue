@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import headerCell from './blocks/header'
+import headerCell from '@/components/blocks/header'
 export default {
 	name: 'city',
 	data () {
