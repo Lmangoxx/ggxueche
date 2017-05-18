@@ -81,5 +81,45 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     })
     ```
 
+# 项目布局
+
+```
+.
+├── build                                       // webpack配置文件
+├── config                                      // 项目打包路径
+├── dist                                        // 上线项目文件，放在服务器即可正常访问
+├── src                                         // 源码目录
+│   ├── components                              // 组件
+│   │   ├── blocks                              // 全局、公共组件
+│   │   │   ├── consultation.vue                // 客服咨询按钮组件
+│   │   │   ├── footNav.vue                     // 底部导航组件
+│   │   │   ├── header.vue                      // 头部组件
+│   │   │   ├── loading.vue                     // 页面加载数据的动画组件
+│   │   │   ├── message.vue                     // 信息提示组件
+│   │   │   ├── stars.vue                       // 评论的五颗星组件
+│   │   ├── home.vue                            // 主页（驾校报名） 
+│   │   └── city.vue                            // 城市页面  
+│   ├── config                                  // 公共配置
+│   │   ├── index.js                            // 全局配置（全局组件、指令、vue原型链函数等）
+│   │   ├── lazyload.js                         // 第三方插件配置文件（开发中）
+│   │   └── rem.js                              // px转换rem
+│   ├── fonts                                   // 字体文件
+│   ├── images                                  // 图片文件
+│   ├── libs                                    // 引用的第三方插件
+│   ├── router
+│   │   └── router.js                           // 路由配置
+│   ├── store                                   // vuex的状态管理（待完成）
+│   └── style
+│       ├── common.scss                         // 公共样式文件
+│       └── mixin.scss                          // 样式配置文件
+│   ├── App.vue                                 // 页面入口组件
+│   ├── main.js                                 // 程序入口文件，加载各种公共组件
+├── static                                      // 静态资源文件
+├── test                                        // 测试案例文件
+├── .eslintrc.js                                // eslint配置文件（eslint的规则可以在这里配置）
+├── .eslintignore                               // eslint忽略检查（不想让eslint检查的文件可以在里面配置）
+.
+```
+
 ---
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
