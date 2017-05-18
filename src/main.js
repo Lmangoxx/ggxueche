@@ -8,7 +8,6 @@ import './config/index'
 import './config/rem'
 // 引入模块
 import app from './app'
-import loading from './components/blocks/loading'
 
 Vue.config.productionTip = false
 
@@ -21,45 +20,8 @@ Vue.http.options.emulateJSON = true
 new Vue({
 	el: '#app',
 	router,
-	template: `
-		<div>
-			<app/>
-			<loading v-show="loading"/>
-		</div>
-	`,
-	data () {
-		return {
-			loading: false,
-			loaded: false
-		}
-	},
-	mounted () {
-		let vm = this
-		// http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
-		Vue.http.interceptors.push((req, next) => {
-			vm.loaded = false
-			// 如果数据很快就加载完毕，这里就不再显示loading了
-			setTimeout(function () {
-				if (!vm.loaded) vm.loading = true
-			}, 80)
-			next((res) => {
-				vm.loaded = true
-				vm.loading = false
-				switch (res.status) {
-					case 504:
-						break
-					case 404:
-						break
-					case 302:
-						break
-					case 200:
-						return res
-				}
-			})
-		})
-    },
+	template: `<app/>`,
 	components: {
-		app,
-		loading
+		app
 	}
 })

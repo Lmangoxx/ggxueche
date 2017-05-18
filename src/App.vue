@@ -1,24 +1,56 @@
 <template>
 <div id="app">
 	<transition name="router-fade" mode="out-in">
-		<div>
-			<message v-show="messageType" :options="messageOptions"></message>
-			<router-view v-on:message="updataMessage"></router-view>
-		</div>
+		<router-view v-on:message="updataMessage"></router-view>
 	</transition>
+	<message v-show="messageShow" :options="messageOptions"></message>
+	<loading v-show="loading"/>
 </div>
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
 	name: 'app',
 	data () {
 		return {
-			messageType: false,
-			messageOptions: {}
+			messageShow: false,
+			messageOptions: {},
+			messageAutoClose: 2000,
+			loading: false,
+			loaded: false
 		}
 	},
 	mounted () {
+		let vm = this
+		// http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
+		Vue.http.interceptors.push((req, next) => {
+			vm.messageShow = false
+			vm.loaded = false
+			// 如果数据很快就加载完毕，这里就不再显示loading了
+			setTimeout(function () {
+				if (!vm.loaded) vm.loading = true
+			}, 80)
+			next((res) => {
+				vm.loaded = true
+				vm.loading = false
+				switch (res.status) {
+					case 504:
+						break
+					case 404:
+						break
+					case 302:
+						break
+					case 200:
+						if (res.body.code === 401) {
+							vm.updataMessage({
+								text: '请先登录'
+							})
+						}
+						return res
+				}
+			})
+		})
 		// this.$http.post('/login', {
 		// 	username: 'admin',
 		// 	password: 'admin'
@@ -27,16 +59,13 @@ export default {
 	},
 	methods: {
 		updataMessage (val) {
-			this.messageType = true
+			this.messageShow = true
 			this.messageOptions = val
 			setTimeout(() => {
-				this.messageType = false
-			}, this.messageOptions.closeTime || 2000)
+				this.messageShow = false
+			}, this.messageOptions.closeTime || this.messageAutoClose)
 		}
 	}
-	// components: {
-	// 	message
-	// }
 }
 </script>
 

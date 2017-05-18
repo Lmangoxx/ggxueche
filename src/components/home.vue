@@ -181,6 +181,7 @@ export default {
     methods: {
         abcde () {
 			this.$emit('message', {
+                text: 'sss'
             })
         }
     },

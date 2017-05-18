@@ -1,7 +1,7 @@
 <template>
 <div class="message">
-    <i :class="'icon-' + (options.type || 'user')"></i>
-    <p class="mt-10">{{options.text || '请求成功'}}</p>
+    <i :class="options.type"></i>
+    <p class="mt-10">{{options.text}}</p>
 </div>
 </template>
 
@@ -17,17 +17,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../style/mixin';
+@import '../../style/mixin';
 .message {
     position: fixed;
     top: 50%;
     left: 50%;
     min-width: rem(150px);
-    font-size: rem(30px);
+    font-size: rem(25px);
     color: #fff;
     text-align: center;
-    padding: rem(36px) rem(36px);
-    border-radius: rem(15px);
+    padding: rem(36px);
+    border-radius: rem(10px);
     background-color: rgba(0, 0, 0, .9);
     transform: translate(-50%, -50%);
     z-index: 9999;

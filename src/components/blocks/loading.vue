@@ -16,7 +16,7 @@ export default {
     position: fixed;
     top: 50%;
     left: 50%;
-    padding: rem(36px) rem(36px);
+    padding: rem(45px);
     border-radius: rem(15px);
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 1);
