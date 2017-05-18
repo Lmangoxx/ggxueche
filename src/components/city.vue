@@ -14,7 +14,7 @@
     <div class="city-hot mt-10">
         <div class="groups">热门城市</div>
         <ul class="city-hot-list cf">
-            <router-link tag="li" class="box-sizing" v-for="city in cityList" :to="''" :key="city.id">{{city.name}}</router-link>
+            <router-link tag="li" class="box-sizing" v-for="city in cityList" :to="''" :key="city">{{city.name}}</router-link>
         </ul>
     </div>
     <!-- city-hot / -->

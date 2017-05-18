@@ -81,7 +81,7 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     })
     ```
 
-# 项目布局
+## 项目布局
 
 ```
 .

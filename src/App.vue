@@ -3,7 +3,9 @@
 	<transition name="router-fade" mode="out-in">
 		<router-view v-on:message="updataMessage"></router-view>
 	</transition>
-	<message v-show="messageShow" :options="messageOptions"></message>
+	<transition name="router-fade" mode="out-in">
+		<message v-show="messageShow" :options="messageOptions"></message>
+	</transition>
 	<loading v-show="loading"/>
 </div>
 </template>
@@ -21,7 +23,7 @@ export default {
 			loaded: false
 		}
 	},
-	mounted () {
+	created () {
 		let vm = this
 		// http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
 		Vue.http.interceptors.push((req, next) => {

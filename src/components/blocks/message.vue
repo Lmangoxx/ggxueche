@@ -1,7 +1,7 @@
 <template>
 <div class="message">
-    <i :class="options.type"></i>
-    <p class="mt-10">{{options.text}}</p>
+    <i v-if="options.icon != null" :class="options.icon"></i>
+    <p :class="{'mt-10': options.icon != null}">{{options.text}}</p>
 </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
     top: 50%;
     left: 50%;
     min-width: rem(150px);
-    font-size: rem(25px);
+    font-size: rem(28px);
     color: #fff;
     text-align: center;
     padding: rem(36px);
@@ -34,7 +34,7 @@ export default {
     i {
 		width: rem(65px);
 		height: rem(65px);
-		font-size: rem(60px);
+		font-size: rem(55px);
     }
 }
 </style>

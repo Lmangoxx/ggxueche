@@ -7,19 +7,19 @@
                 <i class="icon-pointer pr-5"></i>城市
             </router-link>
             <swiper :options="swiperOption">
-                <swiper-slide v-for="swiper in swiperList" :key="swiper.$index">
+                <swiper-slide v-for="swiper in swiperList" :key="swiper">
                     <img :src="swiper" alt="">
                 </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
             <div class="border-colour cf">
-                <span v-for="i in borderColors" :key="i.$index" :style="{backgroundColor: i}"></span>
+                <span v-for="i in borderColors" :key="i" :style="{backgroundColor: i}"></span>
             </div>
         </div>
         <!-- banner-cell / -->
         <!-- nav-cell -->
         <ul class="nav-cell display-flex">
-            <li class="flex" v-for="nav in navList" :key="nav.$index">
+            <li class="flex" v-for="nav in navList" :key="nav">
                 <router-link :to="nav.url"><span></span>{{nav.name}}</router-link>
             </li>
         </ul>
