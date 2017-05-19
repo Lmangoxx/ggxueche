@@ -28,7 +28,6 @@ export default {
     },
     methods: {
         touchStart (event) {
-            console.log(this.$root)
             let touches = event.touches[0]
             let time = 0
             this.setInter = setInterval(() => {

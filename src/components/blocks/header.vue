@@ -1,9 +1,11 @@
 <template>
 <div class="header-cell">
 	<i class="fa fa-angle-left" v-if="options.back" @click="$router.go(-1)"></i>
-    <div class="title"><slot></slot></div>
+    <i class="icon-bubble" v-if="options.speech"></i>
     <i class="icon-magnifier right" v-if="options.search"></i>
+    <i class="icon-share-alt right" v-if="options.share"></i>
     <i class="collect right" v-if="options.collect"></i>
+    <div class="title"><slot></slot></div>
 </div>
 </template>
 
@@ -55,14 +57,14 @@ export default {
     	top: 50%;
     	left: 0;
     	transform: translateY(-50%);
-    	font-size: rem(48px);
+        font-size: rem(30px);
     	text-align: center;
     	&.right {
     		right: 0;
     		left: auto;
     	}
-    	&.icon-magnifier {
-    		font-size: rem(30px);
+    	&.fa-angle-left {
+    		font-size: rem(48px);
     	}
     }
 }
