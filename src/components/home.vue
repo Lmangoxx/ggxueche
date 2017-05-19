@@ -40,7 +40,7 @@
         <div class="school-list-cell">
             <!-- nav -->
             <ul class="nav display-flex">
-                <li class="choose flex" @click="abcde()">推荐</li>
+                <li class="choose flex">推荐</li>
                 <li class="flex">距离</li>
                 <li class="flex">价格</li>
                 <li class="flex">好评</li>
@@ -129,6 +129,7 @@
         </div>
         <!-- school-list-cell / -->
     </div>
+    <consultation></consultation>
     <foot-nav></foot-nav>
 </div>
 </template>
@@ -137,6 +138,7 @@
 import {swiper, swiperSlide} from 'vue-awesome-swiper'
 import footNav from '@/components/blocks/footNav'
 import stars from '@/components/blocks/stars'
+import consultation from '@/components/blocks/consultation'
 export default {
     name: 'home',
     data () {
@@ -179,17 +181,13 @@ export default {
         })
     },
     methods: {
-        abcde () {
-			this.$emit('message', {
-                text: 'sss'
-            })
-        }
     },
     components: {
         swiper,
         swiperSlide,
         stars,
-        footNav
+        footNav,
+        consultation
     }
 }
 </script>
