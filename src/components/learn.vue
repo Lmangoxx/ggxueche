@@ -20,18 +20,10 @@ export default {
     data () {
         return {
             navList: [
-                {
-                    name: '咨询', url: ''
-                },
-                {
-                    name: '班车', url: ''
-                },
-                {
-                    name: '约考', url: ''
-                },
-                {
-                    name: '评价', url: ''
-                }
+                {name: '咨询', url: ''},
+                {name: '班车', url: ''},
+                {name: '约考', url: ''},
+                {name: '评价', url: ''}
             ]
         }
     },
