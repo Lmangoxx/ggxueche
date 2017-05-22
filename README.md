@@ -106,6 +106,8 @@ vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
 │   ├── fonts                                   # // 字体文件
 │   ├── images                                  # // 图片文件
 │   ├── libs                                    # // 引用的第三方插件
+│   │   ├── jquery                              # // jquery插件
+│   │   └── vue                                 # // vue插件（第三方及自定义）
 │   ├── router
 │   │   └── router.js                           # // 路由配置
 │   ├── store                                   # // vuex的状态管理（待完成）
