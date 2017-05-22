@@ -1,10 +1,7 @@
 <template>
 <div id="app">
 	<transition name="router-fade" mode="out-in">
-		<router-view v-on:message="updataMessage"></router-view>
-	</transition>
-	<transition name="router-fade" mode="out-in">
-		<message v-show="messageShow" :options="messageOptions"></message>
+		<router-view></router-view>
 	</transition>
 	<loading v-show="loading"/>
 </div>
@@ -16,9 +13,6 @@ export default {
 	name: 'app',
 	data () {
 		return {
-			messageShow: false,
-			messageOptions: {},
-			messageAutoClose: 2000,
 			loading: false,
 			loaded: false
 		}
@@ -45,8 +39,8 @@ export default {
 						break
 					case 200:
 						if (res.body.code === 401) {
-							vm.updataMessage({
-								text: '请先登录'
+							this.$message({
+								content: '请先登录'
 							})
 						}
 						return res
@@ -60,13 +54,6 @@ export default {
 		// })
 	},
 	methods: {
-		updataMessage (val) {
-			this.messageShow = true
-			this.messageOptions = val
-			setTimeout(() => {
-				this.messageShow = false
-			}, this.messageOptions.closeTime || this.messageAutoClose)
-		}
 	}
 }
 </script>

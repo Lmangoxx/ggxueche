@@ -9,6 +9,9 @@ import './config/rem'
 // 引入模块
 import app from './app'
 
+import Message from '@/libs/vue/message/index'
+Vue.use(Message)
+
 Vue.config.productionTip = false
 
 // 注入VueResource到vue中
