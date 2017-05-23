@@ -13,7 +13,6 @@ export default {
 			messageClose()
 
 			opt = Object.assign({
-				icon: 'icon-user',
 				closeTime: '2500'
 			}, options)
 

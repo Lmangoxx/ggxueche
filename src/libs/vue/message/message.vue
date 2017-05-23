@@ -1,7 +1,7 @@
 <template>
 <div class="vue-message">
     <i v-show="options.icon != null" :class="options.icon"></i>
-    <p :class="{'mt-10': options.icon != null}">{{options.content}}</p>
+    <p class="mt-10 mb-10">{{options.content}}</p>
 </div>
 </template>
 

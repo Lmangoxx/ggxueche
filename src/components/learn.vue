@@ -2,11 +2,14 @@
 <div>
     <header-cell :options="{'speech': true, 'share': true}">呱呱驾校</header-cell>
     <div class="learn-cell con-cell">
+        <!-- nav-cell -->
         <ul class="nav-cell display-flex">
             <li class="flex" v-for="nav in navList" :key="nav">
                 <router-link :to="nav.url"><span class="icon-bg"></span>{{nav.name}}</router-link>
             </li>
         </ul>
+        <!-- / nav-cell -->
+        
     </div>
     <foot-nav></foot-nav>
 </div>
@@ -28,7 +31,6 @@ export default {
         }
     },
     mounted () {
-        this.$message('y')
     },
     methods: {
     },
@@ -39,7 +41,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import '../style/mixin';
 .learn-cell {

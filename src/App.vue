@@ -47,11 +47,11 @@ export default {
 				}
 			})
 		})
-		// this.$http.post('/login', {
-		// 	username: 'admin',
-		// 	password: 'admin'
-		// }).then((response) => {
-		// })
+		this.$http.post('/login', {
+			username: 'admin',
+			password: 'admin'
+		}).then((response) => {
+		})
 	},
 	methods: {
 	}
