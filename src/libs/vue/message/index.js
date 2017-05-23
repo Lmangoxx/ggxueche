@@ -1,14 +1,23 @@
+import $ from 'jquery'
 import message from './message'
 export default {
 	install (Vue, options) {
+		let opt, messageTpl, tpl
 		Vue.prototype.$message = (options) => {
 
-			let opt = Object.assign({
+			if(typeof options !== 'object' || options === undefined) {
+				throw new Error('"' + options + '" 参数类型错误')
+				return
+			}
+
+			messageClose()
+
+			opt = Object.assign({
 				icon: 'icon-user',
 				closeTime: '2500'
 			}, options)
 
-			let messageTpl = Vue.extend({
+			messageTpl = Vue.extend({
 				data () {
 					return {
 						messageOptions: opt
@@ -20,11 +29,16 @@ export default {
 			    }
 	        })
 
-			let tpl = new messageTpl().$mount().$el
-			document.body.appendChild(tpl)
+			tpl = new messageTpl().$mount().$el
+			$('#router-view').append(tpl)
 			setTimeout(() => {
-				document.body.removeChild(tpl)
+				messageClose()
 			}, opt.closeTime)
+		}
+		let messageClose = () => {
+			if($('.vue-message')) {
+				$('.vue-message').remove()
+			}
 		}
 	}
 }

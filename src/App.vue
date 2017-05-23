@@ -1,7 +1,7 @@
 <template>
 <div id="app">
 	<transition name="router-fade" mode="out-in">
-		<router-view></router-view>
+		<router-view id="router-view"></router-view>
 	</transition>
 	<loading v-show="loading"/>
 </div>

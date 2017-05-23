@@ -1,5 +1,5 @@
 <template>
-<div class="message">
+<div class="vue-message">
     <i v-show="options.icon != null" :class="options.icon"></i>
     <p :class="{'mt-10': options.icon != null}">{{options.content}}</p>
 </div>
@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../style/mixin';
-.message {
+.vue-message {
     position: fixed;
     top: 50%;
     left: 50%;
