@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/mixin';
+@import '../../static/style/mixin';
 .header-cell {
 	position: fixed;
 	top: 0;

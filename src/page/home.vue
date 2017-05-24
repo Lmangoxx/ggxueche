@@ -51,45 +51,7 @@
                 <li class="mb-10">
                     <div class="recommend"></div>
                     <div class="border display-flex">
-                        <img src="../images/dome/s1.jpg" alt="">
-                        <div class="info flex">
-                            <div class="name">呱呱驾校</div>
-                            <stars num="2"></stars>
-                            <div class="detail">
-                                <span class="icon-bg icon-bus"></span>
-                                <span class="icon-bg icon-quan"></span>
-                            </div>
-                            <div class="gps">距离你 5.6km</div>
-                        </div>
-                    </div>
-                    <div class="border display-flex">
-                        <div class="class flex">
-                            <div class="name">VIP班 <span class="btn-blue">C1</span></div>
-                            <div class="text mt-5 mb-5">最快15天拿证，1人/车，班车接送。最快15天拿证，1人/车，班车接送最快15天拿证，1人/车，班车接送。最快15天拿证，1人/车，班车接送</div>
-                            <div class="text-red">¥3960</div>
-                        </div>
-                        <div class="btn ml-40 mt-10">
-                            <span>首付 ¥<b class="pl-5">250</b></span>
-                            <strong class="btn-blue">报名</strong>
-                        </div>
-                    </div>
-                    <div class="border display-flex">
-                        <div class="class flex">
-                            <div class="name">VIP班 <span class="btn-blue">C1</span></div>
-                            <div class="text mt-5 mb-5">最快15天拿证，1人/车，班车接送。最快15天拿证，1人/车，班车接送最快15天拿证，1人/车，班车接送。最快15天拿证，1人/车，班车接送</div>
-                            <div class="text-red">¥3960</div>
-                        </div>
-                        <div class="btn ml-40 mt-10">
-                            <span>首付 ¥<b class="pl-5">0</b></span>
-                            <strong class="btn-blue">报名</strong>
-                        </div>
-                    </div>
-                    <router-link class="more" :to="''">查看更多班型 》</router-link>
-                </li>
-                <li class="mb-10">
-                    <div class="recommend"></div>
-                    <div class="border display-flex">
-                        <img src="../images/dome/s1.jpg" alt="">
+                        <img src="/static/images/dome/s1.jpg" alt="">
                         <div class="info flex">
                             <div class="name">呱呱驾校</div>
                             <stars num="2"></stars>
@@ -136,16 +98,15 @@
 
 <script>
 import {swiper, swiperSlide} from 'vue-awesome-swiper'
-import footNav from '@/components/blocks/footNav'
-import stars from '@/components/blocks/stars'
-import consultation from '@/components/blocks/consultation'
+import stars from '@/components/stars'
+import consultation from '@/components/consultation'
 export default {
     name: 'home',
     data () {
         return {
             swiperList: [
-                '/static/banner1.jpg',
-                '/static/banner1.jpg'
+                '/static/images/dome/banner1.jpg',
+                '/static/images/dome/banner1.jpg'
             ],
             swiperOption: {
                 pagination: '.swiper-pagination',
@@ -186,7 +147,6 @@ export default {
         swiper,
         swiperSlide,
         stars,
-        footNav,
         consultation
     }
 }
@@ -194,7 +154,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import '../style/mixin';
+@import '../../static/style/mixin';
 .home-cell {
     height: 100%;
     padding-bottom: rem(110px);
@@ -250,25 +210,15 @@ export default {
                 width: rem(86px);
                 height: rem(87px);
                 margin: 0 auto rem(12px);
-                background-image: url(../images/home-nav.png);
+                background-image: url(/static/images/home-nav.png);
                 background-size: rem(86px) rem(440px);
                 background-repeat: no-repeat;
             }
         }
-        &:nth-child(1) span{
-            background-position: 0 0;
-        }
-        &:nth-child(2) span{
-            background-position: 0 -1 *rem(88px);
-        }
-        &:nth-child(3) span{
-            background-position: 0 -2 *rem(88px);
-        }
-        &:nth-child(4) span{
-            background-position: 0 -3 *rem(88px);
-        }
-        &:nth-child(5) span{
-            background-position: 0 -4 *rem(88px);
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) span {
+                background-position: 0 ($i - 1)*rem(-88px);
+            }
         }
     }
 }
@@ -292,7 +242,7 @@ export default {
                 width: rem(52px);
                 height: rem(65px);
                 margin: rem(16px) rem(25px) 0 rem(29px);
-                background-image: url(../images/find-nav.png);
+                background-image: url(/static/images/find-nav.png);
                 background-size: rem(52px) rem(131px);
                 background-repeat: no-repeat;
                 vertical-align: rem(-20px);

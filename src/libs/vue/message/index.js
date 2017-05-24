@@ -29,7 +29,7 @@ export default {
 	        })
 
 			tpl = new messageTpl().$mount().$el
-			$('#router-view').append(tpl)
+			$('#router-view-app').append(tpl)
 			setTimeout(() => {
 				messageClose()
 			}, opt.closeTime)

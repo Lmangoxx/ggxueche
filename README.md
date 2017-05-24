@@ -16,7 +16,11 @@ npm run build
 ## 技术栈(基于vue-cli)
 vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
 
-## vue常用的组件汇总:
+## 使用到的第三方插件
+* [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
+* [vue-lazyload](https://github.com/hilongjw/vue-lazyload)
+
+## vue官方提供的组件汇总:
 [awesome-vue](https://github.com/vuejs/awesome-vue)
 
 ## 开发中遇到的问题汇总：

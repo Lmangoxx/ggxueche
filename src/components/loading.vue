@@ -1,6 +1,6 @@
 <template>
 <div class="loading-overlay">
-    <img src="../../images/loading.gif">
+    <img src="/static/images/loading.gif">
 </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/mixin';
+@import '../../static/style/mixin';
 .loading-overlay {
     position: fixed;
     top: 50%;

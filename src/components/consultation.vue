@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/mixin';
+@import '../../static/style/mixin';
 .consultation {
     position: fixed;
     bottom: rem(130px);

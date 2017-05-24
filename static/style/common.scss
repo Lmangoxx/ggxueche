@@ -117,8 +117,9 @@ table {
 	overflow:hidden;
 	visibility:hidden;
 }
+// 公共样式
 .icon-bg {
-	background-image: url(./images/icon-bg.png);
+	background-image: url(/static/images/icon-bg.png);
 	background-size: rem(500px) rem(500px);
 	background-repeat: no-repeat;
 }
@@ -142,6 +143,16 @@ table {
 //swiper index颜色改为main-color主色
 .swiper-pagination-bullet-active {
 	background: $main-color !important;
+}
+// lazyload样式 
+img[lazy=loading] {
+	opacity: 0;
+}
+img[lazy=error] {
+	
+}
+img[lazy=loaded] {
+	transition: opacity .15s;
 }
 @for $i from 1 through 10 {
   .pa-#{$i * 5} { padding: rem(5px) * $i;}

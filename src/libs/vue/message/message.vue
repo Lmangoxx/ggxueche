@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../style/mixin';
+@import '../../../../static/style/mixin';
 .vue-message {
     position: fixed;
     top: 50%;
@@ -30,7 +30,7 @@ export default {
     border-radius: rem(10px);
     background-color: rgba(0, 0, 0, .9);
     transform: translate(-50%, -50%);
-    z-index: 9999;
+    z-index: 99999;
     i {
 		width: rem(65px);
 		height: rem(65px);

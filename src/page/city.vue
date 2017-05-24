@@ -1,6 +1,6 @@
 <template>
 <div>
-	<headerCell :options="{'back': true, 'search': true}">城市</headerCell>
+	<header-cell :options="{'back': true, 'search': true}">城市</header-cell>
     <!-- city-gps -->
     <div class="city-gps con-cell">
         <p class="groups display-flex">当前定位城市：<em class="flex">定位不准时，请在城市列表中选择</em></p>
@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import headerCell from '@/components/blocks/header'
 export default {
 	name: 'city',
 	data () {
@@ -37,13 +36,12 @@ export default {
         })
     },
     components: {
-		headerCell
     }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../style/mixin';
+@import '../../static/style/mixin';
 .city-gps {
     background-color: #fff;
     p {

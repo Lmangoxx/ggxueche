@@ -9,6 +9,15 @@ import './config/rem'
 // 引入模块
 import app from './app'
 
+// 引入vue-lazyload实现异步加载
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload, {
+  preLoad: 1,
+  error: '/static/images/error.jpg',
+  loading: '/static/images/loading.jpg',
+  attempt: 2
+})
+
 import Message from '@/libs/vue/message/index'
 Vue.use(Message)
 

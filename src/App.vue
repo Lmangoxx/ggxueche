@@ -1,7 +1,7 @@
 <template>
 <div id="app">
 	<transition name="router-fade" mode="out-in">
-		<router-view id="router-view"></router-view>
+		<router-view id="router-view-app"></router-view>
 	</transition>
 	<loading v-show="loading"/>
 </div>
@@ -26,7 +26,7 @@ export default {
 			// 如果数据很快就加载完毕，这里就不再显示loading了
 			setTimeout(function () {
 				if (!vm.loaded) vm.loading = true
-			}, 80)
+			}, 100)
 			next((res) => {
 				vm.loaded = true
 				vm.loading = false
@@ -60,11 +60,11 @@ export default {
 
 <style lang="scss">
 // 引入font-awesome字体
-@import './fonts/font-awesome/css/font-awesome.css';
+@import '../static/fonts/font-awesome/css/font-awesome.css';
 // 引入simple-line-icons字体
-@import './fonts/simple-line-icons/css/simple-line-icons.css';
+@import '../static/fonts/simple-line-icons/css/simple-line-icons.css';
 // 引入公共样式
-@import './style/common';
+@import '../static/style/common';
 body {
 	background-color: #f3f3f3;
 }

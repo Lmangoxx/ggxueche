@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/mixin';
+@import '../../static/style/mixin';
 .foot-nav {
     position: fixed;
     left: 0;
@@ -47,37 +47,23 @@ export default {
             display: block;
             width: rem(47px);
             height: rem(47px);
-            background-image: url(../../images/foot-nav.png);
+            background-image: url(/static/images/foot-nav.png);
             background-size: rem(100px) rem(199px);
             background-repeat: no-repeat;
             margin: 0 auto;
         }
-        &:nth-child(1) span{
-            background-position: rem(1px) 0;
-        }
-        &:nth-child(2) span{
-            background-position: rem(1px) -1*rem(51px);
-        }
-        &:nth-child(3) span{
-            background-position: rem(1px) -2*rem(51px);
-        }
-        &:nth-child(4) span{
-            background-position: rem(1px) -3*rem(51px);
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}) span {
+                background-position: rem(1px) ($i - 1)*rem(-51px);
+            }
         }
         &.router-link-active {
             color: $main-color;
         }
-        &:nth-child(1).router-link-active span{
-            background-position: rem(-53px) 0;
-        }
-        &:nth-child(2).router-link-active span{
-            background-position: rem(-53px) -1*rem(51px);
-        }
-        &:nth-child(3).router-link-active span{
-            background-position: rem(-53px) -2*rem(51px);
-        }
-        &:nth-child(4).router-link-active span{
-            background-position: rem(-53px) -3*rem(51px);
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}).router-link-active span {
+                background-position: rem(-53px) ($i - 1)*rem(-51px);
+            }
         }
     }
 }

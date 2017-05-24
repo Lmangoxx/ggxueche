@@ -18,7 +18,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/mixin';
+@import '../../static/style/mixin';
 .stars {
     span {
         display: inline-block;
