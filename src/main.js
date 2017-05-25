@@ -18,7 +18,7 @@ Vue.use(VueLazyload, {
   attempt: 2
 })
 
-import Message from '@/libs/vue/message/index'
+import Message from '@/components/message/index'
 Vue.use(Message)
 
 Vue.config.productionTip = false

@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../../../static/style/mixin';
+@import '../../../static/style/mixin';
 .vue-message {
     position: fixed;
     top: 50%;
