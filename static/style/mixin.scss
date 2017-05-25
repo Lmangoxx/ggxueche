@@ -3,7 +3,7 @@
     @return $px / $browser-default-font-size * 1rem;
 }
 //浏览器默认字体大小，这个跟设计图宽度有关系
-$browser-default-font-size: 40px !default;
+$browser-default-font-size: 46.875px !default;
 //border-width默认宽度
 $border-width: 1px !default;
 //border-style默认样式
@@ -17,7 +17,7 @@ $sub-color: #b9b9b9 !default;
 //标签的active颜色
 $active-color: #f3f3f3 !default;
 //header高度
-$header-height: rem(78px) !default;
+$header-height: rem(87px) !default;
 
 //border快速制定
 @function border($px:$border-width, $color:$border-color, $style:$border-style) {

@@ -8,7 +8,7 @@
             </router-link>
             <swiper :options="swiperOption">
                 <swiper-slide v-for="swiper in swiperList" :key="swiper">
-                    <img :src="swiper" alt="">
+                    <img v-lazy="swiper" alt="">
                 </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
@@ -177,6 +177,9 @@ export default {
         font-size: rem(24px);
         color: #fff;
     }
+    .swiper-container {
+        height: rem(380px);
+    }
     .border-colour {
         position: absolute;
         left: 0;
@@ -200,11 +203,8 @@ export default {
         a {
             display: block;
             padding: rem(23px) 0 rem(10px);
-            font-size: rem(20px);
+            font-size: rem(22px);
             color: #626262;
-            &:active {
-                background-color: $active-color;
-            }
             span {
                 display: block;
                 width: rem(86px);
@@ -274,7 +274,7 @@ export default {
 }
 .school-list-cell {
     .nav {
-        padding: rem(20px) 0 rem(15px);
+        padding: rem(20px) 0;
         border-top: border();
         border-bottom: border();
         background-color: #fff;

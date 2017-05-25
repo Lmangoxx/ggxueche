@@ -72,27 +72,18 @@ export default {
                     height: rem(80px);
                     margin: 0 auto rem(12px);
                 }
-                &:active {
-                    background-color: $active-color;
+            }
+            @for $i from 1 through 4 {
+                &:nth-child(#{$i}) span {
+                    background-position: rem(-92px) ($i - 1)*rem(-82px);
                 }
-            }
-            &:nth-child(1) span{
-                background-position: rem(-92px) 0;
-            }
-            &:nth-child(2) span{
-                background-position: rem(-92px) -1 *rem(82px);
-            }
-            &:nth-child(3) span{
-                background-position: rem(-92px) -2 *rem(82px);
-            }
-            &:nth-child(4) span{
-                background-position: rem(-92px) -3 *rem(82px);
             }
         }
     }
     .subject {
         padding: rem(35px) rem(62px) rem(55px);
         background-color: #fff;
+        border-bottom: border();
         .con {
             position: relative;
             height: rem(55px);

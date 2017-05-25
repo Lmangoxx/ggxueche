@@ -14,7 +14,7 @@
     <div class="city-hot mt-10">
         <div class="groups">热门城市</div>
         <ul class="city-hot-list cf">
-            <router-link tag="li" class="box-sizing" v-for="city in cityList" :to="''" :key="city">{{city.name}}</router-link>
+            <router-link tag="li" class="box-sizing active" v-for="city in cityList" :to="''" :key="city">{{city.name}}</router-link>
         </ul>
     </div>
     <!-- city-hot / -->
@@ -52,7 +52,6 @@ export default {
     }
     li {
         font-size: rem(28px);
-        padding: rem(15px) rem(20px);
         span {
             color: $main-color;
         }
@@ -79,9 +78,6 @@ export default {
         border-bottom: border(1px);
         &:nth-child(4n) {
             border-right: none;
-        }
-        &:active {
-            background-color: $active-color;
         }
     }
 }

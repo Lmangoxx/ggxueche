@@ -6,7 +6,7 @@ html, body {
 }
 body {
   font-family: "Source Sans Pro", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
-  font-size: rem(22px);
+  font-size: rem(24px);
   -webkit-font-smoothing: antialiased;
   line-height: 1.42857143;
   color: #58666e;
@@ -54,6 +54,7 @@ a {
 	color: #626262;
 	text-decoration: none;
 	tap-highlight-color: transparent;
+	user-select: none;
 }
 a:link {
 	text-decoration: none
@@ -135,8 +136,15 @@ table {
 	background-color: $main-color;
 	color: #fff;
 }
+// router-link样式
+.router-link-active{
+	user-select: none;
+}
+.router-link-active:active {
+	background-color: $active-color;
+}
 .groups {
-	padding: rem(20px);
+	padding: rem(20px) rem(25px);
 	background-color: #fff;
 	border-bottom: border(1px);
 }

@@ -50,14 +50,14 @@ export default {
     }
     i {
     	display: block;
-    	width: rem(80px);
+    	width: rem(85px);
     	height: $header-height;
     	line-height: $header-height;
     	position: absolute;
     	top: 50%;
     	left: 0;
     	transform: translateY(-50%);
-        font-size: rem(30px);
+        font-size: rem(32px);
     	text-align: center;
     	&.right {
     		right: 0;
