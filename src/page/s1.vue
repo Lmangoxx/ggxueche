@@ -82,7 +82,7 @@ export default {
         font-size: rem(38px);
     }
     .video {
-        padding: rem(20px) rem(15px);
+        padding: rem(30px) rem(15px) rem(10px);
         background-color: #fff;
         li {
             width: 50%;

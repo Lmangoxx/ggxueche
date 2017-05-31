@@ -16,7 +16,9 @@
                 </router-link>
             </div>
         </div>
-        <router-view id="router-view-learn"></router-view>
+        <transition name="router-fade" mode="out-in">
+            <router-view id="router-view-learn"></router-view>
+        </transition>
     </div>
     <foot-nav></foot-nav>
 </div>
