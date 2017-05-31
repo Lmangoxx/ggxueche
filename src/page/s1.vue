@@ -6,7 +6,10 @@
             <p>{{nav.name}}</p>
         </router-link>
     </ul>
-
+    <p class="groups mt-20"><i class="icon-social-youtube text-main"></i>视频教学</p>
+    <ul class="video display-flex">
+        <router-link tag="li" class="flex" :to="''" :key="''"></router-link>
+    </ul>
 </div>
 </template>
 
