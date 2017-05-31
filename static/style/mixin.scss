@@ -31,3 +31,9 @@ $header-height: rem(87px) !default;
     -webkit-box-orient:vertical;
     -webkit-line-clamp:$n; 
 }
+@mixin relativeCenter() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

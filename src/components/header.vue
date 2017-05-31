@@ -1,10 +1,10 @@
 <template>
 <div class="header-cell">
 	<i class="fa fa-angle-left" v-if="options.back" @click="$router.go(-1)"></i>
-    <i class="icon-bubble" v-if="options.speech"></i>
-    <i class="icon-magnifier right" v-if="options.search"></i>
-    <i class="icon-share-alt right" v-if="options.share"></i>
-    <i class="collect right" v-if="options.collect"></i>
+    <i class="icon-bubble" v-if="options.speech || false"></i>
+    <i class="icon-magnifier right" v-if="options.search || false"></i>
+    <i class="icon-share-alt right" v-if="options.share || false"></i>
+    <i class="collect right" v-if="options.collect || false"></i>
     <div class="title"><slot></slot></div>
 </div>
 </template>
@@ -16,9 +16,7 @@ export default {
 		options: {
 			type: Object,
 			default: {
-				'back': true,
-				'search': false,
-				'collect': false
+				'back': true
 			}
 		}
 	},

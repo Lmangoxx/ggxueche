@@ -1,14 +1,32 @@
 <template>
 <div class="s1">
     <ul class="nav display-flex">
-        <router-link tag="li" class="flex" v-for="nav in navList" :to="''" :key="nav">
+        <router-link class="flex" v-for="nav in navList" :to="''" :key="nav">
             <div class="img"><img :src="nav.img" :alt="nav.name"></div>
             <p>{{nav.name}}</p>
         </router-link>
     </ul>
-    <p class="groups mt-20"><i class="icon-social-youtube text-main"></i>视频教学</p>
-    <ul class="video display-flex">
-        <router-link tag="li" class="flex" :to="''" :key="''"></router-link>
+    <div class="groups mt-20 display-flex">
+        <i class="icon-social-youtube text-main"></i>
+        <span class="pl-20 flex">视频教学</span>
+    </div>
+    <ul class="video cf">
+        <router-link tag="li" class="box-sizing" :to="''" :key="''">
+            <div class="img icon-control-play"><img v-lazy="'/static/images/dome/s1.jpg'" alt=""></div>
+            <p>科目一考试视频，妈妈再也不用担心我</p>
+        </router-link>
+        <router-link tag="li" class="box-sizing" :to="''" :key="''">
+            <div class="img icon-control-play"><img v-lazy="'/static/images/dome/s1.jpg'" alt=""></div>
+            <p>科目一考试视频，妈妈再也不用担心我</p>
+        </router-link>
+        <router-link tag="li" class="box-sizing" :to="''" :key="''">
+            <div class="img icon-control-play"><img v-lazy="'/static/images/dome/s1.jpg'" alt=""></div>
+            <p>科目一考试视频，妈妈再也不用担心我</p>
+        </router-link>
+        <router-link tag="li" class="box-sizing" :to="''" :key="''">
+            <div class="img icon-control-play"><img v-lazy="'/static/images/dome/s1.jpg'" alt=""></div>
+            <p>科目一考试视频，妈妈再也不用担心我</p>
+        </router-link>
     </ul>
 </div>
 </template>
@@ -40,7 +58,8 @@ export default {
     .nav {
         background-color: #fff;
         border-bottom: border();
-        li {
+        a {
+            display: block;
             text-align: center;
             border-right: border();
             &:last-child {
@@ -55,7 +74,36 @@ export default {
             p {
                 font-size: rem(25px);
                 color: #3f3f3f;
-                padding:  rem(15px) 0 rem(25px);
+                padding: rem(15px) 0 rem(25px);
+            }
+        }
+    }
+    .icon-social-youtube {
+        font-size: rem(38px);
+    }
+    .video {
+        padding: rem(20px) rem(15px);
+        background-color: #fff;
+        li {
+            width: 50%;
+            padding: 0 rem(15px);
+            float: left;
+            .img {
+                width: 100%;
+                height: rem(189px);
+                border-radius: rem(10px);
+                position: relative;
+                overflow: hidden;
+                &:before {
+                    font-size: rem(40px);
+                    color: #fff;
+                    @include relativeCenter();
+                }
+            }
+            p {
+                font-size: rem(22px);
+                margin: rem(18px) 0;
+                @include lineClamp(1);
             }
         }
     }
