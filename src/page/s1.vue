@@ -7,27 +7,43 @@
         </router-link>
     </ul>
     <div class="groups mt-20 display-flex">
-        <i class="icon-social-youtube text-main"></i>
-        <span class="pl-20 flex">视频教学</span>
+        <i class="icon-bg icon-video"></i>
+        <span class="pl-15 flex">视频教学</span>
     </div>
     <ul class="video cf">
-        <router-link tag="li" class="box-sizing" :to="''" :key="''">
-            <div class="img icon-control-play"><img v-lazy="'/static/images/dome/s1.jpg'" alt=""></div>
-            <p>科目一考试视频，妈妈再也不用担心我</p>
-        </router-link>
-        <router-link tag="li" class="box-sizing" :to="''" :key="''">
-            <div class="img icon-control-play"><img v-lazy="'/static/images/dome/s1.jpg'" alt=""></div>
-            <p>科目一考试视频，妈妈再也不用担心我</p>
-        </router-link>
-        <router-link tag="li" class="box-sizing" :to="''" :key="''">
-            <div class="img icon-control-play"><img v-lazy="'/static/images/dome/s1.jpg'" alt=""></div>
-            <p>科目一考试视频，妈妈再也不用担心我</p>
-        </router-link>
-        <router-link tag="li" class="box-sizing" :to="''" :key="''">
-            <div class="img icon-control-play"><img v-lazy="'/static/images/dome/s1.jpg'" alt=""></div>
-            <p>科目一考试视频，妈妈再也不用担心我</p>
+        <router-link tag="li" class="box-sizing" v-for="video in videoList" :to="video.url" :key="video">
+            <div class="img icon-control-play"><img v-lazy="video.img" :alt="video.name"></div>
+            <p>{{video.name}}</p>
         </router-link>
     </ul>
+    <div class="groups mt-20 display-flex">
+        <i class="icon-bg icon-questions"></i>
+        <span class="pl-15 flex">呱呱驾校常见问题</span>
+        <router-link tag="em" class="text-sub" :to="''">更多</router-link>
+    </div>
+    <ul class="question">
+        <router-link v-for="question in questionList" :to="question.url" :key="question">
+            <em class="text-sub">·</em> {{question.title}}
+        </router-link>
+    </ul>
+    <div class="groups mt-20 display-flex">
+        <i class="icon-bg icon-bbs"></i>
+        <span class="pl-15 flex">科一论坛</span>
+        <router-link tag="em" class="text-sub" :to="''">
+            153736位男神女神同约考
+            <i class="fa fa-angle-right"></i>
+        </router-link>
+    </div>
+    <div class="bbs">
+        <div class="overflow-scroll">
+            <div class="daren">
+                <router-link v-for="daren in darenList" :to="daren.url" :key="daren">
+                    <img v-lazy="daren.img" :alt="daren.name">
+                    <p class="mt-10">{{daren.name}}</p>
+                </router-link>
+            </div>
+        </div>
+    </div>
 </div>
 </template>
 
@@ -40,6 +56,37 @@ export default {
                 {name: '在线约车', img: '/static/images/car-icon.png'},
                 {name: '练车日程', img: '/static/images/calendar-icon.png'},
                 {name: '约车订单', img: '/static/images/order-icon.png'}
+            ],
+            videoList: [
+                {name: '科目一考试视频，妈妈再也不用担心我挂科了', img: '/static/images/dome/s1.jpg', url: ''},
+                {name: '科目一考试视频，妈妈再也不用担心我挂科了', img: '/static/images/dome/s1.jpg', url: ''},
+                {name: '科目一考试视频，妈妈再也不用担心我挂科了', img: '/static/images/dome/s1.jpg', url: ''},
+                {name: '科目一考试视频，妈妈再也不用担心我挂科了', img: '/static/images/dome/s1.jpg', url: ''}
+            ],
+            questionList: [
+                {title: '常见问题1', url: ''},
+                {title: '常见问题1', url: ''},
+                {title: '常见问题1', url: ''},
+                {title: '常见问题1', url: ''},
+                {title: '常见问题1', url: ''}
+            ],
+            darenList: [
+                {name: '达人', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '王尼玛', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '王尼玛001', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '达人王尼玛', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '达人', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '王尼玛', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '王尼玛001', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '达人王尼玛', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '达人', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '王尼玛', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '王尼玛001', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '达人王尼玛', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '达人', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '王尼玛', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '王尼玛001', img: '/static/images/dome/d1.jpg', url: ''},
+                {name: '达人王尼玛', img: '/static/images/dome/d1.jpg', url: ''}
             ]
         }
     },
@@ -78,8 +125,18 @@ export default {
             }
         }
     }
-    .icon-social-youtube {
-        font-size: rem(38px);
+    .groups {
+        font-size: rem(30px);
+        line-height: rem(47px);
+        .icon-video {
+            background-position: 0 rem(-37px);
+        }
+        .icon-questions {
+            background-position: 0 rem(-83px);
+        }
+        .icon-bbs {
+            background-position: 0 rem(-129px);
+        }
     }
     .video {
         padding: rem(30px) rem(15px) rem(10px);
@@ -98,11 +155,55 @@ export default {
                     font-size: rem(40px);
                     color: #fff;
                     @include relativeCenter();
+                    z-index: 2;
+                }
+                &:after {
+                    position: absolute;
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: 1;
+                    background-color: rgba(0, 0, 0, .5);
                 }
             }
             p {
                 font-size: rem(22px);
                 margin: rem(18px) 0;
+                @include lineClamp(1);
+            }
+        }
+    }
+    .question {
+        background-color: #fff;
+        padding: rem(20px) 0;
+        a {
+            display: block;
+            line-height: rem(60px);
+            padding: 0 rem(30px);
+        }
+    }
+    .bbs {
+        background-color: #fff;
+    }
+    .overflow-scroll {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .daren {
+        a {
+            display: inline-block;
+            width: rem(96px);
+            padding: rem(23px) rem(15px);
+            text-align: center;
+            img {
+                width: rem(94px);
+                border-radius: 100%;
+                border: border(1px, solid, #313131);
+            }
+            p {
+                height: rem(42px);
                 @include lineClamp(1);
             }
         }

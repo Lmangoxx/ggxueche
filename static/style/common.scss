@@ -131,6 +131,9 @@ table {
 .text-main {
 	color: $main-color;
 }
+.text-sub {
+	color: $sub-color;
+}
 .text-red {
 	color: #fe6253;
 }
@@ -150,6 +153,11 @@ a.router-link-active:active {
 	padding: rem(20px) rem(25px);
 	background-color: #fff;
 	border-bottom: border(1px);
+	.icon-bg {
+		display: inline-block;
+		width: rem(46px);
+		height: rem(46px);
+	}
 }
 //swiper index颜色改为main-color主色
 .swiper-pagination-bullet-active {
