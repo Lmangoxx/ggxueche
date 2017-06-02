@@ -16,42 +16,53 @@
             <p>{{video.name}}</p>
         </router-link>
     </ul>
-    <div class="groups mt-20 display-flex">
+    <router-link class="groups mt-20 display-flex" :to="''">
         <i class="icon-bg icon-questions"></i>
         <span class="pl-15 flex">呱呱驾校常见问题</span>
-        <router-link tag="em" class="text-sub" :to="''">更多</router-link>
-    </div>
+        <em class="text-sub">
+            更多
+            <i class="fa fa-angle-right"></i>
+        </em>
+    </router-link>
     <ul class="question">
         <router-link v-for="question in questionList" :to="question.url" :key="question">
             <em class="text-sub">·</em> {{question.title}}
         </router-link>
     </ul>
-    <div class="groups mt-20 display-flex">
+    <router-link class="groups mt-20 display-flex" :to="''">
         <i class="icon-bg icon-bbs"></i>
         <span class="pl-15 flex">科一论坛</span>
-        <router-link tag="em" class="text-sub" :to="''">
+        <em class="text-sub">
             153736位男神女神同约考
             <i class="fa fa-angle-right"></i>
-        </router-link>
-    </div>
+        </em>
+    </router-link>
     <div class="bbs">
-        <div class="overflow-scroll">
-            <div class="daren">
-                <router-link v-for="daren in darenList" :to="daren.url" :key="daren">
+        <swiper class="daren" :options="swiperOption">
+            <swiper-slide v-for="daren in darenList" :key="daren">
+                <router-link :to="daren.url">
+                    <div class="icon-bg icon-daren"></div>
                     <img v-lazy="daren.img" :alt="daren.name">
                     <p class="mt-10">{{daren.name}}</p>
                 </router-link>
-            </div>
-        </div>
+            </swiper-slide>
+            <div class="swiper-scrollbar"></div>
+        </swiper>
     </div>
 </div>
 </template>
 
 <script>
+import {swiper, swiperSlide} from 'vue-awesome-swiper'
 export default {
     name: 's1',
     data () {
         return {
+            swiperOption: {
+                scrollbar: '.swiper-scrollbar',
+                slidesPerView: 'auto',
+                scrollbarHide: false
+            },
             navList: [
                 {name: '在线约车', img: '/static/images/car-icon.png'},
                 {name: '练车日程', img: '/static/images/calendar-icon.png'},
@@ -95,6 +106,8 @@ export default {
     methods: {
     },
     components: {
+        swiper,
+        swiperSlide
     }
 }
 </script>
@@ -169,7 +182,7 @@ export default {
                 }
             }
             p {
-                font-size: rem(22px);
+                font-size: rem(26px);
                 margin: rem(18px) 0;
                 @include lineClamp(1);
             }
@@ -180,6 +193,7 @@ export default {
         padding: rem(20px) 0;
         a {
             display: block;
+            font-size: rem(26px);
             line-height: rem(60px);
             padding: 0 rem(30px);
         }
@@ -192,18 +206,30 @@ export default {
         overflow-x: scroll;
     }
     .daren {
+        .swiper-slide {
+            width: rem(126px);
+        }
         a {
             display: inline-block;
             width: rem(96px);
             padding: rem(23px) rem(15px);
             text-align: center;
+            position: relative;
+            .icon-daren {
+                position: absolute;
+                right: rem(3px);
+                top: rem(85px);
+                width: rem(42px);
+                height: rem(42px);
+                background-position: rem(-48px) rem(-37px);
+            }
             img {
                 width: rem(94px);
                 border-radius: 100%;
                 border: border(1px, solid, #313131);
             }
             p {
-                height: rem(42px);
+                height: rem(40px);
                 @include lineClamp(1);
             }
         }
