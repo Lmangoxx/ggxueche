@@ -24,7 +24,7 @@
             <i class="fa fa-angle-right"></i>
         </em>
     </router-link>
-    <ul class="question">
+    <ul class="information">
         <router-link v-for="question in questionList" :to="question.url" :key="question">
             <em class="text-sub">·</em> {{question.title}}
         </router-link>
@@ -48,6 +48,15 @@
             </swiper-slide>
             <div class="swiper-scrollbar"></div>
         </swiper>
+        <ul class="information">
+            <router-link v-for="question in questionList" :to="question.url" :key="question">
+                <i class="fa fa-image"></i> {{question.title}}
+            </router-link>
+        </ul>
+    </div>
+    <div class="groups mt-20 display-flex" :to="''">
+        <i class="icon-bg icon-skill"></i>
+        <span class="pl-15 flex">科一技巧</span>
     </div>
 </div>
 </template>
@@ -75,7 +84,7 @@ export default {
                 {name: '科目一考试视频，妈妈再也不用担心我挂科了', img: '/static/images/dome/s1.jpg', url: ''}
             ],
             questionList: [
-                {title: '常见问题1', url: ''},
+                {title: '常见问题1常见问题1常见问题1常见问题1常见问题1常见问题1常见问题1', url: ''},
                 {title: '常见问题1', url: ''},
                 {title: '常见问题1', url: ''},
                 {title: '常见问题1', url: ''},
@@ -150,6 +159,9 @@ export default {
         .icon-bbs {
             background-position: 0 rem(-129px);
         }
+        .icon-skill {
+            background-position: 0 rem(-175px);
+        }
     }
     .video {
         padding: rem(30px) rem(15px) rem(10px);
@@ -188,31 +200,32 @@ export default {
             }
         }
     }
-    .question {
+    .information {
         background-color: #fff;
-        padding: rem(20px) 0;
+        padding: rem(15px) 0;
         a {
             display: block;
             font-size: rem(26px);
-            line-height: rem(60px);
+            height: rem(55px);
+            line-height: rem(55px);
             padding: 0 rem(30px);
+            @include lineClamp(1);
         }
     }
     .bbs {
         background-color: #fff;
     }
-    .overflow-scroll {
-        width: 100%;
-        overflow-x: scroll;
-    }
     .daren {
+        border-bottom: border();
         .swiper-slide {
             width: rem(126px);
+            height: rem(180px);
         }
         a {
             display: inline-block;
             width: rem(96px);
-            padding: rem(23px) rem(15px);
+            height: rem(180px);
+            padding: rem(23px) rem(15px) 0;
             text-align: center;
             position: relative;
             .icon-daren {
@@ -229,7 +242,6 @@ export default {
                 border: border(1px, solid, #313131);
             }
             p {
-                height: rem(40px);
                 @include lineClamp(1);
             }
         }

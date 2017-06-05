@@ -24,7 +24,7 @@ export default {
 			vm.messageShow = false
 			vm.loaded = false
 			// 如果数据很快就加载完毕，这里就不再显示loading了
-			setTimeout(function () {
+			setTimeout(() => {
 				if (!vm.loaded) vm.loading = true
 			}, 100)
 			next((res) => {
