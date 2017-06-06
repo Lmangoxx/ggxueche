@@ -29,6 +29,9 @@
             <em class="text-sub">·</em> {{question.title}}
         </router-link>
     </ul>
+    <router-link tag="div" class="mt-20" :to="''">
+        <img v-lazy="'/static/images/dome/ad1.jpg'">
+    </router-link>
     <router-link class="groups mt-20 display-flex" :to="''">
         <i class="icon-bg icon-bbs"></i>
         <span class="pl-15 flex">科一论坛</span>
@@ -57,6 +60,17 @@
     <div class="groups mt-20 display-flex" :to="''">
         <i class="icon-bg icon-skill"></i>
         <span class="pl-15 flex">科一技巧</span>
+    </div>
+    <div class="news">
+        <router-link class="display-flex" v-for="news in newsList" :to="news.url" :key="news">
+            <div class="info">
+                <div class="title">{{news.title}}</div>
+                <p class="display-flex"><i class="icon-eye text-sub flex"> 220</i><i class="icon-bubble text-sub flex"> 1230</i></p>
+            </div>
+            <div class="img">
+                <img v-lazy="news.img" alt="">
+            </div>
+        </router-link>
     </div>
 </div>
 </template>
@@ -107,6 +121,10 @@ export default {
                 {name: '王尼玛', img: '/static/images/dome/d1.jpg', url: ''},
                 {name: '王尼玛001', img: '/static/images/dome/d1.jpg', url: ''},
                 {name: '达人王尼玛', img: '/static/images/dome/d1.jpg', url: ''}
+            ],
+            newsList: [
+                {title: '掌握以下技巧，手动档起步又快还不熄火！掌握以下技巧，手动档起步又快还不熄火！掌握以下技巧，手动档起步又快还不熄火！', url: '', img: '/static/images/dome/n1.jpg'},
+                {title: '掌握以下技巧，手动档起步又快还不熄火！', url: '', img: '/static/images/dome/n1.jpg'}
             ]
         }
     },
@@ -243,6 +261,29 @@ export default {
             }
             p {
                 @include lineClamp(1);
+            }
+        }
+    }
+    .news {
+        background-color: #fff;
+        a {
+            padding: rem(25px);
+            border-bottom: border();
+            .img {
+                width: rem(242px);
+            }
+            .info {
+                width: rem(420px);
+                margin-right: rem(45px);
+                .title {
+                    @include lineClamp(2);
+                }
+                p {
+                    margin-top: rem(35px);
+                }
+                i {
+                    font-size: rem(26px);
+                }
             }
         }
     }
