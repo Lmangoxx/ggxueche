@@ -4,6 +4,7 @@
  * Created: 2017/05/31
  */
 import Vue from 'vue'
+import configLazy from '@/config/config.lazyload'
 import headerCell from '@/components/header'
 import footNav from '@/components/footNav'
 import loading from '@/components/loading'
@@ -13,6 +14,17 @@ Vue.prototype.CONFIG = {
 	'504': '网络异常',
 	'401': '请先登录'
 }
+
+Vue.directive('jquery', {
+	bind: (el, binding) => {
+		if (!configLazy[binding.value].length) return
+	},
+	inserted: (el) => {
+		console.log('inserted')
+		// 聚焦元素
+		el.focus()
+	}
+})
 
 Vue.component('header-cell', headerCell)
 Vue.component('foot-nav', footNav)
