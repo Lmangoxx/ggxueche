@@ -18,11 +18,12 @@ Vue.prototype.CONFIG = {
 Vue.directive('jquery', {
 	bind: (el, binding) => {
 		if (!configLazy[binding.value].length) return
+		for (let i = 0; i < configLazy[binding.value].length; i++) {
+			require(configLazy[binding.value][i])
+		}
 	},
 	inserted: (el) => {
 		console.log('inserted')
-		// 聚焦元素
-		el.focus()
 	}
 })
 
