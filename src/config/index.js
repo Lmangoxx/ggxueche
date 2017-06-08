@@ -4,6 +4,7 @@
  * Created: 2017/05/31
  */
 import Vue from 'vue'
+import $ from 'jquery'
 import configLazy from '@/config/config.lazyload'
 import headerCell from '@/components/header'
 import footNav from '@/components/footNav'
@@ -18,12 +19,15 @@ Vue.prototype.CONFIG = {
 Vue.directive('jquery', {
 	bind: (el, binding) => {
 		if (!configLazy[binding.value].length) return
-		for (let i = 0; i < configLazy[binding.value].length; i++) {
-			require(configLazy[binding.value][i])
-		}
+		// for (let i = 0; i < configLazy[binding.value].length; i++) {
+		// 	require(configLazy[binding.value][0])
+		// }
+		require('@/libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.css')
+		require('@/libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.js')
 	},
-	inserted: (el) => {
-		console.log('inserted')
+	inserted: (el, binding) => {
+		// $(el).datetimepicker()
+		$.fn[binding.value].apply($(el), [])
 	}
 })
 

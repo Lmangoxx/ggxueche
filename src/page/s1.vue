@@ -1,6 +1,7 @@
 <template>
 <div class="s1">
-    <ul class="nav display-flex" v-jquery="'datetimepicker'">
+    <div v-jquery="'datetimepicker'"></div>
+    <ul class="nav display-flex">
         <router-link class="flex" v-for="nav in navList" :to="''" :key="nav">
             <div class="img"><img :src="nav.img" :alt="nav.name"></div>
             <p>{{nav.name}}</p>
