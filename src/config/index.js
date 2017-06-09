@@ -18,16 +18,16 @@ Vue.prototype.CONFIG = {
 
 Vue.directive('jquery', {
 	bind: (el, binding) => {
-		if (!configLazy[binding.value].length) return
-		// for (let i = 0; i < configLazy[binding.value].length; i++) {
-		// 	require(configLazy[binding.value][0])
+		if (!configLazy[binding.value.name] || !configLazy[binding.value.name].length) return
+		// for (let i = 0; i < configLazy[binding.value.name].length; i++) {
+		// 	require(configLazy[binding.value.name][i])
 		// }
-		require('@/libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.css')
-		require('@/libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.js')
+		// require('@/libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.css')
+		// require('@/libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.js')
 	},
-	inserted: (el, binding) => {
-		// $(el).datetimepicker()
-		$.fn[binding.value].apply($(el), [])
+	inserted: (el, binding, vnode) => {
+		if (!$.fn[binding.value.name] && typeof $.fn[binding.value.name] !== 'function') return
+		$.fn[binding.value.name].apply($(el), [binding.value.options])
 	}
 })
 

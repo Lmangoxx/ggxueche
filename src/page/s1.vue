@@ -1,6 +1,6 @@
 <template>
 <div class="s1">
-    <div v-jquery="'datetimepicker'"></div>
+    <input type="text" v-jquery="{name:'datetimepicker', options:{format: 'hh:ii yyyy-mm-dd'}}">
     <ul class="nav display-flex">
         <router-link class="flex" v-for="nav in navList" :to="''" :key="nav">
             <div class="img"><img :src="nav.img" :alt="nav.name"></div>
