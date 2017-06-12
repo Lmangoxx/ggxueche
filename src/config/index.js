@@ -6,9 +6,10 @@
 import Vue from 'vue'
 import $ from 'jquery'
 import configLazy from '@/config/config.lazyload'
-import headerCell from '@/components/header'
-import footNav from '@/components/footNav'
-import loading from '@/components/loading'
+
+Vue.component('header-cell', () => import('@/components/header'))
+Vue.component('foot-nav', () => import('@/components/footNav'))
+Vue.component('loading', () => import('@/components/loading'))
 
 // 全局变量
 Vue.prototype.CONFIG = {
@@ -19,19 +20,14 @@ Vue.prototype.CONFIG = {
 Vue.directive('jquery', {
 	bind: (el, binding) => {
 		if (!configLazy[binding.value.name] || !configLazy[binding.value.name].length) return
-		// for (let i = 0; i < configLazy[binding.value.name].length; i++) {
-		// 	require(configLazy[binding.value.name][i])
-		// }
-		// require('@/libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.css')
-		// require('@/libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.js')
+		for (let i = 0; i < configLazy[binding.value.name].length; i++) {
+			configLazy[binding.value.name][i]
+		}
+		// require('libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.css')
+		// require('libs/jquery/bootstrap-datetimepicker/bootstrap-datetimepicker.js')
 	},
 	inserted: (el, binding, vnode) => {
 		if (!$.fn[binding.value.name] && typeof $.fn[binding.value.name] !== 'function') return
 		$.fn[binding.value.name].apply($(el), [binding.value.options])
 	}
 })
-
-Vue.component('header-cell', headerCell)
-Vue.component('foot-nav', footNav)
-Vue.component('loading', loading)
-

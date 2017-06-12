@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import home from '@/page/home'
-import city from '@/page/city'
-import learn from '@/page/learn'
-import s1 from '@/page/s1'
-import s2 from '@/page/s2'
-import s3 from '@/page/s3'
-import s4 from '@/page/s4'
-import so from '@/page/so'
+const home = r => require.ensure([], () => r(require('@/page/home')), 'home')
+const city = r => require.ensure([], () => r(require('@/page/city')), 'city')
+const learn = r => require.ensure([], () => r(require('@/page/learn')), 'learn')
+const s1 = r => require.ensure([], () => r(require('@/page/s1')), 's1')
+const s2 = r => require.ensure([], () => r(require('@/page/s2')), 's2')
+const s3 = r => require.ensure([], () => r(require('@/page/s3')), 's3')
+const s4 = r => require.ensure([], () => r(require('@/page/s4')), 's4')
+const so = r => require.ensure([], () => r(require('@/page/so')), 'so')
 
 Vue.use(Router)
 
