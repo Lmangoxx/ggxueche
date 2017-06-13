@@ -1,6 +1,6 @@
 # ggxueche
 
-> 基于vue+vue-router+vuex构建的驾校服务单页面项目
+> 基于vue+vue-router构建的驾校服务单页面项目
 
 ## 项目启动
 ``` bash
@@ -14,7 +14,7 @@ npm run dev
 npm run build
 ```
 ## 技术栈(基于vue-cli)
-vue2 + vuex + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
+vue2 + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
 
 ## 使用到的第三方插件
 * [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
