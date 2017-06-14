@@ -95,8 +95,7 @@ vue2 + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     var a = '/style/main.css'
     require(`/static${a}`)  # // ``为es6的模版语法
 
-    # // 玉伯的seajs里，关于require动态引入文件，他提议使用require.async()，但是这个方法在这里使用会报错，原因目前未知
-    去npm里找了下，有require.async这个包，npm install后依然会有报错
+    # // 玉伯的seajs里，关于require动态引入文件，他提议使用require.async()，但是这个方法在这里使用会报错，原因目前未知</br>去npm里找了下，有require.async这个包，npm install后依然会有报错
     ```
 
 ## 项目布局
