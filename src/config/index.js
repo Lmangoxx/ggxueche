@@ -20,10 +20,9 @@ Vue.prototype.CONFIG = {
 Vue.directive('jquery', {
 	bind: (el, binding) => {
 		if (!configLazy[binding.value.name] || !configLazy[binding.value.name].length) return
-		for (let i = 0; i < configLazy[binding.value.name].length; i++) {
-			let a = configLazy[binding.value.name][i]
-			require(`libs/${a}`)
-		}
+		configLazy[binding.value.name].map((val, index) => {
+			require(`libs/${val}`)
+		})
 	},
 	inserted: (el, binding, vnode) => {
 		if (!$.fn[binding.value.name] && typeof $.fn[binding.value.name] !== 'function') {
