@@ -85,7 +85,7 @@ vue2 + vue-router + vue-resource + webpack + ES6/7 + sass(rem) + flex
     })
     ```
 * 关于require动态引入文件问题
-    ```
+    ``` bash
     # // 项目开发中有时候会遇到动态引入文件的情况
     # // 这样会报错
     var a = '/static/style/main.css'
