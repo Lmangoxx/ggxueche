@@ -14,6 +14,7 @@ Vue.component('loading', () => import('@/components/loading'))
 // 全局变量
 Vue.prototype.CONFIG = {
 	'504': '网络异常',
+	'502': '服务器异常',
 	'401': '请先登录'
 }
 

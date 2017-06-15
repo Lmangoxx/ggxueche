@@ -36,6 +36,11 @@ export default {
 							content: this.CONFIG['504']
 						})
 						break
+					case 502:
+						this.$message({
+							content: this.CONFIG['502']
+						})
+						break
 					case 404:
 						break
 					case 302:
