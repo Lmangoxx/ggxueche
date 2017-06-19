@@ -1,6 +1,8 @@
 <template>
 <div class="s1">
-    <ul class="nav display-flex">
+    <input ref="input1" type="text" v-model="abc">
+    {{abc}}
+    <ul class="nav display-flex" @click="change">
         <router-link class="flex" v-for="nav in navList" :to="''" :key="nav">
             <div class="img"><img :src="nav.img" :alt="nav.name"></div>
             <p>{{nav.name}}</p>
@@ -81,6 +83,7 @@ export default {
     name: 's1',
     data () {
         return {
+            abc: '123',
             swiperOption: {
                 scrollbar: '.swiper-scrollbar',
                 slidesPerView: 'auto',
@@ -131,6 +134,13 @@ export default {
     mounted () {
     },
     methods: {
+        change () {
+            var vm = this
+            vm.$refs.input1.oninput = function () {
+                vm.$refs.input1.value = '1111111111'
+            }
+            vm.$refs.input1.oninput()
+        }
     },
     components: {
         swiper,
