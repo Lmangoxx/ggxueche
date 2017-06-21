@@ -1,8 +1,8 @@
 <template>
 <div class="s1">
-    <input ref="input1" type="text" v-model="abc">
+    <input type="text" v-model="abc" v-jquery="{'name': 'tagsinput'}">
     {{abc}}
-    <ul class="nav display-flex" @click="change">
+    <ul class="nav display-flex">
         <router-link class="flex" v-for="nav in navList" :to="''" :key="nav">
             <div class="img"><img :src="nav.img" :alt="nav.name"></div>
             <p>{{nav.name}}</p>
@@ -135,11 +135,11 @@ export default {
     },
     methods: {
         change () {
-            var vm = this
-            vm.$refs.input1.oninput = function () {
-                vm.$refs.input1.value = '1111111111'
-            }
-            vm.$refs.input1.oninput()
+            this.$refs.input1.value = '1111'
+            this.$emit('input', '123')
+        },
+        changeModel (val) {
+            console.log(val)
         }
     },
     components: {
