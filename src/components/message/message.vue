@@ -1,16 +1,45 @@
 <template>
-<div class="vue-message">
-    <i v-show="options.icon != null" :class="options.icon"></i>
-    <p class="mt-10 mb-10">{{options.content}}</p>
+<div class="vue-message" :id="mergedOption.id" v-show="showing">
+    <i v-show="mergedOption.icon != null" :class="mergedOption.icon"></i>
+    <p class="mt-10 mb-10" v-html="mergedOption.message"></p>
 </div>
 </template>
 
 <script>
+const defaultOpt = {
+    id: 'easy-message-default',
+    message: '',
+    icon: '',
+    parent: 'body',
+    duration: 2500
+}
 export default {
+    defaultOpt: defaultOpt,
     name: 'message',
-    props: {
-		options: {
-			type: Object
+    data () {
+        return {
+            queue: [],
+            option: {},
+            showing: false
+        }
+    },
+    computed: {
+        mergedOption () {
+            return Object.assign({}, defaultOpt, this.option)
+        }
+    },
+    watch: {
+        queue () {
+            let pending = this.queue.length
+            if (pending === 0) return
+
+            this.showing = true
+            this.option = this.queue[0]
+
+            setTimeout(() => {
+                this.showing = false
+                this.queue.shift()
+            }, this.mergedOption.duration)
         }
     }
 }

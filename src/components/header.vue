@@ -15,8 +15,8 @@ export default {
     props: {
 		options: {
 			type: Object,
-			default: {
-				'back': true
+			default () {
+				return {'back': true}
 			}
 		}
 	},
