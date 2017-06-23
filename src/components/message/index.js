@@ -10,7 +10,6 @@ export default {
 		function message (msg, options = {}) {
 			options.message = msg
 			let message = Cache[options.id] || (Cache[options.id] = new MessageTpl())
-			console.log()
 			if (!message.$el) {
 				let vm = message.$mount()
 				document.querySelector(options.parent || 'body').appendChild(vm.$el)
