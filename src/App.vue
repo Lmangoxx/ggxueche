@@ -32,14 +32,10 @@ export default {
 				vm.loading = false
 				switch (res.status) {
 					case 504:
-						this.$message({
-							content: this.CONFIG['504']
-						})
+						this.$message(this.CONFIG['504'])
 						break
 					case 502:
-						this.$message({
-							content: this.CONFIG['502']
-						})
+						this.$message(this.CONFIG['502'])
 						break
 					case 404:
 						break
@@ -47,9 +43,7 @@ export default {
 						break
 					case 200:
 						if (res.body.code === 401) {
-							this.$message({
-								content: this.CONFIG['401']
-							})
+							this.$message(this.CONFIG['401'])
 						}
 						return res
 				}
