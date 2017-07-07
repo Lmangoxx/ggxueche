@@ -21,7 +21,6 @@ export default {
 		let vm = this
 		// http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
 		Vue.http.interceptors.push((req, next) => {
-			vm.messageShow = false
 			vm.loaded = false
 			// 如果数据很快就加载完毕，这里就不再显示loading了
 			setTimeout(() => {
