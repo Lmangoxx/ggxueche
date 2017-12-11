@@ -23,15 +23,16 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8888,
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     context: [ //代理路径
         '/login',
-        '/res'
+        '/menu',
+        '/me'
     ],
-    proxypath: 'http://bumblebee.bj1580.top', // 线上代理服务器地址
+    proxypath: 'http://bumblebee.ggxueche.cn', // 线上代理服务器地址
     //proxypath: 'http://192.168.0.16:10002', // 本地代理服务器地址
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

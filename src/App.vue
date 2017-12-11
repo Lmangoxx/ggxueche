@@ -1,19 +1,15 @@
 <template>
-<div id="app">
-	<transition name="router-fade" mode="out-in">
-		<router-view id="router-view-app"></router-view>
-	</transition>
-	<loading v-show="loading"/>
-</div>
+<transition name="el-fade-in">
+    <router-view v-loading.fullscreen.lock="fullscreenLoading"></router-view>
+</transition>
 </template>
-
 <script>
 import Vue from 'vue'
 export default {
 	name: 'app',
 	data () {
 		return {
-			loading: false,
+			fullscreenLoading: false,
 			loaded: false
 		}
 	},
@@ -24,36 +20,40 @@ export default {
 			vm.loaded = false
 			// 如果数据很快就加载完毕，这里就不再显示loading了
 			setTimeout(() => {
-				if (!vm.loaded) vm.loading = true
+				if (!vm.loaded) vm.fullscreenLoading = true
 			}, 100)
 			next((res) => {
 				vm.loaded = true
-				vm.loading = false
+				vm.fullscreenLoading = false
 				switch (res.status) {
 					case 504:
-						this.$message(this.CONFIG['504'])
+						vm.$message.error(this.CONFIG['504'])
 						break
 					case 502:
-						this.$message(this.CONFIG['502'])
+						vm.$message.error(this.CONFIG['502'])
 						break
 					case 404:
+						this.$router.push('/404')
 						break
 					case 302:
 						break
 					case 200:
 						if (res.body.code === 401) {
-							this.$message(this.CONFIG['401'])
+							// 未登录提示
+							vm.$message(this.CONFIG['401'])
+							// 先存储当前访问页面
+							this.$root.temporaryUrl = this.$route.path
+							// 跳转到登录页
+							this.$router.push('/login')
+						} else {
+							return res
 						}
-						return res
 				}
 			})
 		})
-		this.$http.post('/login', {
-			username: 'admin',
-			password: 'admin'
-		}).then((response) => {
-		})
 	},
+	mounted () {
+    },
 	methods: {
 	}
 }
@@ -66,13 +66,4 @@ export default {
 @import '../static/fonts/simple-line-icons/css/simple-line-icons.css';
 // 引入公共样式
 @import '../static/style/common';
-body {
-	background-color: #f3f3f3;
-}
-.router-fade-enter-active, .router-fade-leave-active {
-	transition: opacity .15s;
-}
-.router-fade-enter, .router-fade-leave-active {
-	opacity: 0;
-}
 </style>

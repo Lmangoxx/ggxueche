@@ -7,13 +7,16 @@ import Vue from 'vue'
 import $ from 'jquery'
 import configLazy from '@/config/config.lazyload'
 
-Vue.component('header-cell', () => import('@/components/header'))
-Vue.component('foot-nav', () => import('@/components/footNav'))
-Vue.component('loading', () => import('@/components/loading'))
-
+// 全局引入jquery
+Vue.prototype.$ = $
+Vue.prototype.Urls = {
+	get () {
+		Vue.$http.get().then((response) => {})
+	}
+}
 // 全局变量
 Vue.prototype.CONFIG = {
-	'504': '网络异常',
+	'504': '请求超时',
 	'502': '服务器异常',
 	'401': '请先登录'
 }

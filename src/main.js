@@ -4,12 +4,19 @@ import VueResource from 'vue-resource'
 import router from './router'
 // 引入全局vue插件文件
 import './config/index'
-// 引入rem初始化文件
-import './config/rem'
 // 引入模块
 import app from './app'
 
-// 引入vue-lazyload实现异步加载
+/**
+ * 引入Element插件
+ */
+import Element from 'element-ui'
+import '../theme/index.css'
+Vue.use(Element)
+
+/**
+ * 引入vue-lazyload实现异步加载
+ */
 import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload, {
 	preLoad: 1,
@@ -17,9 +24,6 @@ Vue.use(VueLazyload, {
 	loading: '/static/images/loading.jpg',
 	attempt: 2
 })
-
-import Message from '@/components/message/index'
-Vue.use(Message)
 
 Vue.config.productionTip = false
 
@@ -33,6 +37,11 @@ new Vue({
 	el: '#app',
 	router,
 	template: `<app/>`,
+	data () {
+		return {
+			temporaryUrl: '/operation'
+		}
+	},
 	components: {
 		app
 	}
