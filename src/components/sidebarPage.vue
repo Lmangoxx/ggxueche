@@ -21,13 +21,11 @@
             	v-for="nav in navLists"
                 v-if="nav.subNav.length > 0"
                 :key="nav.code"
-                :class="{'active open': nav.open}"
-                @click="nav.open = true"
             >
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i :class="nav.icon"></i>
                     <span class="title">{{nav.name}}</span>
-                    <span class="arrow" :class="{'open': nav.open}"></span>
+                    <span class="arrow"></span>
                 </a>
                 <el-collapse-transition>
                     <ul class="sub-menu">
@@ -63,14 +61,16 @@ export default {
         let _this = this
         _this.$nextTick(() => {
 			_this.$('.sub-menu li.nav-item.active.open').parent().parent().addClass('active open')
-        })
-        // _this.$('.page-sidebar-menu li.nav-item').each(function () {
-        //     _this.$(this).on('click', function (event) {
-        //         event.preventDefault()
-        //         _this.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
-        //     })
-        // })
-    },
+			_this.$('.page-sidebar-menu li.nav-item').each(function () {
+				_this.$(this).on('click', function (event) {
+					event.preventDefault()
+					_this.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
+					// _this.$('body span.arrow').removeClass('open')
+					_this.$(this).find('span.arrow').addClass('open')
+				})
+			})
+		})
+	},
 	methods: {
 		openSubNav (item) {}
 	}
