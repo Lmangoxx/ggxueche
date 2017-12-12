@@ -51,22 +51,23 @@ Page Header
   /* Menu Toggler */
   /* Top menu */ }
   .page-header.navbar.navbar-fixed-top {
-    z-index: 9995; }
+    z-index: 1995; }
   .page-header.navbar.navbar-static-top {
-    z-index: 9995; }
+    z-index: 1995; }
   .page-header.navbar .page-logo {
     float: left;
     display: block;
     width: 265px;
     height: 75px;
     padding-left: 20px;
-    padding-right: 20px; }
+    padding-right: 20px;
+    transition: all .2s; }
     .page-header.navbar .page-logo > .logo-image,
     .page-header.navbar .page-logo > a {
       display: block;
       float: left; }
     .page-header.navbar .page-logo .logo-default {
-      margin: 29px 10px 0 10px; }
+      margin: 25px 10px 0 10px; }
     .page-header.navbar .page-logo .logo-mini {
       display: none;
       margin-left: 5px; }
@@ -841,7 +842,8 @@ Page sidebar
     float: left;
     position: relative;
     margin-right: -100%;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    transition: all .2s; }
     .page-full-width .page-sidebar {
       display: none !important; }
     .page-sidebar.navbar-collapse {

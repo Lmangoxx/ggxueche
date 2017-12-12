@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" :class="{'page-sidebar-closed': $root.settings.sidebarToggler}">
     <!-- BEGIN HEADER -->
     <header-page></header-page>
     <!-- END HEADER -->
@@ -15,7 +15,7 @@
         <div class="page-content-wrapper">
             <!-- BEGIN CONTENT BODY -->
             <div class="page-content">
-                <transition  name="el-fade-in">
+                <transition name="el-fade-in">
                     <router-view></router-view>
                 </transition>
             </div>

@@ -11,20 +11,30 @@
         <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
         <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-        <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-            <li class="nav-item" v-for="nav in navLists" :key="nav">
-                <a href="javascript:;" class="nav-link nav-toggle">
+        <ul class="page-sidebar-menu"
+            :class="{'page-sidebar-menu-closed': $root.settings.sidebarToggler}"
+            data-keep-expanded="false"
+            data-auto-scroll="true"
+            data-slide-speed="200"
+        >
+            <li class="nav-item"
+                :class="{'active open': $route.name == ''}"
+                v-if="nav.subNav.length > 0"
+                v-for="nav in navLists" :key="nav.code">
+                <a href="javascript:;" class="nav-link nav-toggle" :class="$route.name">
                     <i :class="nav.icon"></i>
                     <span class="title">{{nav.name}}</span>
                     <span class="arrow"></span>
                 </a>
-                <ul class="sub-menu">
-                    <li class="nav-item" v-for="menu in nav.subNav" :key="menu">
-                        <router-link class="nav-link" :to="'/' + menu.code">
-                            <span class="title">{{menu.name}}</span>
-                        </router-link>
-                    </li>
-                </ul>
+                <el-collapse-transition>
+                    <ul class="sub-menu">
+                        <li class="nav-item" :class="{'active open': $route.path === menu.code}" v-for="menu in nav.subNav" :key="menu.code">
+                            <router-link class="nav-link" :to="'/' + menu.code">
+                                <span class="title">{{menu.name}}</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </el-collapse-transition>
             </li>
         </ul>
         <!-- END SIDEBAR MENU -->
@@ -46,6 +56,15 @@ export default {
 		return {
 		}
 	},
+    mounted () {
+        let _this = this
+        _this.$('.page-sidebar-menu li.nav-item').each(function () {
+            _this.$(this).on('click', function (event) {
+                event.preventDefault()
+                _this.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
+            })
+        })
+    },
 	methods: {
 	}
 }

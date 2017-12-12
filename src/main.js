@@ -39,10 +39,21 @@ new Vue({
 	template: `<app/>`,
 	data () {
 		return {
-			temporaryUrl: '/operation'
+			temporaryUrl: '/operation',
+			settings: {
+				sidebarToggler: false
+			}
 		}
 	},
 	components: {
 		app
+	},
+	watch: {
+		temporaryUrl: {
+			handler: function (val, oldVal) {
+				console.log(val)
+			},
+			deep: true
+		}
 	}
 })

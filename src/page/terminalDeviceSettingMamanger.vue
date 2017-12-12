@@ -1,9 +1,10 @@
 <template>
+<div>terminalDeviceSetting</div>
 </template>
 
 <script>
 export default {
-    name: 'home',
+    name: 'terminalDeviceSetting',
     data () {
         return {
         }

@@ -10,7 +10,7 @@
     ***********/
 body {
   background: #e9ecf3; }
-  body.page-md {
+  body > .page-md {
     background: #f3f5f9; }
 
 /*********** 
