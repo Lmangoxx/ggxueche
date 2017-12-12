@@ -18,7 +18,7 @@
             data-slide-speed="200"
         >
             <li class="nav-item"
-                :class="{'active open': $route.name == ''}"
+                :class="{'active open': $route.path === ''}"
                 v-if="nav.subNav.length > 0"
                 v-for="nav in navLists" :key="nav.code">
                 <a href="javascript:;" class="nav-link nav-toggle" :class="$route.name">
@@ -28,7 +28,7 @@
                 </a>
                 <el-collapse-transition>
                     <ul class="sub-menu">
-                        <li class="nav-item" :class="{'active open': $route.path === menu.code}" v-for="menu in nav.subNav" :key="menu.code">
+                        <li class="nav-item" :class="{'active open': $route.path == '/'+menu.code}" v-for="menu in nav.subNav" :key="menu.code">
                             <router-link class="nav-link" :to="'/' + menu.code">
                                 <span class="title">{{menu.name}}</span>
                             </router-link>
