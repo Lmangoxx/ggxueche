@@ -2,7 +2,7 @@
 <template>
 <div>
     <div class="login-cell" @keyup.enter="login()">
-        <h2 class="mb-20">呱呱学车管理平台</h2>
+        <h2 class="mb-20">{{$root.settings.name}}</h2>
         <el-input
             class="username"
             type="text"
@@ -105,7 +105,7 @@
     right: 0;
     bottom: 0;
     z-index: 1;
-    background-image: url("/static/images/bg0"+ floor(random()*4) +".jpg");
+    background-image: url("/static/images/bg0"+ floor(random() * 5) +".jpg");
     background-size: cover;
 }
 .login-cell {

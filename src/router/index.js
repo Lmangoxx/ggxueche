@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const template = {template: '<router-view></router-view>'}
 const login = r => require.ensure([], () => r(require('@/page/login')), 'login')
+const notFound = r => require.ensure([], () => r(require('@/page/notFound')), 'notFound')
 const operation = r => require.ensure([], () => r(require('@/page/operation')), 'operation')
 const home = r => require.ensure([], () => r(require('@/page/home')), 'home')
 const terminalDeviceSettingMamanger = r => require.ensure([], () => r(require('@/page/terminalDeviceSettingMamanger')), 'terminalDeviceSettingMamanger')
@@ -61,6 +62,17 @@ export default new Router({
                     ]
                 }
             ]
+        },
+        {
+            path: '/404',
+            component: notFound
         }
-    ]
+    ],
+    scrollBehavior (to, from, savedPosition) {
+        if (to.hash) {
+            return {
+                selector: to.hash
+            }
+        }
+    }
 })

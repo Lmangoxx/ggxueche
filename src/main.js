@@ -41,6 +41,7 @@ new Vue({
 		return {
 			temporaryUrl: '/operation',
 			settings: {
+				name: '呱呱学车管理平台',
 				sidebarToggler: false
 			}
 		}
@@ -49,9 +50,9 @@ new Vue({
 		app
 	},
 	watch: {
-		temporaryUrl: {
+		'settings': {
 			handler: function (val, oldVal) {
-				console.log(val)
+				console.log(val.sidebarToggler)
 			},
 			deep: true
 		}
