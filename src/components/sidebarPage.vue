@@ -18,17 +18,20 @@
             data-slide-speed="200"
         >
             <li class="nav-item"
-                :class="{'active open': $route.path === ''}"
+            	v-for="nav in navLists"
                 v-if="nav.subNav.length > 0"
-                v-for="nav in navLists" :key="nav.code">
-                <a href="javascript:;" class="nav-link nav-toggle" :class="$route.name">
+                :key="nav.code"
+                :class="{'active open': nav.open}"
+                @click="nav.open = true"
+            >
+                <a href="javascript:;" class="nav-link nav-toggle">
                     <i :class="nav.icon"></i>
                     <span class="title">{{nav.name}}</span>
-                    <span class="arrow"></span>
+                    <span class="arrow" :class="{'open': nav.open}"></span>
                 </a>
                 <el-collapse-transition>
                     <ul class="sub-menu">
-                        <li class="nav-item" :class="{'active open': $route.path == '/'+menu.code}" v-for="menu in nav.subNav" :key="menu.code">
+                        <li class="nav-item" :class="{'active open': $route.path == '/' + menu.code}" v-for="menu in nav.subNav" :key="menu.code">
                             <router-link class="nav-link" :to="'/' + menu.code">
                                 <span class="title">{{menu.name}}</span>
                             </router-link>
@@ -56,16 +59,20 @@ export default {
 		return {
 		}
 	},
-    mounted () {
+    updated () {
         let _this = this
-        _this.$('.page-sidebar-menu li.nav-item').each(function () {
-            _this.$(this).on('click', function (event) {
-                event.preventDefault()
-                _this.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
-            })
+        _this.$nextTick(() => {
+			_this.$('.sub-menu li.nav-item.active.open').parent().parent().addClass('active open')
         })
+        // _this.$('.page-sidebar-menu li.nav-item').each(function () {
+        //     _this.$(this).on('click', function (event) {
+        //         event.preventDefault()
+        //         _this.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
+        //     })
+        // })
     },
 	methods: {
+		openSubNav (item) {}
 	}
 }
 </script>
