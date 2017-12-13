@@ -1,7 +1,7 @@
 <template>
 <div class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" :class="{'page-sidebar-closed': $root.settings.sidebarToggler}">
     <!-- BEGIN HEADER -->
-    <header-page></header-page>
+    <header-page :user-data="userData"></header-page>
     <!-- END HEADER -->
     <!-- BEGIN HEADER & CONTENT DIVIDER -->
     <div class="clearfix"> </div>

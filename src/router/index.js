@@ -33,6 +33,7 @@ export default new Router({
                     path: 'home',
                     component: home
                 },
+                // 终端控制
                 {
                     path: 'terminalDeviceSetting',
                     component: template,
@@ -47,6 +48,7 @@ export default new Router({
                         }
                     ]
                 },
+                // 驾校管理
                 {
                     path: 'school',
                     component: template,

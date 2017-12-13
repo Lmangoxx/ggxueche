@@ -11,12 +11,7 @@
         <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
         <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
         <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-        <ul class="page-sidebar-menu"
-            :class="{'page-sidebar-menu-closed': $root.settings.sidebarToggler}"
-            data-keep-expanded="false"
-            data-auto-scroll="true"
-            data-slide-speed="200"
-        >
+        <ul class="page-sidebar-menu" :class="{'page-sidebar-menu-closed': $root.settings.sidebarToggler}">
             <li class="nav-item"
             	v-for="nav in navLists"
                 v-if="nav.subNav.length > 0"
@@ -45,6 +40,7 @@
 </template>
 
 <script>
+import 'jquery-slimscroll'
 export default {
     name: 'sidebarPage',
     props: {
@@ -64,9 +60,11 @@ export default {
 			_this.$('.page-sidebar-menu li.nav-item').each(function () {
 				_this.$(this).on('click', function (event) {
 					event.preventDefault()
-					_this.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
-					// _this.$('body span.arrow').removeClass('open')
-					_this.$(this).find('span.arrow').addClass('open')
+                    if (_this.$(this).hasClass('active open')) {
+                        _this.$(this).removeClass('active open')
+                    } else {
+                        _this.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
+                    }
 				})
 			})
 		})

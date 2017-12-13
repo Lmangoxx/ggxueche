@@ -775,8 +775,8 @@ Page sidebar
       content: "\f104";
       font-weight: 300;
       text-shadow: none; }
-    .page-sidebar .page-sidebar-menu li > a > .arrow.open:before,
-    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow.open:before {
+    .page-sidebar .page-sidebar-menu li.open > a > .arrow:before,
+    .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li.open > a > .arrow:before {
       content: "\f107";
       margin-right: 6px; }
     .page-sidebar .page-sidebar-menu li > a > .badge,

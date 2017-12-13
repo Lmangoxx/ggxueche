@@ -1,6 +1,9 @@
 <template>
 <transition name="el-fade-in">
-    <router-view v-loading.fullscreen.lock="fullscreenLoading"></router-view>
+    <router-view
+    	v-loading.fullscreen.lock="fullscreenLoading"
+    	element-loading-text="加载中..."
+    ></router-view>
 </transition>
 </template>
 <script>
@@ -13,7 +16,7 @@ export default {
 			loaded: false
 		}
 	},
-	created () {
+	beforeCreate () {
 		let vm = this
 		// http拦截器，可以在这里做一些拦截操作（比如是否登录，token是否过期等等）
 		Vue.http.interceptors.push((req, next) => {

@@ -23,7 +23,8 @@ module.exports = {
         // webpack编译输出的发布路径
         publicPath: process.env.NODE_ENV === 'production'
             ? config.build.assetsPublicPath
-            : config.dev.assetsPublicPath
+            : config.dev.assetsPublicPath,
+        filename: '[name].[chunkhash:8].min.js'
     },
     // 配置模块resolve的规则
     resolve: {
