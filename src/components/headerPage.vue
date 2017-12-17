@@ -32,7 +32,7 @@
             </form>
             <!-- END HEADER SEARCH BOX -->
             <!-- BEGIN TOP NAVIGATION MENU -->
-            <div class="top-menu">
+            <div class="top-menu" v-if="userData.user">
                 <ul class="nav navbar-nav pull-right">
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user dropdown-dark">
