@@ -45,23 +45,20 @@ export default {
 		}
 	},
     updated () {
-        let _this = this
-        _this.$nextTick(() => {
-			_this.$('.sub-menu li.nav-item.active.open').parent().parent().addClass('active open')
-			_this.$('.page-sidebar-menu li.nav-item').each(function () {
-				_this.$(this).on('click', function (event) {
+        let vm = this
+        vm.$nextTick(() => {
+			vm.$('.sub-menu li.nav-item.active.open').parent().parent().addClass('active open')
+			vm.$('.page-sidebar-menu li.nav-item').each(function () {
+				vm.$(this).on('click', function (event) {
 					event.preventDefault()
-                    if (_this.$(this).hasClass('active open')) {
-                        _this.$(this).removeClass('active open')
+                    if (vm.$(this).hasClass('active open')) {
+                        vm.$(this).removeClass('active open')
                     } else {
-                        _this.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
+                        vm.$(this).addClass('active open').siblings('li.nav-item').removeClass('active open')
                     }
 				})
 			})
 		})
-	},
-	methods: {
-		openSubNav (item) {}
 	}
 }
 </script>
