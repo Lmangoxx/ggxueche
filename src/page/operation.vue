@@ -1,7 +1,9 @@
 <template>
 <div class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" :class="{'page-sidebar-closed': $root.settings.sidebarToggler}">
     <!-- BEGIN HEADER -->
-    <header-page :user-data="userData"></header-page>
+    <keep-alive>
+        <header-page :user-data="userData"></header-page>
+    </keep-alive>
     <!-- END HEADER -->
     <!-- BEGIN HEADER & CONTENT DIVIDER -->
     <div class="clearfix"> </div>
@@ -9,7 +11,9 @@
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
         <!-- BEGIN SIDEBAR -->
-        <sidebar-page :nav-lists="navLists"></sidebar-page>
+        <keep-alive>
+            <sidebar-page :nav-lists="navLists"></sidebar-page>
+        </keep-alive>
         <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
