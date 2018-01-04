@@ -57,6 +57,7 @@
      */
     import Vue from 'vue'
     import VueParticles from 'vue-particles'
+    import request from '@/utils/axios'
     Vue.use(VueParticles)
     export default {
         name: 'login',
@@ -72,24 +73,29 @@
         },
         methods: {
             login () {
-                if (this.username && this.password) {
-                    this.$http.post('/login', {
-                        username: this.username,
-                        password: this.password
-                    }).then((response) => {
-                        if (response.body.code === 0) {
+                let vm = this
+                if (vm.username && vm.password) {
+                    request.post('/login', {
+                        username: vm.username,
+                        password: vm.password
+                    })
+                    .then(res => {
+                        if (res.data.code === 0) {
                             // 登录成功后跳转到访问页或者主页
-                            this.$router.push(this.$root.temporaryUrl)
-                            this.$message({
+                            vm.$router.push(vm.$root.temporaryUrl)
+                            vm.$message({
                                 type: 'success',
                                 message: '登录成功'
                             })
                         } else {
-                            this.$message.error(response.body.msg)
+                            vm.$message.error(res.data.msg)
                         }
                     })
+                    .catch(error => {
+                        console.log(error)
+                    })
                 } else {
-                    this.$message.error('用户名、密码不能为空')
+                    vm.$message.error('用户名、密码不能为空')
                 }
             }
         }
