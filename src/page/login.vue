@@ -57,7 +57,6 @@
      */
     import Vue from 'vue'
     import VueParticles from 'vue-particles'
-    import request from '@/utils/axios'
     Vue.use(VueParticles)
     export default {
         name: 'login',
@@ -65,17 +64,14 @@
             return {
                 username: '',
                 password: '',
-                checked: false,
-                menuList: []
+                checked: false
             }
-        },
-        mounted () {
         },
         methods: {
             login () {
                 let vm = this
                 if (vm.username && vm.password) {
-                    request.post('/login', {
+                    vm.$axios.post('/login', {
                         username: vm.username,
                         password: vm.password
                     })

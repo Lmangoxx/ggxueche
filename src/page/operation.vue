@@ -85,9 +85,9 @@ export default {
 		}
 	},
 	mounted () {
-        let vm = this
-        this.$http.get('/me').then((response) => {
-            vm.userData = response.body.data
+        const vm = this
+        vm.$axios.get('/me').then((response) => {
+            vm.userData = response.data.data
             if (!vm.userData) {
                 return
             }

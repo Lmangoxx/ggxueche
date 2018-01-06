@@ -15,6 +15,10 @@ var opn = require('opn')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
+// 一个express中间件，用于将http请求代理到其他服务器
+// 例：localhost:8080/api/xxx  -->  localhost:3000/api/xxx
+// 这里使用该插件可以将前端开发中涉及到的请求代理到API服务器上，方便与服务器对接
+var proxyMiddleware = require('http-proxy-middleware')
 // 根据 Node 环境来引入相应的 webpack 配置
 var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
@@ -50,6 +54,8 @@ compiler.plugin('compilation', function (compilation) {
     cb()
   })
 })
+
+app.use('/api', proxyMiddleware(config.dev.proxyOptions))
 
 // handle fallback for HTML5 history API
 // 重定向不存在的URL，常用于SPA

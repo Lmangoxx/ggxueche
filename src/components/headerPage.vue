@@ -18,19 +18,6 @@
         <!-- END RESPONSIVE MENU TOGGLER -->
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
-            <!-- BEGIN HEADER SEARCH BOX -->
-            <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-            <form class="search-form" :class="{'open': searchStatus}" action="#" method="GET">
-                <div class="input-group">
-                    <input class="form-control input-sm" ref="searchInput" name="query" type="text" @blur="searchBlur()" placeholder="Search...">
-                    <span class="input-group-btn" @click="searchOpen()">
-                        <a href="javascript:;" class="btn submit">
-                            <i class="icon-magnifier"></i>
-                        </a>
-                    </span>
-                </div>
-            </form>
-            <!-- END HEADER SEARCH BOX -->
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="top-menu" v-if="userData.user">
                 <ul class="nav navbar-nav pull-right">
@@ -44,7 +31,7 @@
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                     <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                    <li class="dropdown dropdown-extended quick-sidebar-toggler">
+                    <li class="dropdown dropdown-extended quick-sidebar-toggler" @click="signOut()">
                         <span class="sr-only">Toggle Quick Sidebar</span>
                         <i class="icon-logout"></i>
                     </li>
@@ -73,20 +60,17 @@ export default {
     },
 	data () {
 		return {
-            searchStatus: false
 		}
 	},
 	methods: {
-        searchOpen () {
-            let _this = this
-            if (_this.searchStatus === false) {
-                _this.searchStatus = true
-                _this.$refs.searchInput.focus()
-            }
-        },
-        searchBlur () {
-            let _this = this
-            _this.searchStatus = false
+        signOut () {
+            let vm = this
+            vm.$axios.get('/loginout').then(response => {
+                let data = response.data
+                if (data.code === 0) {
+                    vm.$router.push('/login')
+                }
+            })
         }
 	}
 }
