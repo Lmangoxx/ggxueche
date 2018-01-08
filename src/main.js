@@ -2,9 +2,13 @@ import Vue from 'vue'
 // 引入路由配置文件
 import router from './router'
 // 引入全局vue插件文件
-import './config/index'
+import './config'
 // 引入模块
 import app from './app'
+import Cookies from 'js-cookie'
+
+import Axios from '@/utils/axios'
+Vue.use(Axios)
 
 // 生产环境下，vue的全局配置
 if (process.env.NODE_ENV === 'production') {
@@ -29,9 +33,6 @@ Vue.use(VueLazyload, {
 	attempt: 2
 })
 
-import Axios from '@/utils/axios'
-Vue.use(Axios)
-
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',
@@ -40,32 +41,30 @@ new Vue({
 	data () {
 		return {
 			temporaryUrl: '/operation',
-			settings: {
+			settings: Object.assign({
 				name: '呱呱学车管理平台',
 				sidebarToggler: false
+			}, Cookies.getJSON('appSetting')),
+			loadingInstance: '',
+			loadingOptions: {
+				text: '加载中'
 			}
 		}
 	},
 	created () {
 		let vm = this
-		let loadingInstance
-		// Loading组件的options
-		let loadingOptions = {
-			text: '加载中...'
-		}
-
 		// request拦截器
 		vm.$axios.interceptors.request.use(config => {
-			loadingInstance = vm.$loading(loadingOptions)
+			vm.loadingInstance = vm.$loading(vm.loadingOptions)
 			return config
 		}, error => {
-			loadingInstance.close()
+			vm.loadingInstance.close()
 			return Promise.reject(error)
 		})
 		// response响应拦截器
 		vm.$axios.interceptors.response.use(response => {
 			// 对响应数据做点什么
-			loadingInstance.close()
+			vm.loadingInstance.close()
 			switch (response.status) {
 				case 504:
 					vm.$message.error(vm.CONFIG['504'])
@@ -92,7 +91,7 @@ new Vue({
 			}
 		}, error => {
 			// 对响应错误做点什么
-			loadingInstance.close()
+			vm.loadingInstance.close()
 			return Promise.reject(error)
 		})
 	},
@@ -102,7 +101,7 @@ new Vue({
 	watch: {
 		'settings': {
 			handler: function (val, oldVal) {
-				console.log(val.sidebarToggler)
+				Cookies.set('appSetting', val)
 			},
 			deep: true
 		}

@@ -11,9 +11,7 @@
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
         <!-- BEGIN SIDEBAR -->
-        <keep-alive>
-            <sidebar-page :nav-lists="navLists"></sidebar-page>
-        </keep-alive>
+        <sidebar-page :nav-lists="navLists"></sidebar-page>
         <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
