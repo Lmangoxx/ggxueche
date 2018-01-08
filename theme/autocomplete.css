@@ -518,7 +518,7 @@
       border-color: #b4bccc; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #f9be00; }
+      border-color: #1890ff; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -557,7 +557,7 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #f9be00; }
+    border-color: #1890ff; }
   .el-input.is-disabled .el-input__inner {
     background-color: #f5f7fa;
     border-color: #dfe4ed;
@@ -675,7 +675,7 @@
       border-color: #b4bccc; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #f9be00; }
+      border-color: #1890ff; }
   .el-textarea.is-disabled .el-textarea__inner {
     background-color: #f5f7fa;
     border-color: #dfe4ed;

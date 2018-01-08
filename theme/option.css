@@ -249,7 +249,7 @@
   .el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
     background-color: #f5f7fa; }
   .el-select-dropdown__item.selected {
-    color: #f9be00;
+    color: #1890ff;
     font-weight: bold; }
   .el-select-dropdown__item span {
     line-height: 34px !important; }

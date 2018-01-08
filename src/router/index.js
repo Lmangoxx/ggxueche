@@ -22,11 +22,14 @@ export default new Router({
             component: login
         },
         {
+            meta: {
+                name: '首页'
+            },
             path: '/operation',
             component: operation,
             children: [
                 {
-                    path: '',
+                    path: '/',
                     redirect: 'home'
                 },
                 {
@@ -35,14 +38,20 @@ export default new Router({
                 },
                 // 终端控制
                 {
+                    meta: {
+                        name: '终端控制'
+                    },
                     path: 'terminalDeviceSetting',
                     component: template,
                     children: [
                         {
-                            path: '',
+                            path: '/',
                             redirect: 'mamanger'
                         },
                         {
+                            meta: {
+                                name: '列表'
+                            },
                             path: 'mamanger',
                             component: terminalDeviceSettingMamanger
                         }
@@ -50,14 +59,20 @@ export default new Router({
                 },
                 // 驾校管理
                 {
+                    meta: {
+                        name: '驾校管理'
+                    },
                     path: 'school',
                     component: template,
                     children: [
                         {
-                            path: '',
+                            path: '/',
                             redirect: 'mamanger'
                         },
                         {
+                            meta: {
+                                name: '列表'
+                            },
                             path: 'mamanger',
                             component: schoolMamanger
                         }

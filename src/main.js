@@ -86,7 +86,7 @@ new Vue({
 						// 跳转到登录页
 						vm.$router.push('/login')
 					} else {
-						return response
+						return response.data
 					}
 			}
 		}, error => {
@@ -100,7 +100,7 @@ new Vue({
 	},
 	watch: {
 		'settings': {
-			handler: function (val, oldVal) {
+			handler (val, oldVal) {
 				Cookies.set('appSetting', val)
 			},
 			deep: true

@@ -360,7 +360,7 @@
     box-sizing: border-box;
     height: 40px; }
     .el-radio.is-bordered.is-checked {
-      border-color: #f9be00; }
+      border-color: #1890ff; }
     .el-radio.is-bordered.is-disabled {
       cursor: not-allowed;
       border-color: #e6ebf5; }
@@ -421,15 +421,15 @@
       color: #b4bccc;
       cursor: not-allowed; }
     .el-radio__input.is-checked .el-radio__inner {
-      border-color: #f9be00;
-      background: #f9be00; }
+      border-color: #1890ff;
+      background: #1890ff; }
       .el-radio__input.is-checked .el-radio__inner::after {
         -webkit-transform: translate(-50%, -50%) scale(1);
         transform: translate(-50%, -50%) scale(1); }
     .el-radio__input.is-checked + .el-radio__label {
-      color: #f9be00; }
+      color: #1890ff; }
     .el-radio__input.is-focus .el-radio__inner {
-      border-color: #f9be00; }
+      border-color: #1890ff; }
   .el-radio__inner {
     border: 1px solid #d8dce5;
     border-radius: 100%;
@@ -442,7 +442,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box; }
     .el-radio__inner:hover {
-      border-color: #f9be00; }
+      border-color: #1890ff; }
     .el-radio__inner::after {
       width: 4px;
       height: 4px;
@@ -471,8 +471,8 @@
   .el-radio:focus:not(.is-focus):not(:active) {
     /*获得焦点时 样式提醒*/ }
     .el-radio:focus:not(.is-focus):not(:active) .el-radio__inner {
-      -webkit-box-shadow: 0 0 2px 2px #f9be00;
-      box-shadow: 0 0 2px 2px #f9be00; }
+      -webkit-box-shadow: 0 0 2px 2px #1890ff;
+      box-shadow: 0 0 2px 2px #1890ff; }
   .el-radio__label {
     font-size: 14px;
     padding-left: 10px; }

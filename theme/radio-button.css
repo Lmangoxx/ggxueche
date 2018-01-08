@@ -369,7 +369,7 @@
     .el-radio-button__inner.is-round {
       padding: 12px 20px; }
     .el-radio-button__inner:hover {
-      color: #f9be00; }
+      color: #1890ff; }
     .el-radio-button__inner [class*="el-icon-"] {
       line-height: 0.9; }
       .el-radio-button__inner [class*="el-icon-"] + span {
@@ -382,10 +382,10 @@
     left: -999px; }
     .el-radio-button__orig-radio:checked + .el-radio-button__inner {
       color: #fff;
-      background-color: #f9be00;
-      border-color: #f9be00;
-      -webkit-box-shadow: -1px 0 0 0 #f9be00;
-      box-shadow: -1px 0 0 0 #f9be00; }
+      background-color: #1890ff;
+      border-color: #1890ff;
+      -webkit-box-shadow: -1px 0 0 0 #1890ff;
+      box-shadow: -1px 0 0 0 #1890ff; }
     .el-radio-button__orig-radio:disabled + .el-radio-button__inner {
       color: #b4bccc;
       cursor: not-allowed;
@@ -425,5 +425,5 @@
       padding: 7px 15px; }
   .el-radio-button:focus:not(.is-focus):not(:active) {
     /*获得焦点时 样式提醒*/
-    -webkit-box-shadow: 0 0 2px 2px #f9be00;
-    box-shadow: 0 0 2px 2px #f9be00; }
+    -webkit-box-shadow: 0 0 2px 2px #1890ff;
+    box-shadow: 0 0 2px 2px #1890ff; }

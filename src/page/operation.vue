@@ -1,9 +1,7 @@
 <template>
 <div class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" :class="{'page-sidebar-closed': $root.settings.sidebarToggler}">
     <!-- BEGIN HEADER -->
-    <keep-alive>
-        <header-page :user-data="userData"></header-page>
-    </keep-alive>
+    <header-page :user-data="userData"></header-page>
     <!-- END HEADER -->
     <!-- BEGIN HEADER & CONTENT DIVIDER -->
     <div class="clearfix"> </div>
@@ -17,6 +15,7 @@
         <div class="page-content-wrapper">
             <!-- BEGIN CONTENT BODY -->
             <div class="page-content">
+                <breadcrumb-page></breadcrumb-page>
                 <transition name="el-fade-in">
                     <router-view></router-view>
                 </transition>
@@ -37,9 +36,10 @@
 </template>
 
 <script>
-import headerPage from '../components/headerPage'
-import sidebarPage from '../components/sidebarPage'
-import footerPage from '../components/footerPage'
+import headerPage from '@/components/headerPage'
+import breadcrumbPage from '@/components/breadcrumbPage'
+import sidebarPage from '@/components/sidebarPage'
+import footerPage from '@/components/footerPage'
 export default {
 	name: 'operation',
 	data () {
@@ -85,7 +85,7 @@ export default {
 	mounted () {
         const vm = this
         vm.$axios.get('/me').then((response) => {
-            vm.userData = response.data.data
+            vm.userData = response.data
             if (!vm.userData) {
                 return
             }
@@ -137,9 +137,10 @@ export default {
         }
 	},
     components: {
-        headerPage: headerPage,
-        sidebarPage: sidebarPage,
-        footerPage: footerPage
+        headerPage,
+        breadcrumbPage,
+        sidebarPage,
+        footerPage
     }
 }
 </script>

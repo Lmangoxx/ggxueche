@@ -4,20 +4,26 @@
     <div class="login-cell" @keyup.enter="login()">
         <h2 class="mb-20">{{$root.settings.name}}</h2>
         <el-input
+            prefix-icon="icon-user"
             class="username"
             type="text"
             v-model="username"
             placeholder="用户名">
         </el-input>
         <el-input
+            prefix-icon="icon-lock"
             class="password"
             type="password"
             v-model="password"
             placeholder="密码">
         </el-input>
+        <el-row class="mt-20 mb-20">
+            <el-col :span="12"><el-checkbox v-model="rememberMe">自动登录</el-checkbox></el-col>
+            <el-col :span="12" style="text-align:right;"><router-link :to="''">忘记密码？</router-link></el-col>
+        </el-row>
         <el-button
-            class="w-100 mt-20"
-            type="success"
+            class="w-100"
+            type="primary"
             @click="login()"
         >
             登 录
@@ -28,7 +34,6 @@
                 <i class="fa fa-qq"></i>
                 <i class="fa fa-weixin ml-5"></i>
             </div>
-            <router-link :to="''">忘记密码？</router-link>
         </div>
     </div>
     <vue-particles
@@ -64,7 +69,7 @@
             return {
                 username: '',
                 password: '',
-                checked: false
+                rememberMe: true
             }
         },
         methods: {
@@ -73,10 +78,11 @@
                 if (vm.username && vm.password) {
                     vm.$axios.post('/login', {
                         username: vm.username,
-                        password: vm.password
+                        password: vm.password,
+                        rememberMe: vm.rememberMe
                     })
                     .then(res => {
-                        if (res.data.code === 0) {
+                        if (res.code === 0) {
                             // 登录成功后跳转到访问页或者主页
                             vm.$router.push(vm.$root.temporaryUrl)
                             vm.$message({
@@ -84,7 +90,7 @@
                                 message: '登录成功'
                             })
                         } else {
-                            vm.$message.error(res.data.msg)
+                            vm.$message.error(res.msg)
                         }
                     })
                     .catch(error => {
@@ -156,6 +162,12 @@
     }
     .password .el-input__inner {
         border-radius: 0 0 4px 4px;
+    }
+    .el-checkbox {
+        color: #ccc;
+    }
+    .el-input__prefix {
+        left: 8px;
     }
 }
 </style>

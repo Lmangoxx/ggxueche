@@ -254,7 +254,7 @@
     line-height: 48px;
     font-weight: 300; }
   .el-collapse-item__header.focusing:focus:not(:hover) {
-    color: #f9be00; }
+    color: #1890ff; }
 
 .el-collapse-item__wrap {
   will-change: height;

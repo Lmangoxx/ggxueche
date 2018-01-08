@@ -549,7 +549,7 @@
   box-sizing: border-box;
   margin: 5px 0; }
   .el-select-dropdown.is-multiple .el-select-dropdown__item.selected {
-    color: #f9be00;
+    color: #1890ff;
     background-color: #fff; }
     .el-select-dropdown.is-multiple .el-select-dropdown__item.selected.hover {
       background-color: #f5f7fa; }

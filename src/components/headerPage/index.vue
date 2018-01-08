@@ -66,8 +66,7 @@ export default {
         signOut () {
             let vm = this
             vm.$axios.get('/loginout').then(response => {
-                let data = response.data
-                if (data.code === 0) {
+                if (response.code === 0) {
                     vm.$router.push('/login')
                 }
             })

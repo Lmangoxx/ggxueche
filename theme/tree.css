@@ -244,7 +244,7 @@
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    color: #cc8100; }
+    color: #5b6a80; }
 
 .el-tree-node {
   white-space: nowrap;
@@ -297,4 +297,4 @@
     display: block; }
 
 .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
-  background-color: #fffaeb; }
+  background-color: #edf6ff; }

@@ -50,6 +50,9 @@ ul, ol, li {
 video {
 	background-color: #000
 }
+label {
+	margin: 0;
+}
 a {
 	color: #626262;
 	text-decoration: none;
@@ -138,13 +141,6 @@ table {
 // router-link样式
 .router-link-active{
 	user-select: none;
-}
-a.router-link-active:active {
-	background-color: $active-color;
-}
-//swiper index颜色改为main-color主色
-.swiper-pagination-bullet-active {
-	background: $main-color !important;
 }
 // lazyload样式 
 img[lazy=loading] {
