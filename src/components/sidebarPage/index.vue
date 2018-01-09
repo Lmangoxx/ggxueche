@@ -1,6 +1,6 @@
 <template>
-<el-menu class="el-menu-vertical-demo" mode="vertical" :unique-opened="true" :default-active="$route.path" :router="true" :collapse="$root.settings.sidebarToggler" v-if="navLists.length > 0">
-    <el-submenu :index="nav.code" v-for="nav in navLists" v-if="nav.subNav.length > 0" :key="nav.code">
+<el-menu class="el-menu-vertical-demo" :unique-opened="true" :default-active="$route.path" :router="true" :collapse="$root.settings.sidebarToggler" v-if="navLists.length > 0">
+    <el-submenu v-for="nav in navLists" :index="nav.code" v-if="nav.subNav.length > 0" :key="nav.code">
         <template slot="title">
             <i :class="nav.icon"></i>
             <span slot="title">{{nav.name}}</span>
@@ -30,3 +30,9 @@ export default {
 	}
 }
 </script>
+<style lang="scss" scoped>
+	.el-menu-vertical-demo:not(.el-menu--collapse) {
+	    width: 200px;
+	    min-height: 400px;
+	}
+</style>
