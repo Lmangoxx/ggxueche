@@ -105,7 +105,6 @@
 </script>
 
 <style lang="scss">
-@import '../../static/style/mixin';
 #particles-js {
     position: fixed;
     top: 0;

@@ -1,38 +1,36 @@
 <template>
-<div class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" :class="{'page-sidebar-closed': $root.settings.sidebarToggler}">
-    <!-- BEGIN HEADER -->
+<!-- <div class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" :class="{'page-sidebar-closed': $root.settings.sidebarToggler}">
     <header-page :user-data="userData"></header-page>
-    <!-- END HEADER -->
-    <!-- BEGIN HEADER & CONTENT DIVIDER -->
     <div class="clearfix"> </div>
-    <!-- END HEADER & CONTENT DIVIDER -->
-    <!-- BEGIN CONTAINER -->
     <div class="page-container">
-        <!-- BEGIN SIDEBAR -->
         <sidebar-page :nav-lists="navLists"></sidebar-page>
-        <!-- END SIDEBAR -->
-        <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
-            <!-- BEGIN CONTENT BODY -->
             <div class="page-content">
                 <breadcrumb-page></breadcrumb-page>
                 <transition name="el-fade-in">
                     <router-view></router-view>
                 </transition>
             </div>
-            <!-- END CONTENT BODY -->
         </div>
-        <!-- END CONTENT -->
-        <!-- BEGIN QUICK SIDEBAR -->
         <a href="javascript:;" class="page-quick-sidebar-toggler">
             <i class="icon-login"></i>
         </a>
-        <!-- END QUICK SIDEBAR -->
     </div>
-    <!-- END CONTAINER -->
-    <!-- BEGIN FOOTER -->
     <footer-page></footer-page>
-</div>
+</div> -->
+<el-container>
+    <el-header><header-page :user-data="userData"></header-page></el-header>
+    <el-container>
+        <el-aside width="200px"><sidebar-page :nav-lists="navLists"></sidebar-page></el-aside>
+        <el-main>
+            <breadcrumb-page></breadcrumb-page>
+            <transition name="el-fade-in">
+                <router-view></router-view>
+            </transition>
+        </el-main>
+        <el-footer><footer-page></footer-page></el-footer>
+    </el-container>
+</el-container>
 </template>
 
 <script>
@@ -64,7 +62,7 @@ export default {
                 },
                 {
                     name: '驾校业务',
-                    icon: 'icon-grid'
+                    icon: 'el-icon-menu'
                 },
                 {
                     name: '用户分析',
@@ -84,14 +82,15 @@ export default {
 	},
 	mounted () {
         const vm = this
-        vm.$axios.get('/me').then((response) => {
-            vm.userData = response.data
+        vm.$axios.get('/me').then((res) => {
+            vm.userData = res && res.data
             if (!vm.userData) {
                 return
             }
             vm.userData.operation.forEach((m, index) => {
                 var num = 0
-                m.code = m.code.replace(/\./g, '/')
+                m.parentOperation.code = m.parentOperation.code.replace(/(operation)|(\.)/g, '')
+                m.code = m.code.replace(/\./g, '/').replace(/operation/g, m.parentOperation.code)
                 if (!m.parentOperation) { // 判断是否有二级菜单，如果没有，返回
                     return false
                 }

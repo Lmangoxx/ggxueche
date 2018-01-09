@@ -2,11 +2,10 @@
 <el-breadcrumb separator-class="el-icon-arrow-right">
     <el-breadcrumb-item
         v-for="(item, index) in levelList"
-        v-if="item.meta.name"
         :to="item.path"
         :key="item.path"
     >
-        {{item.meta.name}}
+        {{item.path.indexOf('/mamanger') > 0 ? '列表' : item.path.indexOf('/edit') > 0 ? '编辑' : item.meta.name}}
     </el-breadcrumb-item>
 </el-breadcrumb>
 </template>
