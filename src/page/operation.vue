@@ -1,27 +1,8 @@
 <template>
-<!-- <div class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" :class="{'page-sidebar-closed': $root.settings.sidebarToggler}">
-    <header-page :user-data="userData"></header-page>
-    <div class="clearfix"> </div>
-    <div class="page-container">
-        <sidebar-page :nav-lists="navLists"></sidebar-page>
-        <div class="page-content-wrapper">
-            <div class="page-content">
-                <breadcrumb-page></breadcrumb-page>
-                <transition name="el-fade-in">
-                    <router-view></router-view>
-                </transition>
-            </div>
-        </div>
-        <a href="javascript:;" class="page-quick-sidebar-toggler">
-            <i class="icon-login"></i>
-        </a>
-    </div>
-    <footer-page></footer-page>
-</div> -->
 <el-container>
-    <el-header><header-page :user-data="userData"></header-page></el-header>
+    <el-header height="75px"><header-page :user-data="userData"></header-page></el-header>
     <el-container>
-        <el-aside width="200px"><sidebar-page :nav-lists="navLists"></sidebar-page></el-aside>
+        <sidebar-page :nav-lists="navLists"></sidebar-page>
         <el-main>
             <breadcrumb-page></breadcrumb-page>
             <transition name="el-fade-in">
@@ -89,7 +70,7 @@ export default {
             }
             vm.userData.operation.forEach((m, index) => {
                 var num = 0
-                m.parentOperation.code = m.parentOperation.code.replace(/(operation)|(\.)/g, '')
+                m.parentOperation.code = '/' + m.parentOperation.code.replace(/(operation)|(\.)/g, '')
                 m.code = m.code.replace(/\./g, '/').replace(/operation/g, m.parentOperation.code)
                 if (!m.parentOperation) { // 判断是否有二级菜单，如果没有，返回
                     return false

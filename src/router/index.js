@@ -38,7 +38,7 @@ export default new Router({
             component: login
         },
         {
-            meta: {name: '驾校业务'},
+            meta: {name: '驾校业务', submenu: true},
             path: '/serviceschool',
             component: layout,
             children: [
@@ -77,7 +77,8 @@ export default new Router({
             ]
         },
         {
-            path: '/404',
+			meta: {name: '404错误页面'},
+			path: '/404',
             component: notFound
         }
     ],
