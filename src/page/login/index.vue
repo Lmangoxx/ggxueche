@@ -121,7 +121,7 @@
     left: 50%;
     transform: translate(-50%, -55%);
     z-index: 2;
-    width: 380px;
+    width: 350px;
     padding: 35px 40px 60px;
     color: #ccc;
     background-color: rgba(50, 50, 50, .6);
@@ -156,7 +156,6 @@
         border: none;
     }
     .username .el-input__inner {
-        border-bottom: 1px solid rgb(227,227,227);
         border-radius: 4px 4px 0 0;
     }
     .password .el-input__inner {

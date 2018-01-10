@@ -1,6 +1,6 @@
 <template>
 <el-container>
-    <el-header height="75px"><header-page :user-data="userData"></header-page></el-header>
+    <el-header height="64px"><header-page :user-data="userData"></header-page></el-header>
     <el-container>
         <sidebar-page :nav-lists="navLists"></sidebar-page>
         <el-main>
@@ -43,7 +43,7 @@ export default {
                 },
                 {
                     name: '驾校业务',
-                    icon: 'el-icon-menu'
+                    icon: 'icon-grid'
                 },
                 {
                     name: '用户分析',
@@ -124,3 +124,8 @@ export default {
     }
 }
 </script>
+<style>
+.el-header,.el-main{
+    margin-left: 240px;
+}
+</style>
