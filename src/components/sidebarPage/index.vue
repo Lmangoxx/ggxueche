@@ -48,7 +48,7 @@ $active-text-color: rgba(255, 255, 255, 1);
     background: #002140;
     text-align: center;
     overflow: hidden;
-    transition: all .3s;
+    transition: width .35s;
     cursor: pointer;
     img {
         display: inline-block;

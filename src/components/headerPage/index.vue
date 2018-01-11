@@ -2,13 +2,23 @@
 <div class="header-cell cf">
     <i class="fa" :class="$root.settings.sidebarToggler ? 'fa-indent' : 'fa-dedent'" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler"></i>
     <div class="fr">
-        <i :class="isFullscreen ? 'icon-size-fullscreen' : 'icon-size-actual'" @click="screenfullFun" v-if="screenfullStatus"></i>
+        <screenfull></screenfull>
+		<el-dropdown class="action" v-if="userData.user" tag="span">
+			<span class="el-dropdown-link">
+				<img src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" width="18" alt="">
+				{{userData.user.name}}
+			</span>
+			<el-dropdown-menu slot="dropdown">
+				<el-dropdown-item>设置</el-dropdown-item>
+				<el-dropdown-item @click="signOut" divided>退出</el-dropdown-item>
+			</el-dropdown-menu>
+		</el-dropdown>
     </div>
 </div>
 </template>
 
 <script>
-import screenfull from 'screenfull'
+import screenfull from '@/components/screenfull'
 export default {
     name: 'headerPage',
     props: {
@@ -21,31 +31,20 @@ export default {
     },
 	data () {
 		return {
-            isFullscreen: true,
-            screenfullStatus: false
 		}
 	},
-    created () {
-        if (screenfull.enabled && !navigator.userAgent.match(/Trident.*rv:11\./)) {
-            this.screenfullStatus = true
-        }
-        this.$(document).on(screenfull.raw.fullscreenchange, function () {
-            this.isFullscreen = screenfull.isFullscreen
-        })
-    },
 	methods: {
-        screenfullFun () {
-            screenfull.toggle()
-            this.isFullscreen = screenfull.isFullscreen
-        },
         signOut () {
             let vm = this
-            vm.$axios.get('/loginout').then(response => {
-                if (response.code === 0) {
+            vm.$axios.get('/loginout').then(res => {
+                if (res.code === 0) {
                     vm.$router.push('/login')
                 }
             })
         }
+	},
+	components: {
+		screenfull
 	}
 }
 </script>
@@ -59,7 +58,7 @@ export default {
     i {
         display: inline-block;
         width: 64px;
-        height: 64px;
+        height: inherit;
         line-height: inherit;
         font-size: 18px;
         text-align: center;
@@ -67,6 +66,11 @@ export default {
         &:hover {
             background-color: $--color-primary-light-9;
         }
+    }
+    .action {
+    	display: inline-block;
+		height: inherit;
+		padding: 0 20px;
     }
 }
 </style>

@@ -62,7 +62,7 @@ export default {
 	mounted () {
         const vm = this
         vm.$axios.get('/me').then((res) => {
-            vm.userData = res && res.data
+            vm.userData = res.data || {}
             if (!vm.userData) {
                 return
             }
