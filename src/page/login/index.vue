@@ -2,7 +2,7 @@
 <template>
 <div>
     <div class="login-cell" @keyup.enter="login()">
-        <h2 class="mb-20">{{$root.settings.name}}</h2>
+        <h2 class="mb-20">{{$root.app.name}}</h2>
         <el-input
             prefix-icon="icon-user"
             class="username"
@@ -152,7 +152,6 @@
         font-size: 22px;
     }
     .el-input__inner {
-        background-color: rgba(255, 255, 255, .9);
         border: none;
     }
     .username .el-input__inner {

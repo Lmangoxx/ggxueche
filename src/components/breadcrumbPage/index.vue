@@ -1,12 +1,14 @@
 <template>
 <el-breadcrumb separator-class="el-icon-arrow-right">
-    <el-breadcrumb-item
-        v-for="(item, index) in levelList"
-        :to="item.meta.submenu ? '' : item.path"
-        :key="item.path"
-    >
-        {{item.path.indexOf('/mamanger') > 0 ? '列表' : item.path.indexOf('/edit') > 0 ? '编辑' : item.meta.name}}
-    </el-breadcrumb-item>
+    <transition-group name="el-fade-in">
+        <el-breadcrumb-item
+            v-for="(item, index) in levelList"
+            :to="item.meta.submenu ? '' : item.path"
+            :key="item.path"
+        >
+            {{item.path.indexOf('/mamanger') > 0 ? '列表' : item.path.indexOf('/edit') > 0 ? '编辑' : item.meta.name}}
+        </el-breadcrumb-item>
+    </transition-group>
 </el-breadcrumb>
 </template>
 

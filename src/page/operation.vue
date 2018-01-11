@@ -1,16 +1,14 @@
 <template>
 <el-container>
-    <el-header height="64px"><header-page :user-data="userData"></header-page></el-header>
-    <el-container>
-        <sidebar-page :nav-lists="navLists"></sidebar-page>
-        <el-main>
-            <breadcrumb-page></breadcrumb-page>
-            <transition name="el-fade-in">
-                <router-view></router-view>
-            </transition>
-        </el-main>
+    <sidebar-page :nav-lists="navLists"></sidebar-page>
+    <el-main :class="{'is-noOpen': $root.settings.sidebarToggler}">
+        <el-header height="64px"><header-page :user-data="userData"></header-page></el-header>
+        <breadcrumb-page></breadcrumb-page>
+        <transition name="el-fade-in">
+            <router-view></router-view>
+        </transition>
         <el-footer><footer-page></footer-page></el-footer>
-    </el-container>
+    </el-main>
 </el-container>
 </template>
 
@@ -124,8 +122,23 @@ export default {
     }
 }
 </script>
-<style>
-.el-header,.el-main{
-    margin-left: 240px;
+<style lang="scss" scoped>
+@import '../../element-variables.scss';
+.el-header {
+    margin-top: -$--main-padding;
+    margin-left: -$--main-padding;
+    margin-right: -$--main-padding;
+    margin-bottom: $--main-padding;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+.el-main {
+    background: #f0f2f5;
+}
+.el-footer {
+    margin-bottom: -$--main-padding;
+    margin-left: -$--main-padding;
+    margin-right: -$--main-padding;
+    margin-top: $--main-padding;
 }
 </style>

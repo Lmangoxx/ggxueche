@@ -1,16 +1,10 @@
 <template>
-<!-- BEGIN HEADER -->
-<div class="page-header navbar navbar-fixed-top">
-    <!-- BEGIN HEADER INNER -->
+<div class="header-cell">
+    <i class="fa fa-fw" :class="$root.settings.sidebarToggler ? 'fa-indent' : 'fa-dedent'" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler"></i>
+    
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="index.html">
-                <img src="/static/images/logo-light.png" alt="logo" class="logo-default" />
-            </a>
-            <div class="menu-toggler sidebar-toggler" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler">
-                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-            </div>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -74,3 +68,22 @@ export default {
 	}
 }
 </script>
+<style lang="scss" scoped>
+@import '../../../element-variables.scss';
+.header-cell {
+    height: $--header-height;
+    line-height: $--header-height;
+    margin-left: -$--main-padding;
+    i {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        line-height: inherit;
+        font-size: 18px;
+        cursor: pointer;
+        &:hover {
+            background-color: $--color-primary-light-9;
+        }
+    }
+}
+</style>

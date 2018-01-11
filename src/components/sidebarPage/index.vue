@@ -1,5 +1,9 @@
 <template>
-<el-scrollbar class="scroll-container" :class="{'is-noOpen': $root.settings.sidebarToggler}">
+<div class="siderbar-cell">
+    <router-link tag="div" class="logo-cell" :class="{'is-noOpen': $root.settings.sidebarToggler}" to="/operation">
+        <img src="/static/images/logo-light.png" alt="logo"/>
+        <h1>{{$root.app.name}}</h1>
+    </router-link>
     <el-menu class="el-menu-vertical-demo" :unique-opened="true" :default-active="$route.path" :router="true" :collapse="$root.settings.sidebarToggler" v-if="navLists.length > 0">
         <el-submenu v-for="nav in navLists" :index="nav.code" v-if="nav.subNav.length > 0" :key="nav.code">
             <template slot="title">
@@ -10,60 +14,21 @@
                 <el-menu-item :index="menu.code" :key="menu.code">{{menu.name}}</el-menu-item>
             </template>
         </el-submenu>
+        <el-menu-item index="2">
+            <i class="icon-book-open"></i>
+            <span slot="title">使用文档</span>
+        </el-menu-item>
     </el-menu>
-</el-scrollbar>
-<!-- <div class="scroll-container" ref="scrollContainer" @wheel.prevent="handleScroll">
-    <div class="scroll-wrapper" ref="scrollWrapper" :style="{top: top + 'px'}">
-        <el-menu class="el-menu-vertical-demo" :unique-opened="true" :default-active="$route.path" :router="true" :collapse="$root.settings.sidebarToggler" v-if="navLists.length > 0">
-            <el-submenu v-for="nav in navLists" :index="nav.code" v-if="nav.subNav.length > 0" :key="nav.code">
-                <template slot="title">
-                    <i :class="nav.icon"></i>
-                    <span slot="title">{{nav.name}}</span>
-                </template>
-                <template v-for="menu in nav.subNav">
-                    <el-menu-item :index="menu.code" :key="menu.code">{{menu.name}}</el-menu-item>
-                </template>
-            </el-submenu>
-        </el-menu>
-    </div>
-</div> -->
+</div>
 </template>
 
 <script>
-const delta = 15
 export default {
     name: 'sidebarPage',
     props: {
         navLists: {
             type: Array,
             default: []
-        }
-    },
-    data () {
-        return {
-            top: 0
-        }
-    },
-    methods: {
-        handleScroll (e) {
-            const eventDelta = e.wheelDelta || -e.deltaY * 3
-            const $container = this.$refs.scrollContainer
-            const $containerHeight = $container.offsetHeight
-            const $wrapper = this.$refs.scrollWrapper
-            const $wrapperHeight = $wrapper.offsetHeight
-            if (eventDelta > 0) {
-                this.top = Math.min(0, this.top + eventDelta)
-            } else {
-                if ($containerHeight - delta < $wrapperHeight) {
-                    if (this.top < -($wrapperHeight - $containerHeight + delta)) {
-                        this.top = this.top
-                    } else {
-                        this.top = Math.max(this.top + eventDelta, $containerHeight - $wrapperHeight - delta)
-                    }
-                } else {
-                    this.top = 0
-                }
-            }
         }
     }
 }
@@ -72,52 +37,80 @@ export default {
 @import '../../../element-variables.scss';
 $menu-width: 236px;
 $menu-noOpenWidth: 64px;
+$background-color: #001529;
+$open-background-color: #000c17;
 $text-color: rgba(255, 255, 255, 0.65);
 $active-text-color: rgba(255, 255, 255, 1);
+.logo-cell {
+    width: $menu-width;
+    height: $--header-height;
+    line-height: $--header-height;
+    background: #002140;
+    text-align: center;
+    overflow: hidden;
+    transition: all .3s;
+    cursor: pointer;
+    img {
+        display: inline-block;
+        vertical-align: middle;
+        height: 32px;
+    }
+    h1 {
+        color: #fff;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 20px;
+        margin: 0 0 0 12px;
+        font-weight: 600;
+    }
+    &.is-noOpen {
+        width: $menu-noOpenWidth;
+    }
+}
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: $menu-width;
     min-height: 400px;
 }
-.scroll-container {
-    width: $menu-width !important;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1001;
-    background-color: #001529;
-    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.15);
-    transition: all .2s;
-    &.is-noOpen {
-        width: $menu-noOpenWidth !important;
-        .el-submenu {
-            i[class^="icon-"] {
-                margin-right: 0;
-                font-size: 18px;
-            }
-        }
-    }
-    .scroll-wrapper {
-        position: absolute;
-        width: 100%!important;
+.el-menu-vertical-demo {
+    border: none;
+    background-color: transparent;
+    &:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        width: inherit;
+        background-color: $background-color;
+        box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
     }
     .el-menu {
-        border: none;
-        background-color: transparent;
-        .el-submenu__title {
-            color: $text-color;
-            &:hover {
-                background-color: transparent;
-                color: $active-text-color;
-                i {
-                    color: $active-text-color;
-                }
+        background-color: $open-background-color !important;
+    }
+    &.el-menu--collapse {
+        li[role="menuitem"] {
+            i[class^="icon-"] {
+                margin: 0 3px;
+                font-size: 18px;
+            }
+            &.is-active > .el-submenu__title i {
+                margin-left: 0;
             }
         }
-        .el-submenu__icon-arrow {
-            margin-top: -5px;
+    }
+    .el-submenu__title {
+        color: $text-color;
+        &:hover {
+            background-color: transparent;
+            color: $active-text-color;
+            i {
+                color: $active-text-color;
+            }
         }
+    }
+    .el-submenu__icon-arrow {
+        margin-top: -5px;
     }
     .el-menu-item {
         color: $text-color;
@@ -129,13 +122,21 @@ $active-text-color: rgba(255, 255, 255, 1);
             color: $active-text-color;
         }
     }
-    .el-submenu {
+    li[role="menuitem"] {
         i[class^="icon-"] {
             vertical-align: middle;
             margin-right: 10px;
             width: 24px;
             text-align: center;
             font-size: 16px;
+        }
+        &:hover {
+            i {
+                color: $active-text-color;
+            }
+        }
+        &.is-active > .el-submenu__title {
+            border-left: 3px solid $--color-primary;
         }
         &.is-opened {
             .el-submenu__title {
@@ -146,12 +147,9 @@ $active-text-color: rgba(255, 255, 255, 1);
                 }
             }
             .el-menu {
-                background-color: #000c17 !important;
+                background-color: $open-background-color !important;
             }
         }
-    }
-    .el-scrollbar__wrap {
-        overflow-x: hidden; 
     }
 }
 </style>

@@ -47,11 +47,13 @@ new Vue({
 	data () {
 		return {
 			temporaryUrl: '/operation',
+			app: {
+				name: '呱呱学车管理平台'
+			},
 			settings: Object.assign({
-				name: '呱呱学车管理平台',
 				sidebarToggler: false
 			}, Cookies.getJSON('appSetting')),
-			loadingInstance: '',
+			loadingInstance: null,
 			loadingOptions: {
 				text: '加载中'
 			}
