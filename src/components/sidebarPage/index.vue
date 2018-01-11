@@ -72,7 +72,7 @@ export default {
 @import '../../../element-variables.scss';
 $menu-width: 236px;
 $menu-noOpenWidth: 64px;
-$text-color: rgba(255, 255, 255, 0.75);
+$text-color: rgba(255, 255, 255, 0.65);
 $active-text-color: rgba(255, 255, 255, 1);
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: $menu-width;
@@ -151,7 +151,7 @@ $active-text-color: rgba(255, 255, 255, 1);
         }
     }
     .el-scrollbar__wrap {
-        max-height: 500px;
+        overflow-x: hidden; 
     }
 }
 </style>
