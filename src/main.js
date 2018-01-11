@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import 'babel-polyfill'
+import 'es6-promise-polyfill'
 // 引入font-awesome字体
 import '../static/fonts/font-awesome/css/font-awesome.min.css'
 // 引入simple-line-icons字体

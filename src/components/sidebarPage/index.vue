@@ -62,9 +62,15 @@ $active-text-color: rgba(255, 255, 255, 1);
         font-size: 20px;
         margin: 0 0 0 12px;
         font-weight: 600;
+        opacity: 1;
+        transition: opacity .15s;
+        transition-delay: .3s;
     }
     &.is-noOpen {
         width: $menu-noOpenWidth;
+        h1 {
+            opacity: 0;
+        }
     }
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {

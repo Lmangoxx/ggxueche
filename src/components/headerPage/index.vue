@@ -1,47 +1,14 @@
 <template>
-<div class="header-cell">
-    <i class="fa fa-fw" :class="$root.settings.sidebarToggler ? 'fa-indent' : 'fa-dedent'" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler"></i>
-    
-    <div class="page-header-inner ">
-        <!-- BEGIN LOGO -->
-        <div class="page-logo">
-        </div>
-        <!-- END LOGO -->
-        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-        <!-- END RESPONSIVE MENU TOGGLER -->
-        <!-- BEGIN PAGE TOP -->
-        <div class="page-top">
-            <!-- BEGIN TOP NAVIGATION MENU -->
-            <div class="top-menu" v-if="userData.user">
-                <ul class="nav navbar-nav pull-right">
-                    <!-- BEGIN USER LOGIN DROPDOWN -->
-                    <li class="dropdown dropdown-user dropdown-dark">
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="username username-hide-on-mobile">{{userData.user.name}}</span>
-                            <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                            <img alt="" class="img-circle" src="static/assets/layouts/layout4/img/avatar9.jpg" />
-                        </a>
-                    </li>
-                    <!-- END USER LOGIN DROPDOWN -->
-                    <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                    <li class="dropdown dropdown-extended quick-sidebar-toggler" @click="signOut()">
-                        <span class="sr-only">Toggle Quick Sidebar</span>
-                        <i class="icon-logout"></i>
-                    </li>
-                    <!-- END QUICK SIDEBAR TOGGLER -->
-                </ul>
-            </div>
-            <!-- END TOP NAVIGATION MENU -->
-        </div>
-        <!-- END PAGE TOP -->
+<div class="header-cell cf">
+    <i class="fa" :class="$root.settings.sidebarToggler ? 'fa-indent' : 'fa-dedent'" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler"></i>
+    <div class="fr">
+        <i :class="isFullscreen ? 'icon-size-fullscreen' : 'icon-size-actual'" @click="screenfullFun" v-if="screenfullStatus"></i>
     </div>
-    <!-- END HEADER INNER -->
 </div>
-<!-- END HEADER -->
 </template>
 
 <script>
+import screenfull from 'screenfull'
 export default {
     name: 'headerPage',
     props: {
@@ -54,9 +21,23 @@ export default {
     },
 	data () {
 		return {
+            isFullscreen: true,
+            screenfullStatus: false
 		}
 	},
+    created () {
+        if (screenfull.enabled && !navigator.userAgent.match(/Trident.*rv:11\./)) {
+            this.screenfullStatus = true
+        }
+        this.$(document).on(screenfull.raw.fullscreenchange, function () {
+            this.isFullscreen = screenfull.isFullscreen
+        })
+    },
 	methods: {
+        screenfullFun () {
+            screenfull.toggle()
+            this.isFullscreen = screenfull.isFullscreen
+        },
         signOut () {
             let vm = this
             vm.$axios.get('/loginout').then(response => {
@@ -74,12 +55,14 @@ export default {
     height: $--header-height;
     line-height: $--header-height;
     margin-left: -$--main-padding;
+    margin-right: -$--main-padding;
     i {
         display: inline-block;
         width: 64px;
         height: 64px;
         line-height: inherit;
         font-size: 18px;
+        text-align: center;
         cursor: pointer;
         &:hover {
             background-color: $--color-primary-light-9;

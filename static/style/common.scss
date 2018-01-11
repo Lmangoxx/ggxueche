@@ -1,4 +1,4 @@
-@import './mixin.scss';
+@import '../../element-variables.scss';
 html {height: 100%;}
 html, body {
 	-webkit-text-size-adjust: 100%;
@@ -89,20 +89,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0
 }
-.display-flex{
-	display:flex
-}
-.flex{
-	flex:1
-}
-.box-sizing{
-	box-sizing:border-box
-}
 .over-ell{
 	display:block;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
 }
 .cf{
 	zoom:1;
@@ -119,24 +116,6 @@ table {
 .icon-bg {
 	background-image: url(/static/images/icon-bg.png);
 	background-repeat: no-repeat;
-}
-.con-cell {
-	margin-top: $header-height;
-}
-// 文字颜色
-.text-main {
-	color: $main-color;
-}
-.text-sub {
-	color: $sub-color;
-}
-.text-red {
-	color: #fe6253;
-}
-// 按钮颜色
-.btn-blue {
-	background-color: $main-color;
-	color: #fff;
 }
 // router-link样式
 .router-link-active{
