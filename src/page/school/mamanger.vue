@@ -3,7 +3,6 @@
     <el-table
         class="mt-20 mb-20"
         :data="listData.content"
-        style="width: 100%"
         :default-sort = "{prop: 'name', order: 'descending'}"
     >
         <el-table-column
