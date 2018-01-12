@@ -11,9 +11,6 @@ import '../static/style/common'
 import router from './router'
 // 引入全局vue插件文件
 import './config'
-// 引入模块
-import app from './app'
-import Cookies from 'js-cookie'
 
 import Axios from '@/utils/axios'
 Vue.use(Axios)
@@ -42,6 +39,9 @@ Vue.use(VueLazyload, {
 })
 
 /* eslint-disable no-new */
+// 引入模块
+import app from './app'
+import Cookies from 'js-cookie'
 new Vue({
 	el: '#app',
 	router,

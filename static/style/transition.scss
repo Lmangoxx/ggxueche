@@ -1,0 +1,10 @@
+.fade-out-left-enter-active,.fade-out-left-leave-active {
+    transition: all .3s;
+}
+.fade-out-left-enter, .fade-out-left-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
+.fade-out-left-leave-active {
+    position: absolute;
+}

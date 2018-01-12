@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const layout = r => require.ensure([], () => r(require('@/page/operation')), 'operation')
+const layout = r => require.ensure([], () => r(require('@/page/layout/operation')), 'operation')
 const template = {template: '<router-view></router-view>'}
 const login = r => require.ensure([], () => r(require('@/page/login/index')), 'login')
-const notFound = r => require.ensure([], () => r(require('@/page/notFound')), 'notFound')
+const notFound = r => require.ensure([], () => r(require('@/page/notFound/index')), 'notFound')
 const home = r => require.ensure([], () => r(require('@/page/home')), 'home')
-const terminalDeviceSettingMamanger = r => require.ensure([], () => r(require('@/page/terminalDeviceSettingMamanger')), 'terminalDeviceSettingMamanger')
-const schoolMamanger = r => require.ensure([], () => r(require('@/page/schoolMamanger')), 'schoolMamanger')
+const terminalDeviceSettingMamanger = r => require.ensure([], () => r(require('@/page/terminalDeviceSetting/mamanger')), 'terminalDeviceSettingMamanger')
+const schoolMamanger = r => require.ensure([], () => r(require('@/page/school/mamanger')), 'schoolMamanger')
 
 Vue.use(Router)
 

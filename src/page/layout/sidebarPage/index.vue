@@ -2,7 +2,7 @@
 <div class="siderbar-cell">
     <router-link tag="div" class="logo-cell" :class="{'is-noOpen': $root.settings.sidebarToggler}" to="/operation">
         <img src="/static/images/logo-light.png" alt="logo"/>
-        <h1>{{$root.app.name}}</h1>
+        <h1 class="ml-10">{{$root.app.name}}</h1>
     </router-link>
     <el-menu class="el-menu-vertical-demo" :unique-opened="true" :default-active="$route.path" :router="true" :collapse="$root.settings.sidebarToggler" v-if="navLists.length > 0">
         <el-submenu v-for="nav in navLists" :index="nav.code" v-if="nav.subNav.length > 0" :key="nav.code">
@@ -34,7 +34,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../../element-variables.scss';
+@import '../../../../element-variables.scss';
 $menu-width: 236px;
 $menu-noOpenWidth: 64px;
 $background-color: #001529;
@@ -60,7 +60,6 @@ $active-text-color: rgba(255, 255, 255, 1);
         display: inline-block;
         vertical-align: middle;
         font-size: 20px;
-        margin: 0 0 0 12px;
         font-weight: 600;
         opacity: 1;
         transition: opacity .15s;

@@ -1,4 +1,5 @@
 @import '../../element-variables.scss';
+@import './transition.scss';
 html {height: 100%;}
 html, body {
 	-webkit-text-size-adjust: 100%;
@@ -120,6 +121,9 @@ table {
 // router-link样式
 .router-link-active{
 	user-select: none;
+}
+.el-dropdown-link {
+	cursor: pointer;
 }
 // lazyload样式 
 img[lazy=loading] {

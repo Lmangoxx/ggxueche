@@ -1,6 +1,6 @@
 <template>
 <el-breadcrumb separator-class="el-icon-arrow-right">
-    <transition-group name="el-fade-in">
+    <transition-group name="fade-out-left">
         <el-breadcrumb-item
             v-for="(item, index) in levelList"
             :to="item.meta.submenu ? '' : item.path"

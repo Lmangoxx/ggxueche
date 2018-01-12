@@ -5,7 +5,7 @@
         <h2 class="b-text">矮油~~您访问的页面不在地球上...</h2>
         <p class="m-box">
             <span class="m-text">休息一下,随便逛逛其他页面吧。</span>
-            <router-link to="/operation/home">
+            <router-link to="/">
                 <el-button type="primary">返回首页</el-button>
             </router-link>
         </p>

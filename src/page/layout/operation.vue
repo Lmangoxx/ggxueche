@@ -7,16 +7,14 @@
         <transition name="el-fade-in">
             <router-view></router-view>
         </transition>
-        <el-footer><footer-page></footer-page></el-footer>
     </el-main>
 </el-container>
 </template>
 
 <script>
-import headerPage from '@/components/headerPage'
+import headerPage from './headerPage'
+import sidebarPage from './sidebarPage'
 import breadcrumbPage from '@/components/breadcrumbPage'
-import sidebarPage from '@/components/sidebarPage'
-import footerPage from '@/components/footerPage'
 export default {
 	name: 'operation',
 	data () {
@@ -61,7 +59,7 @@ export default {
 	},
 	mounted () {
         const vm = this
-        vm.$axios.get('/me').then((res) => {
+        vm.$axios.get('/me').then(res => {
             vm.userData = res.data || {}
             if (!vm.userData) {
                 return
@@ -116,14 +114,13 @@ export default {
 	},
     components: {
         headerPage,
-        breadcrumbPage,
         sidebarPage,
-        footerPage
+        breadcrumbPage
     }
 }
 </script>
 <style lang="scss" scoped>
-@import '../../element-variables.scss';
+@import '../../../element-variables.scss';
 .el-header {
     margin-top: -$--main-padding;
     margin-left: -$--main-padding;
@@ -136,6 +133,10 @@ export default {
     background: #f0f2f5;
 }
 .el-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     margin-bottom: -$--main-padding;
     margin-left: -$--main-padding;
     margin-right: -$--main-padding;
