@@ -21,16 +21,17 @@ export default {
 <style lang="scss" scoped>
 .notFound-cell {
     .newfinno-con {
-        background: url(/static/images/404.png) no-repeat;
-        width: 768px;
-        height: 424px;
-        margin: 40px auto 0px;
+        background: url(/static/images/404.png) center center no-repeat;
+        background-size: auto 100%;
+        width: 100%;
+        height: calc(100vh - 210px);
     }
     .tips {
+        margin-top: 10px;
         text-align: center;
         h2{
             font-size: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .m-box{
             width: 295px;

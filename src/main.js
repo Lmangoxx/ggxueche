@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import 'babel-polyfill'
-import 'es6-promise-polyfill'
+// import 'babel-polyfill'
+// import 'es6-promise-polyfill'
 // 引入font-awesome字体
 import '../static/fonts/font-awesome/css/font-awesome.min.css'
 // 引入simple-line-icons字体
@@ -73,6 +73,7 @@ new Vue({
 		})
 		// response响应拦截器
 		vm.$axios.interceptors.response.use(response => {
+			let resData = response.data
 			// 对响应数据做点什么
 			vm.loadingInstance.close()
 			switch (response.status) {
@@ -83,20 +84,24 @@ new Vue({
 					vm.$message.error(vm.CONFIG['502'])
 					break
 				case 404:
-					vm.$router.push('/404')
+					vm.$router.push('/operation/404')
 					break
 				case 302:
 					break
 				case 200:
-					if (response.data.code === 401) {
-						// 未登录提示
-						vm.$message(vm.CONFIG['401'])
-						// 先存储当前访问页面
-						vm.$root.temporaryUrl = vm.$route.path
-						// 跳转到登录页
-						vm.$router.push('/login')
-					} else {
-						return response.data
+					switch (resData.code) {
+						case 401:
+							// 未登录提示
+							vm.$message.warning(vm.CONFIG['401'])
+							// 先存储当前访问页面
+							vm.$root.temporaryUrl = vm.$route.path
+							// 跳转到登录页
+							vm.$router.push('/login')
+							break
+						case 0:
+							return resData
+						default:
+							vm.$message.error(resData.msg)
 					}
 			}
 		}, error => {

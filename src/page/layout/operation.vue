@@ -120,7 +120,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../../element-variables.scss';
 .el-header {
     margin-top: -$--main-padding;
     margin-left: -$--main-padding;

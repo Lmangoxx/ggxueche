@@ -1,5 +1,14 @@
-/* Element Chalk Variables */
+/* CUSTOM Chalk Variables*/
 $--header-height: 64px !default;
+
+$--sider-openWidth: 236px !default;
+$--sider-noOpenWidth: 64px !default;
+$--sider-background-color: #001529 !default;
+$--sider-background-open-color: #000c17 !default;
+$--sider-text-color: rgba(255, 255, 255, 0.65) !default;
+$--sider-active-text-color: rgba(255, 255, 255, 1) !default;
+
+/* Element Chalk Variables */
 /* Transition
 -------------------------- */
 $--all-transition: all .3s cubic-bezier(.645,.045,.355,1) !default;

@@ -29,6 +29,11 @@ export default new Router({
                 {
                     path: 'home',
                     component: home
+                },
+                {
+                    meta: {name: '404错误'},
+                    path: '404',
+                    component: notFound
                 }
             ]
         },
@@ -75,11 +80,6 @@ export default new Router({
                     ]
                 }
             ]
-        },
-        {
-			meta: {name: '404错误页面'},
-			path: '/404',
-            component: notFound
         }
     ],
     scrollBehavior (to, from, savedPosition) {

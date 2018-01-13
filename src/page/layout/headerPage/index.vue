@@ -70,7 +70,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../../../element-variables.scss';
 .header-cell {
     height: $--header-height;
     line-height: $--header-height;

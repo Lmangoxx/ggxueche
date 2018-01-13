@@ -30,10 +30,11 @@ export default {
     },
     methods: {
         getBreadcrumb () {
-			this.levelList = [{path: '/operation', meta: {name: '首页'}}]
 			if (this.$route.path.indexOf('/operation') < 0) {
-				this.levelList = this.levelList.concat(this.$route.matched)
-			}
+				this.levelList = [{path: '/operation', meta: {name: '首页'}}].concat(this.$route.matched)
+			} else {
+                this.levelList = this.$route.matched
+            }
 		}
 	}
 }

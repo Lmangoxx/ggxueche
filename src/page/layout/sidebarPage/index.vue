@@ -34,15 +34,8 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '../../../../element-variables.scss';
-$menu-width: 236px;
-$menu-noOpenWidth: 64px;
-$background-color: #001529;
-$open-background-color: #000c17;
-$text-color: rgba(255, 255, 255, 0.65);
-$active-text-color: rgba(255, 255, 255, 1);
 .logo-cell {
-    width: $menu-width;
+    width: $--sider-openWidth;
     height: $--header-height;
     line-height: $--header-height;
     background: #002140;
@@ -66,14 +59,14 @@ $active-text-color: rgba(255, 255, 255, 1);
         transition-delay: .3s;
     }
     &.is-noOpen {
-        width: $menu-noOpenWidth;
+        width: $--sider-noOpenWidth;
         h1 {
             opacity: 0;
         }
     }
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: $menu-width;
+    width: $--sider-openWidth;
     min-height: 400px;
 }
 .el-menu-vertical-demo {
@@ -87,11 +80,11 @@ $active-text-color: rgba(255, 255, 255, 1);
         bottom: 0;
         z-index: -1;
         width: inherit;
-        background-color: $background-color;
+        background-color: $--sider-background-color;
         box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
     }
     .el-menu {
-        background-color: $open-background-color !important;
+        background-color: $--sider-background-open-color !important;
     }
     &.el-menu--collapse {
         li[role="menuitem"] {
@@ -105,12 +98,12 @@ $active-text-color: rgba(255, 255, 255, 1);
         }
     }
     .el-submenu__title {
-        color: $text-color;
+        color: $--sider-text-color;
         &:hover {
             background-color: transparent;
-            color: $active-text-color;
+            color: $--sider-active-text-color;
             i {
-                color: $active-text-color;
+                color: $--sider-active-text-color;
             }
         }
     }
@@ -118,13 +111,13 @@ $active-text-color: rgba(255, 255, 255, 1);
         margin-top: -5px;
     }
     .el-menu-item {
-        color: $text-color;
+        color: $--sider-text-color;
         &.is-active {
             color: $--color-primary;
         }
         &:hover,&:focus {
             background-color: $--color-primary;
-            color: $active-text-color;
+            color: $--sider-active-text-color;
         }
     }
     li[role="menuitem"] {
@@ -137,7 +130,7 @@ $active-text-color: rgba(255, 255, 255, 1);
         }
         &:hover {
             i {
-                color: $active-text-color;
+                color: $--sider-active-text-color;
             }
         }
         &.is-active > .el-submenu__title {
@@ -146,13 +139,13 @@ $active-text-color: rgba(255, 255, 255, 1);
         &.is-opened {
             .el-submenu__title {
                 background-color: transparent;
-                color: $active-text-color;
+                color: $--sider-active-text-color;
                 i {
-                    color: $active-text-color;
+                    color: $--sider-active-text-color;
                 }
             }
             .el-menu {
-                background-color: $open-background-color !important;
+                background-color: $--sider-background-open-color !important;
             }
         }
     }

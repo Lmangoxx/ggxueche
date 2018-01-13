@@ -25,7 +25,7 @@ Vue.directive('jquery', {
 	bind: (el, binding) => {
 		if (!configLazy[binding.value.name] || !configLazy[binding.value.name].length) return
 		configLazy[binding.value.name].map((val, index) => {
-			require(`libs/${val}`)
+			// require(`libs/${val}`)
 		})
 	},
 	inserted: (el, binding, vnode) => {
