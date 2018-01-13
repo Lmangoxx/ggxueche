@@ -34,6 +34,9 @@ export default {
 }
 </script>
 <style lang="scss">
+.siderbar-cell {
+	background-color: $--sider-background-color;
+}
 .logo-cell {
     width: $--sider-openWidth;
     height: $--header-height;

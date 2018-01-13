@@ -10,6 +10,7 @@
             align="center"
             prop="name"
             label="机构简称"
+            sortable
         >
         </el-table-column>
         <el-table-column
@@ -34,6 +35,9 @@
             align="center"
             prop="backupStatusName"
             label="备案状态"
+            :filters="[{text: '已备案', value: '已备案'}, {text: '未备案', value: '未备案'}]"
+            :filter-method="filterBackupStatusName"
+      		filter-placement="bottom-end"
         >
             <template slot-scope="scope">
                 <i class="badge-cell" :class="scope.row.backupStatusName === '已备案' ? 'badge-cell-status-success' : 'badge-cell-status-error'"></i>
@@ -74,7 +78,7 @@
         @size-change="sizeChange"
         @current-change="currentChange"
         :current-page="listData.pageNumber"
-        :page-sizes="[10, 15, 20, 25, 30]"
+        :page-sizes="[1, 15, 20, 25, 30]"
         :page-size="listData.pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="listData.total"
@@ -116,9 +120,10 @@ export default {
                 vm.listData = res.data
                 vm.listData.pageNumber += 1
             })
+        },
+        filterBackupStatusName (val, row) {
+			return row.backupStatusName === val
         }
-    },
-    components: {
     }
 }
 </script>
