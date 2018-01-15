@@ -1,5 +1,5 @@
 <template>
-<div class="query-cell">
+<div class="query-cell content-cell">
     <slot></slot>
 </div>
 </template>

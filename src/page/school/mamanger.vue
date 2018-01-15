@@ -1,39 +1,39 @@
 <template>
 <div class="page-cell">
-    <div class="content-cell">
-        <query-page>
-            <label>培训机构：</label>
-            <el-input
-                class="w-200"
-                type="text"
-                v-model="listQuery.name"
-                placeholder="请输入"
-                clearable>
-            </el-input>
-            <label class="pl-10">显示状态：</label>
-            <el-select class="w-100" v-model="listQuery.showFlag" placeholder="请选择" clearable>
-                <el-option label="显示" value="SHOW"></el-option>
-                <el-option label="隐藏" value="BLANK"></el-option>
-            </el-select>
-            <label class="pl-10">启用状态：</label>
-            <el-select class="w-100" v-model="listQuery.status" placeholder="请选择" clearable>
-                <el-option :label="'启用'" :value="'YES'"></el-option>
-                <el-option :label="'禁用'" :value="'NO'"></el-option>
-            </el-select>
-            <label class="pl-10">是否开通计时平台：</label>
-            <el-select class="w-100" v-model="listQuery.plateFlag" placeholder="请选择" clearable>
-                <el-option :label="'开通'" :value="'YES'"></el-option>
-                <el-option :label="'未开通'" :value="'NO'"></el-option>
-            </el-select>
-            <el-button
-                class="ml-5"
-                type="primary"
-                @click="getList()"
-            >
-                查询
-            </el-button>
-        </query-page>
-    </div>
+    <query-page>
+        <label>培训机构：</label>
+        <el-input
+            class="w-200"
+            type="text"
+            v-model="listQuery.name"
+            placeholder="请输入"
+            clearable>
+        </el-input>
+        <label class="pl-10">区域：</label>
+        <api-district class="w-150" v-model.sync="listQuery.districtCode"></api-district>
+        <label class="pl-10">显示状态：</label>
+        <el-select class="w-100" v-model="listQuery.showFlag" placeholder="请选择" clearable>
+            <el-option label="显示" value="SHOW"></el-option>
+            <el-option label="隐藏" value="BLANK"></el-option>
+        </el-select>
+        <label class="pl-10">启用状态：</label>
+        <el-select class="w-100" v-model="listQuery.status" placeholder="请选择" clearable>
+            <el-option :label="'启用'" :value="'YES'"></el-option>
+            <el-option :label="'禁用'" :value="'NO'"></el-option>
+        </el-select>
+        <label class="pl-10">计时平台：</label>
+        <el-select class="w-100" v-model="listQuery.plateFlag" placeholder="请选择" clearable>
+            <el-option :label="'开通'" :value="'YES'"></el-option>
+            <el-option :label="'未开通'" :value="'NO'"></el-option>
+        </el-select>
+        <el-button
+            class="ml-5"
+            type="primary"
+            @click="getList()"
+        >
+            查询
+        </el-button>
+    </query-page>
     <div class="content-cell mt-20">
         <el-table
             :data="listData.content"
@@ -132,6 +132,7 @@
 
 <script>
 import mixins from '@/mixin'
+import apiDistrict from '@/components/API/district'
 import badge from '@/components/badge'
 export default {
     name: 'schoolMamanger',
@@ -163,6 +164,7 @@ export default {
         }
     },
     components: {
+        apiDistrict,
         badge
     }
 }
