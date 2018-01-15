@@ -22,7 +22,6 @@
             <el-col :span="12" style="text-align:right;"><router-link :to="''">忘记密码？</router-link></el-col>
         </el-row>
         <el-button
-            class="w-100"
             type="primary"
             @click="login()"
         >
@@ -112,6 +111,7 @@
     right: 0;
     bottom: 0;
     z-index: 1;
+    min-height: 400px;
     background-image: url("/static/images/bg0"+ floor(random() * 5) +".jpg");
     background-size: cover;
 }
@@ -165,6 +165,9 @@
     }
     .el-input__prefix {
         left: 8px;
+    }
+    .el-button {
+		width: 100%;
     }
 }
 </style>

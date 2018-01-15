@@ -1,15 +1,18 @@
 <template>
-	<el-select v-model="districtCode" placeholder="请选择" clearable>
-        <el-option v-for="item in listData" :label="item.name" :value="item.code" :key="item.value"></el-option>
+	<el-select v-model="currentValue" placeholder="请选择" multiple filterable clearable>
+        <el-option v-for="item in listData" :label="item.name" :value="item.code" :key="item.code"></el-option>
     </el-select>
 </template>
 
 <script>
 export default {
     name: 'district',
+	props: {
+		value: [String, Number, Array]
+	},
 	data () {
 		return {
-            districtCode: '',
+			currentValue: this.value,
             listData: []
 		}
 	},
@@ -22,10 +25,12 @@ export default {
             vm.$axios.get('/sys/district/listNoPage').then(res => {
                 vm.listData = res.data
             })
-        },
-        filterBackupStatusName (val, row) {
-            return row.backupStatusName === val
         }
-    }
+    },
+    watch: {
+		currentValue (val) {
+			this.$emit('input', val)
+		}
+	}
 }
 </script>

@@ -76,15 +76,20 @@ new Vue({
 			vm.loadingInstance.close()
 			switch (response.status) {
 				case 504:
-					vm.$message.error(vm.CONFIG['504'])
+					vm.$notify.error({
+						title: '504错误',
+						message: vm.CONFIG['504']
+					})
 					break
 				case 502:
-					vm.$message.error(vm.CONFIG['502'])
+					vm.$message.error()
+					vm.$notify.error({
+						title: '502错误',
+						message: vm.CONFIG['502']
+					})
 					break
 				case 404:
 					vm.$router.push('/operation/404')
-					break
-				case 302:
 					break
 				case 200:
 					switch (resData.code) {
@@ -99,7 +104,10 @@ new Vue({
 						case 0:
 							return resData
 						default:
-							vm.$message.error(resData.msg)
+							vm.$notify.error({
+								title: '错误',
+								message: resData.msg || '出错了'
+							})
 					}
 			}
 		}, error => {

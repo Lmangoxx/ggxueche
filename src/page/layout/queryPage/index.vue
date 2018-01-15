@@ -11,5 +11,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .query-cell {
+	padding: 20px;
 }
 </style>
