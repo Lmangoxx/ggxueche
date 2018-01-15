@@ -1,98 +1,143 @@
 <template>
-<div class="page-body">
-    <el-table
-        class="mt-20 mb-20"
-        :height="listHeight"
-        :data="listData.content"
-        :default-sort = "{prop: 'name', order: 'descending'}"
-    >
-        <el-table-column
-            align="center"
-            prop="name"
-            label="机构简称"
-            sortable
+<div class="page-cell">
+    <div class="content-cell">
+        <query-page>
+            <label>培训机构：</label>
+            <el-input
+                class="w-200"
+                type="text"
+                v-model="listQuery.name"
+                placeholder="请输入"
+                clearable>
+            </el-input>
+            <label class="pl-10">显示状态：</label>
+            <el-select class="w-100" v-model="listQuery.showFlag" placeholder="请选择" clearable>
+                <el-option label="显示" value="SHOW"></el-option>
+                <el-option label="隐藏" value="BLANK"></el-option>
+            </el-select>
+            <label class="pl-10">启用状态：</label>
+            <el-select class="w-100" v-model="listQuery.status" placeholder="请选择" clearable>
+                <el-option :label="'启用'" :value="'YES'"></el-option>
+                <el-option :label="'禁用'" :value="'NO'"></el-option>
+            </el-select>
+            <label class="pl-10">是否开通计时平台：</label>
+            <el-select class="w-100" v-model="listQuery.plateFlag" placeholder="请选择" clearable>
+                <el-option :label="'开通'" :value="'YES'"></el-option>
+                <el-option :label="'未开通'" :value="'NO'"></el-option>
+            </el-select>
+            <el-button
+                class="ml-5"
+                type="primary"
+                @click="getList()"
+            >
+                查询
+            </el-button>
+        </query-page>
+    </div>
+    <div class="content-cell mt-20">
+        <el-table
+            :data="listData.content"
+            :default-sort = "{prop: 'name', order: 'descending'}"
         >
-        </el-table-column>
-        <el-table-column
-            align="center"
-            prop="districtName"
-            label="区域"
-        >
-        </el-table-column>
-        <el-table-column
-            align="center"
-            prop="admissionsPhone"
-            label="招生电话"
-        >
-        </el-table-column>
-        <el-table-column
-            align="center"
-            prop="unifiedNum"
-            label="统一编号"
-        >
-        </el-table-column>
-        <el-table-column
-            align="center"
-            prop="backupStatusName"
-            label="备案状态"
-            :filters="[{text: '已备案', value: '已备案'}, {text: '未备案', value: '未备案'}]"
-            :filter-method="filterBackupStatusName"
-      		filter-placement="bottom-end"
-        >
-            <template slot-scope="scope">
-                <i class="badge-cell" :class="scope.row.backupStatusName === '已备案' ? 'badge-cell-status-success' : 'badge-cell-status-error'"></i>
-                {{scope.row.backupStatusName}}
-            </template>
-        </el-table-column>
-        <el-table-column
-            align="center"
-            prop="showFlag"
-            label="是否显示"
-        >
-            <template slot-scope="scope">
-                <el-switch
-                    v-model="scope.row.showFlag"
-                    active-value="SHOW"
-                    inactive-value="BLANK"
-                >
-                </el-switch>
-            </template>
-        </el-table-column>
-        <el-table-column
-            align="center"
-            prop="status"
-            label="是否启用"
-        >
-            <template slot-scope="scope">
-                <el-switch
-                    v-model="scope.row.status"
-                    active-value="YES"
-                    inactive-value="NO"
-                >
-                </el-switch>
-            </template>
-        </el-table-column>
-    </el-table>
-    <el-pagination
-        class="fr"
-        @size-change="sizeChange"
-        @current-change="currentChange"
-        :current-page="listData.pageNumber"
-        :page-sizes="[1, 15, 20, 25, 30]"
-        :page-size="listData.pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="listData.total"
-    >
-    </el-pagination>
+            <el-table-column
+                align="center"
+                prop="name"
+                label="机构简称"
+                sortable
+            >
+            </el-table-column>
+            <el-table-column
+                align="center"
+                prop="districtName"
+                label="区域"
+            >
+            </el-table-column>
+            <el-table-column
+                align="center"
+                prop="admissionsPhone"
+                label="招生电话"
+            >
+            </el-table-column>
+            <el-table-column
+                width="150"
+                align="center"
+                prop="unifiedNum"
+                label="统一编号"
+            >
+            </el-table-column>
+            <el-table-column
+                align="center"
+                prop="backupStatusName"
+                label="备案状态"
+                :filters="[{text: '已备案', value: '已备案'}, {text: '未备案', value: '未备案'}]"
+                :filter-method="filterBackupStatusName"
+          		filter-placement="bottom-end"
+            >
+                <template slot-scope="scope">
+                    <badge :type="scope.row.backupStatusName === '已备案' ? 'success' : 'danger'">{{scope.row.backupStatusName}}</badge>
+                </template>
+            </el-table-column>
+            <el-table-column
+                align="center"
+                prop="showFlag"
+                label="是否显示"
+            >
+                <template slot-scope="scope">
+                    <el-switch
+                        v-model="scope.row.showFlag"
+                        active-value="SHOW"
+                        inactive-value="BLANK"
+                    >
+                    </el-switch>
+                </template>
+            </el-table-column>
+            <el-table-column
+                align="center"
+                prop="status"
+                label="是否启用"
+            >
+                <template slot-scope="scope">
+                    <el-switch
+                        v-model="scope.row.status"
+                        active-value="YES"
+                        inactive-value="NO"
+                    >
+                    </el-switch>
+                </template>
+            </el-table-column>
+            <el-table-column
+                align="center"
+                label="操作"
+            >
+                <template slot-scope="scope">
+                    <el-button type="primary" size="small" icon="el-icon-edit">编辑</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+        <pagination-page class="mt-25">
+            <el-pagination
+                @size-change="sizeChange"
+                @current-change="currentChange"
+                :current-page="listData.pageNumber"
+                :page-sizes="[10, 15, 20, 25, 30]"
+                :page-size="listData.pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="listData.total"
+            >
+            </el-pagination>
+        </pagination-page>
+    </div>
 </div>
 </template>
 
 <script>
+import mixins from '@/mixin'
+import badge from '@/components/badge'
 export default {
     name: 'schoolMamanger',
+    mixins: [mixins],
     data () {
         return {
-            listHeight: window.innerHeight - 200,
             listData: {},
             listQuery: {
                 pageNumber: 0,
@@ -104,14 +149,6 @@ export default {
         this.getList()
     },
     methods: {
-        sizeChange (num) {
-            this.listQuery.pageSize = num
-            this.getList()
-        },
-        currentChange (num) {
-            this.listQuery.pageNumber = num - 1
-            this.getList()
-        },
         getList () {
             const vm = this
             vm.$axios.get('/res/school/list', {
@@ -124,50 +161,9 @@ export default {
         filterBackupStatusName (val, row) {
 			return row.backupStatusName === val
         }
+    },
+    components: {
+        badge
     }
 }
 </script>
-<style lang="scss" scoped>
-.badge-cell {
-    width: 6px;
-    height: 6px;
-    display: inline-block;
-    border-radius: 50%;
-    vertical-align: middle;
-    position: relative;
-    top: -1px;
-    &:after {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        border: 1px solid #cf2626;
-        animation: statusProcessing 1.5s infinite ease-in-out;
-    }
-}
-.badge-cell-status-success {
-    background-color: $--color-success;
-    &:after {
-        border-color: $--color-success;
-    }
-}
-.badge-cell-status-error {
-    background-color: $--color-danger;
-    &:after {
-        border-color: $--color-danger;
-    }
-}
-@keyframes statusProcessing {
-    0% {
-        transform:scale(.8);
-        opacity:.5;
-    }
-    to {
-        transform:scale(2);
-        opacity:0;
-    }
-}
-</style>

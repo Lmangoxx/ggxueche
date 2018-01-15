@@ -117,6 +117,33 @@ table {
 	background-image: url(/static/images/icon-bg.png);
 	background-repeat: no-repeat;
 }
+.content-cell {
+    padding: $--layout-default;
+    border-radius: 2px;
+    background-color: #fff;
+}
+// layout样式修改
+.el-header {
+    margin-top: -$--layout-default;
+    margin-left: -$--layout-default;
+    margin-right: -$--layout-default;
+    margin-bottom: $--layout-default;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
+.el-main {
+    background-color: #f0f2f5;
+}
+.el-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: -$--layout-default;
+    margin-left: -$--layout-default;
+    margin-right: -$--layout-default;
+    margin-top: $--layout-default;
+}
 // router-link样式
 .router-link-active{
 	user-select: none;
@@ -135,7 +162,7 @@ table {
 			border-color: $--color-primary !important;
 		}
 	}
-	.btn-prev,.el-pagination .btn-next {
+	& .btn-prev,& .btn-next {
 		padding: 0 6px !important;
 	}
 }
@@ -148,13 +175,16 @@ table {
 		&:last-child {
 			margin-right: 0 !important;
 		}
-		&.active,:hover {
+		&.active,&:hover {
 			border-color: $--color-primary !important;
 		}
 	}
 	.more:before {
 		line-height: $--pagination-button-height + 2 !important;
 	}
+}
+.el-table__column-filter-trigger {
+	margin-left: 5px;
 }
 
 // lazyload样式 
@@ -169,7 +199,7 @@ img[lazy=loaded] {
 	transition: opacity .15s;
 }
 @for $i from 1 through 10 {
-	.w-#{$i * 10} { width: $i * 10 + %}
+	.w-#{$i * 50} { width: 50px * $i !important;}
 
 	.pa-#{$i * 5} { padding: 5px * $i !important;}
 	.pt-#{$i * 5} { padding-top: 5px * $i !important;}

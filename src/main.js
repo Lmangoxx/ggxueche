@@ -1,11 +1,9 @@
 import Vue from 'vue'
 // import 'babel-polyfill'
 // import 'es6-promise-polyfill'
-// 引入font-awesome字体
-import '../static/fonts/font-awesome/css/font-awesome.min.css'
-// 引入simple-line-icons字体
-import '../static/fonts/simple-line-icons/css/simple-line-icons.css'
 // 引入公共样式
+import '../static/fonts/font-awesome/css/font-awesome.min.css'
+import '../static/fonts/simple-line-icons/css/simple-line-icons.css'
 import '../static/style/common'
 // 引入路由配置文件
 import router from './router'

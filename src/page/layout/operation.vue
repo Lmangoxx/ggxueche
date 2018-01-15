@@ -3,7 +3,7 @@
     <sidebar-page :nav-lists="navLists"></sidebar-page>
     <el-main :class="{'is-noOpen': $root.settings.sidebarToggler}">
         <el-header height="64px"><header-page :user-data="userData"></header-page></el-header>
-        <breadcrumb-page></breadcrumb-page>
+        <breadcrumb-page class="mb-25"></breadcrumb-page>
         <transition name="el-fade-in">
             <router-view></router-view>
         </transition>
@@ -14,7 +14,7 @@
 <script>
 import headerPage from './headerPage'
 import sidebarPage from './sidebarPage'
-import breadcrumbPage from '@/components/breadcrumbPage'
+import breadcrumbPage from '@/page/layout/breadcrumbPage'
 export default {
 	name: 'operation',
 	data () {
@@ -119,26 +119,3 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
-.el-header {
-    margin-top: -$--main-padding;
-    margin-left: -$--main-padding;
-    margin-right: -$--main-padding;
-    margin-bottom: $--main-padding;
-    background-color: #fff;
-    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-}
-.el-main {
-    background: #f0f2f5;
-}
-.el-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-bottom: -$--main-padding;
-    margin-left: -$--main-padding;
-    margin-right: -$--main-padding;
-    margin-top: $--main-padding;
-}
-</style>
