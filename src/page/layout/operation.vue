@@ -7,13 +7,15 @@
         <transition name="el-fade-in">
             <router-view></router-view>
         </transition>
+        <footer-page></footer-page>
     </el-main>
 </el-container>
 </template>
 
 <script>
-import headerPage from './headerPage'
-import sidebarPage from './sidebarPage'
+import headerPage from '@/page/layout/headerPage'
+import footerPage from '@/page/layout/footerPage'
+import sidebarPage from '@/page/layout/sidebarPage'
 import breadcrumbPage from '@/page/layout/breadcrumbPage'
 export default {
 	name: 'operation',
@@ -114,6 +116,7 @@ export default {
 	},
     components: {
         headerPage,
+        footerPage,
         sidebarPage,
         breadcrumbPage
     }

@@ -52,7 +52,7 @@ new Vue({
 			},
 			settings: Object.assign({
 				sidebarToggler: false
-			}, Cookies.getJSON('appSetting')),
+			}, Cookies.getJSON('__appSetting')),
 			loadingInstance: null,
 			loadingOptions: {
 				text: '加载中'
@@ -122,7 +122,7 @@ new Vue({
 	watch: {
 		'settings': {
 			handler (val, oldVal) {
-				Cookies.set('appSetting', val)
+				Cookies.set('__appSetting', val)
 			},
 			deep: true
 		}

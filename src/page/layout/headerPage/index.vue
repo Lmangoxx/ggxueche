@@ -4,7 +4,7 @@
     <div class="fr cf">
         <div class="action" :class="{'is-open': isOpen}" @click.stop="isOpen = true">
             <i class="icon-magnifier" @click="searchToggle"></i>
-            <el-input ref="search" class="search" size="small" clearable placeholder="站内搜索"></el-input>
+            <el-input ref="search" class="search" size="small" placeholder="站内搜索" clearable></el-input>
         </div>
         <screenfull class="action" hover></screenfull>
 		<el-dropdown v-if="userData.user">
@@ -52,6 +52,9 @@ export default {
                     vm.$router.push('/login')
                 }
             })
+        },
+        search () {
+            alert('111')
         }
 	},
     watch: {

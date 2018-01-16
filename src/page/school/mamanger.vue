@@ -128,7 +128,7 @@
             <el-pagination
                 @size-change="sizeChange"
                 @current-change="currentChange"
-                :current-page="listData.pageNumber"
+                :current-page="currentNumber"
                 :page-sizes="[10, 15, 20, 25, 30]"
                 :page-size="listData.pageSize"
                 layout="total, sizes, prev, pager, next, jumper"
@@ -144,16 +144,17 @@
 import mixins from '@/mixin'
 import apiDistrict from '@/components/API/district'
 import badge from '@/components/badge'
+import Cookies from 'js-cookie'
 export default {
     name: 'schoolMamanger',
     mixins: [mixins],
     data () {
         return {
             listData: {},
-            listQuery: {
+            listQuery: Object.assign({
                 pageNumber: 0,
                 pageSize: 25
-            }
+            }, Cookies.getJSON('__listQuery'))
         }
     },
     created () {
@@ -166,7 +167,6 @@ export default {
                 params: vm.listQuery
             }).then(res => {
                 vm.listData = res.data
-                vm.listData.pageNumber += 1
             })
         },
         filterBackupStatusName (val, row) {

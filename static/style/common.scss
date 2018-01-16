@@ -54,13 +54,13 @@ label {
 	margin: 0;
 }
 a {
-	color: #626262;
 	text-decoration: none;
 	tap-highlight-color: transparent;
 	user-select: none;
 }
 a:link, a:visited, a:hover {
-	text-decoration: none
+	color: $--color-primary;
+	text-decoration: none;
 }
 a:active {
 	color: #16adde;
@@ -133,16 +133,12 @@ table {
 }
 .el-main {
     background-color: #f0f2f5;
-}
-.el-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-bottom: -$--layout-default;
-    margin-left: -$--layout-default;
-    margin-right: -$--layout-default;
-    margin-top: $--layout-default;
+    .page-cell {
+    	min-height: calc(100vh - 160px);
+    }
+    .page-cell + .footer-cell {
+    	margin-top: $--layout-default;
+    }
 }
 // router-link样式
 .router-link-active{
@@ -186,7 +182,9 @@ table {
 .el-table__column-filter-trigger {
 	margin-left: 5px;
 }
-
+.el-table-filter__bottom {
+	text-align: center;
+}
 // lazyload样式 
 img[lazy=loading] {
 	opacity: 0;
