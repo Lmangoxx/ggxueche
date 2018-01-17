@@ -30,9 +30,7 @@ export default {
     props: {
         userData: {
             type: Object,
-            default: () => {
-                return {}
-            }
+            default: {}
         }
     },
 	data () {

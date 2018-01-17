@@ -40,6 +40,7 @@ Vue.use(VueLazyload, {
 // 引入模块
 import app from './app'
 import Cookies from 'js-cookie'
+
 new Vue({
 	el: '#app',
 	router,
@@ -63,7 +64,9 @@ new Vue({
 		let vm = this
 		// request拦截器
 		vm.$axios.interceptors.request.use(config => {
-			vm.loadingInstance = vm.$loading(vm.loadingOptions)
+			if (!vm.loadingInstance) {
+				vm.loadingInstance = vm.$loading(vm.loadingOptions)
+			}
 			return config
 		}, error => {
 			vm.loadingInstance.close()

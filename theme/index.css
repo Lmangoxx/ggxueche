@@ -3356,9 +3356,9 @@
   .el-pagination button {
     display: inline-block;
     font-size: 13px;
-    min-width: 35.5px;
-    height: 28px;
-    line-height: 28px;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
     vertical-align: top;
     -webkit-box-sizing: border-box;
     box-sizing: border-box; }
@@ -3375,7 +3375,7 @@
     .el-pagination .el-select .el-input .el-input__inner {
       padding-right: 25px;
       border-radius: 3px;
-      height: 28px; }
+      height: 32px; }
   .el-pagination button {
     border: none;
     padding: 0 6px;
@@ -3437,7 +3437,7 @@
   .el-pagination__editor {
     line-height: 18px;
     padding: 0 2px;
-    height: 28px;
+    height: 32px;
     text-align: center;
     margin: 0 2px;
     -webkit-box-sizing: border-box;
@@ -3446,7 +3446,7 @@
     .el-pagination__editor.el-input {
       width: 50px; }
     .el-pagination__editor.el-input .el-input__inner {
-      height: 28px; }
+      height: 32px; }
     .el-pagination__editor .el-input__inner::-webkit-inner-spin-button, .el-pagination__editor .el-input__inner::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0; }
@@ -3492,9 +3492,9 @@
     vertical-align: top;
     display: inline-block;
     font-size: 13px;
-    min-width: 35.5px;
-    height: 28px;
-    line-height: 28px;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
     cursor: pointer;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
