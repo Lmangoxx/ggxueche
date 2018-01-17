@@ -233,7 +233,7 @@
 .el-tree {
   cursor: default;
   background: #fff;
-  color: #5a5e66; }
+  color: #606266; }
   .el-tree__empty-block {
     position: relative;
     min-height: 60px;
@@ -246,7 +246,7 @@
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    color: #5b6a80; }
+    color: #6f7180; }
 
 .el-tree-node {
   white-space: nowrap;
@@ -272,7 +272,7 @@
       background-color: #f5f7fa; }
   .el-tree-node__expand-icon {
     cursor: pointer;
-    color: #b4bccc;
+    color: #c0c4cc;
     font-size: 12px;
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -291,7 +291,7 @@
   .el-tree-node__loading-icon {
     margin-right: 8px;
     font-size: 14px;
-    color: #b4bccc; }
+    color: #c0c4cc; }
   .el-tree-node > .el-tree-node__children {
     overflow: hidden;
     background-color: transparent; }
@@ -299,4 +299,4 @@
     display: block; }
 
 .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
-  background-color: #edf6ff; }
+  background-color: #f0f7ff; }

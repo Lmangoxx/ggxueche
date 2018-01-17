@@ -231,7 +231,12 @@
 /* Break-point
 --------------------------*/
 .el-switch {
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   font-size: 14px;
   line-height: 20px;
@@ -249,9 +254,9 @@
     font-weight: 500;
     cursor: pointer;
     vertical-align: middle;
-    color: #2d2f33; }
+    color: #303133; }
     .el-switch__label.is-active {
-      color: #1890ff; }
+      color: #409EFF; }
     .el-switch__label--left {
       margin-right: 10px; }
     .el-switch__label--right {
@@ -267,19 +272,19 @@
     opacity: 0;
     margin: 0; }
     .el-switch__input:focus ~ .el-switch__core {
-      outline: 1px solid #1890ff; }
+      outline: 1px solid #409EFF; }
   .el-switch__core {
     margin: 0;
     display: inline-block;
     position: relative;
     width: 40px;
     height: 20px;
-    border: 1px solid #d8dce5;
+    border: 1px solid #dcdfe6;
     outline: none;
     border-radius: 10px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    background: #d8dce5;
+    background: #dcdfe6;
     cursor: pointer;
     -webkit-transition: border-color .3s, background-color .3s;
     transition: border-color .3s, background-color .3s;
@@ -297,8 +302,8 @@
       height: 16px;
       background-color: #fff; }
   .el-switch.is-checked .el-switch__core {
-    border-color: #1890ff;
-    background-color: #1890ff; }
+    border-color: #409EFF;
+    background-color: #409EFF; }
   .el-switch.is-disabled {
     opacity: 0.6; }
   .el-switch--wide .el-switch__label.el-switch__label--left span {

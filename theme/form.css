@@ -291,7 +291,7 @@
     vertical-align: middle;
     float: left;
     font-size: 14px;
-    color: #5a5e66;
+    color: #606266;
     line-height: 40px;
     padding: 0 12px 0 0;
     -webkit-box-sizing: border-box;
@@ -306,7 +306,7 @@
     .el-form-item__content::after {
       clear: both; }
   .el-form-item__error {
-    color: #fa5555;
+    color: #f56c6c;
     font-size: 12px;
     line-height: 1;
     padding-top: 4px;
@@ -321,17 +321,17 @@
       margin-left: 10px; }
   .el-form-item.is-required .el-form-item__label:before {
     content: '*';
-    color: #fa5555;
+    color: #f56c6c;
     margin-right: 4px; }
   .el-form-item.is-error .el-input__inner, .el-form-item.is-error .el-input__inner:focus,
   .el-form-item.is-error .el-textarea__inner,
   .el-form-item.is-error .el-textarea__inner:focus {
-    border-color: #fa5555; }
+    border-color: #f56c6c; }
   .el-form-item.is-error .el-input-group__append .el-input__inner,
   .el-form-item.is-error .el-input-group__prepend .el-input__inner {
     border-color: transparent; }
   .el-form-item.is-error .el-input__validateIcon {
-    color: #fa5555; }
+    color: #f56c6c; }
   .el-form-item.is-success .el-input__inner, .el-form-item.is-success .el-input__inner:focus,
   .el-form-item.is-success .el-textarea__inner,
   .el-form-item.is-success .el-textarea__inner:focus {

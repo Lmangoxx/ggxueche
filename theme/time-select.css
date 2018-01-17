@@ -497,10 +497,10 @@
   opacity: 1;
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
   -webkit-transform-origin: center top;
   transform-origin: center top; }
 
@@ -515,10 +515,10 @@
   opacity: 1;
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom; }
 
@@ -533,10 +533,10 @@
   opacity: 1;
   -webkit-transform: scale(1, 1);
   transform: scale(1, 1);
-  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+  -webkit-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
   -webkit-transform-origin: top left;
   transform-origin: top left; }
 
@@ -578,10 +578,12 @@
     width: 350px; }
   .el-date-editor--datetimerange.el-input, .el-date-editor--datetimerange.el-input__inner {
     width: 400px; }
+  .el-date-editor .el-icon-circle-close {
+    cursor: pointer; }
   .el-date-editor .el-range__icon {
     font-size: 14px;
     margin-left: -5px;
-    color: #b4bccc;
+    color: #c0c4cc;
     float: left;
     line-height: 32px; }
   .el-date-editor .el-range-input {
@@ -597,15 +599,15 @@
     width: 39%;
     text-align: center;
     font-size: 14px;
-    color: #5a5e66; }
+    color: #606266; }
     .el-date-editor .el-range-input::-webkit-input-placeholder {
-      color: #b4bccc; }
+      color: #c0c4cc; }
     .el-date-editor .el-range-input:-ms-input-placeholder {
-      color: #b4bccc; }
+      color: #c0c4cc; }
     .el-date-editor .el-range-input::-ms-input-placeholder {
-      color: #b4bccc; }
+      color: #c0c4cc; }
     .el-date-editor .el-range-input::placeholder {
-      color: #b4bccc; }
+      color: #c0c4cc; }
   .el-date-editor .el-range-separator {
     display: inline-block;
     height: 100%;
@@ -615,10 +617,10 @@
     line-height: 32px;
     font-size: 14px;
     width: 5%;
-    color: #2d2f33; }
+    color: #303133; }
   .el-date-editor .el-range__close-icon {
     font-size: 14px;
-    color: #b4bccc;
+    color: #c0c4cc;
     width: 25px;
     display: inline-block;
     float: right;
@@ -628,9 +630,9 @@
   padding: 3px 10px; }
 
 .el-range-editor.is-active {
-  border-color: #1890ff; }
+  border-color: #409EFF; }
   .el-range-editor.is-active:hover {
-    border-color: #1890ff; }
+    border-color: #409EFF; }
 
 .el-range-editor--medium.el-input__inner {
   height: 36px; }
@@ -673,25 +675,25 @@
 
 .el-range-editor.is-disabled {
   background-color: #f5f7fa;
-  border-color: #dfe4ed;
-  color: #b4bccc;
+  border-color: #e4e7ed;
+  color: #c0c4cc;
   cursor: not-allowed; }
   .el-range-editor.is-disabled:hover, .el-range-editor.is-disabled:focus {
-    border-color: #dfe4ed; }
+    border-color: #e4e7ed; }
   .el-range-editor.is-disabled input {
     background-color: #f5f7fa;
-    color: #b4bccc;
+    color: #c0c4cc;
     cursor: not-allowed; }
     .el-range-editor.is-disabled input::-webkit-input-placeholder {
-      color: #b4bccc; }
+      color: #c0c4cc; }
     .el-range-editor.is-disabled input:-ms-input-placeholder {
-      color: #b4bccc; }
+      color: #c0c4cc; }
     .el-range-editor.is-disabled input::-ms-input-placeholder {
-      color: #b4bccc; }
+      color: #c0c4cc; }
     .el-range-editor.is-disabled input::placeholder {
-      color: #b4bccc; }
+      color: #c0c4cc; }
   .el-range-editor.is-disabled .el-range-separator {
-    color: #b4bccc; }
+    color: #c0c4cc; }
 
 /* CUSTOM Chalk Variables*/
 /* Element Chalk Variables */
@@ -1037,8 +1039,8 @@
 /* Break-point
 --------------------------*/
 .el-picker-panel {
-  color: #5a5e66;
-  border: 1px solid #dfe4ed;
+  color: #606266;
+  border: 1px solid #e4e7ed;
   -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   background: #fff;
@@ -1066,16 +1068,16 @@
     background-color: transparent;
     line-height: 28px;
     font-size: 14px;
-    color: #5a5e66;
+    color: #606266;
     padding-left: 12px;
     text-align: left;
     outline: none;
     cursor: pointer; }
     .el-picker-panel__shortcut:hover {
-      color: #1890ff; }
+      color: #409EFF; }
     .el-picker-panel__shortcut.active {
       background-color: #e6f1fe;
-      color: #1890ff; }
+      color: #409EFF; }
   .el-picker-panel__btn {
     border: 1px solid #dcdcdc;
     color: #333;
@@ -1091,14 +1093,14 @@
       cursor: not-allowed; }
   .el-picker-panel__icon-btn {
     font-size: 12px;
-    color: #2d2f33;
+    color: #303133;
     border: 0;
     background: transparent;
     cursor: pointer;
     outline: none;
     margin-top: 8px; }
     .el-picker-panel__icon-btn:hover {
-      color: #1890ff; }
+      color: #409EFF; }
     .el-picker-panel__icon-btn.is-disabled {
       color: #bbb; }
       .el-picker-panel__icon-btn.is-disabled:hover {
@@ -1158,7 +1160,7 @@
     .el-date-picker__header--bordered {
       margin-bottom: 0;
       padding-bottom: 12px;
-      border-bottom: solid 1px #e6ebf5; }
+      border-bottom: solid 1px #ebeef5; }
       .el-date-picker__header--bordered + .el-picker-panel__content {
         margin-top: 0; }
   .el-date-picker__header-label {
@@ -1168,11 +1170,11 @@
     line-height: 22px;
     text-align: center;
     cursor: pointer;
-    color: #5a5e66; }
+    color: #606266; }
     .el-date-picker__header-label:hover {
-      color: #1890ff; }
+      color: #409EFF; }
     .el-date-picker__header-label.active {
-      color: #1890ff; }
+      color: #409EFF; }
   .el-date-picker__prev-btn {
     float: left; }
   .el-date-picker__next-btn {
@@ -1438,11 +1440,11 @@
     height: 0;
     cursor: pointer;
     border-radius: inherit;
-    background-color: rgba(135, 141, 153, 0.3);
+    background-color: rgba(144, 147, 153, 0.3);
     -webkit-transition: .3s background-color;
     transition: .3s background-color; }
     .el-scrollbar__thumb:hover {
-      background-color: rgba(135, 141, 153, 0.5); }
+      background-color: rgba(144, 147, 153, 0.5); }
   .el-scrollbar__bar {
     position: absolute;
     right: 2px;
@@ -1720,7 +1722,7 @@
   bottom: -6px;
   left: 50%;
   margin-right: 3px;
-  border-top-color: #e6ebf5;
+  border-top-color: #ebeef5;
   border-bottom-width: 0; }
   .el-popper[x-placement^="top"] .popper__arrow::after {
     bottom: 1px;
@@ -1736,7 +1738,7 @@
   left: 50%;
   margin-right: 3px;
   border-top-width: 0;
-  border-bottom-color: #e6ebf5; }
+  border-bottom-color: #ebeef5; }
   .el-popper[x-placement^="bottom"] .popper__arrow::after {
     top: 1px;
     margin-left: -6px;
@@ -1750,7 +1752,7 @@
   top: 50%;
   left: -6px;
   margin-bottom: 3px;
-  border-right-color: #e6ebf5;
+  border-right-color: #ebeef5;
   border-left-width: 0; }
   .el-popper[x-placement^="right"] .popper__arrow::after {
     bottom: -6px;
@@ -1766,7 +1768,7 @@
   right: -6px;
   margin-bottom: 3px;
   border-right-width: 0;
-  border-left-color: #e6ebf5; }
+  border-left-color: #ebeef5; }
   .el-popper[x-placement^="left"] .popper__arrow::after {
     right: 1px;
     bottom: -6px;
@@ -1788,11 +1790,11 @@
   line-height: 20px; }
 
 .time-select-item.selected:not(.disabled) {
-  color: #1890ff;
+  color: #409EFF;
   font-weight: bold; }
 
 .time-select-item.disabled {
-  color: #dfe4ed;
+  color: #e4e7ed;
   cursor: not-allowed; }
 
 .time-select-item:hover {

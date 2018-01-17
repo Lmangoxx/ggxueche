@@ -239,7 +239,7 @@
   border-radius: 8px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 1px solid #e6ebf5;
+  border: 1px solid #ebeef5;
   position: fixed;
   background-color: #fff;
   -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
@@ -258,39 +258,37 @@
   .el-notification__title {
     font-weight: bold;
     font-size: 16px;
-    color: #2d2f33;
+    color: #303133;
     margin: 0; }
   .el-notification__content {
     font-size: 14px;
     line-height: 21px;
     margin: 6px 0 0 0;
-    color: #5a5e66;
+    color: #606266;
     text-align: justify; }
     .el-notification__content p {
       margin: 0; }
   .el-notification__icon {
     height: 24px;
     width: 24px;
-    font-size: 24px;
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px); }
+    font-size: 24px; }
   .el-notification__closeBtn {
     position: absolute;
-    top: 15px;
+    top: 18px;
     right: 15px;
     cursor: pointer;
-    color: #878d99;
+    color: #909399;
     font-size: 16px; }
     .el-notification__closeBtn:hover {
-      color: #5a5e66; }
+      color: #606266; }
   .el-notification .el-icon-success {
     color: #67c23a; }
   .el-notification .el-icon-error {
-    color: #fa5555; }
+    color: #f56c6c; }
   .el-notification .el-icon-info {
-    color: #878d99; }
+    color: #909399; }
   .el-notification .el-icon-warning {
-    color: #eb9e05; }
+    color: #e6a23c; }
 
 .el-notification-fade-enter.right {
   right: 0;
