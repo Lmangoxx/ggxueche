@@ -41,6 +41,12 @@ Vue.use(VueLazyload, {
 import app from './app'
 import Cookies from 'js-cookie'
 
+router.beforeEach((to, from, next) => {
+	console.log(to)
+	console.log(from)
+	next()
+})
+
 new Vue({
 	el: '#app',
 	router,
