@@ -131,7 +131,7 @@
                 @size-change="sizeChange"
                 @current-change="currentChange"
                 :current-page="currentNumber"
-                :page-sizes="[10, 15, 20, 25, 30]"
+                :page-sizes="pageSizes"
                 :page-size="listData.pageSize"
                 layout="total, sizes, prev, pager, next, jumper"
                 :total="listData.total"

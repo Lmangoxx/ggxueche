@@ -5,12 +5,13 @@ import Cookies from 'js-cookie'
 export default {
 	data () {
         return {
-			getListNum: false,
+			getListFirst: false,
             listData: {},
             listQuery: Object.assign({
                 pageNumber: 0,
                 pageSize: 25
-            }, Cookies.getJSON('__listQuery') || {})
+            }, Cookies.getJSON('__listQuery') || {}),
+            pageSizes: [10, 15, 20, 25, 30]
         }
     },
 	computed: {
@@ -27,12 +28,11 @@ export default {
 			this.getList()
 		},
 		currentChange (num) {
-			if (!this.getListNum) {
-				this.getListNum = !this.getListNum
+			if (!this.getListFirst) {
+				this.getListFirst = !this.getListFirst
 				return
 			}
 			this.listQuery.pageNumber = num - 1
-			this.getListNum++
 			this.getList()
 		}
 	},
