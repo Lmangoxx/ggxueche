@@ -86,7 +86,6 @@ new Vue({
 					})
 					break
 				case 502:
-					vm.$message.error()
 					vm.$notify.error({
 						title: '502错误',
 						message: vm.CONFIG['502']
@@ -109,7 +108,7 @@ new Vue({
 							return resData
 						default:
 							vm.$notify.error({
-								title: '错误(' + (resData.code || '>_<') + ')',
+								title: '错误 ' + (resData.code + ':' + response.config.url.replace(/\/api/g, '') || '>_<'),
 								message: resData.msg || '出错了'
 							})
 					}

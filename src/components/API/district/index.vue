@@ -1,5 +1,5 @@
 <template>
-	<el-select v-model="currentValue" placeholder="请选择" filterable clearable>
+	<el-select size="medium" v-model="currentValue" placeholder="请选择" filterable clearable>
         <el-option v-for="item in listData" :label="item.name" :value="item.code" :key="item.code"></el-option>
     </el-select>
 </template>

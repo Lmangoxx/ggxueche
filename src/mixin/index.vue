@@ -11,7 +11,8 @@ export default {
                 pageNumber: 0,
                 pageSize: 25
             }, Cookies.getJSON('__listQuery') || {}),
-            pageSizes: [10, 15, 20, 25, 30]
+            pageSizes: [10, 15, 20, 25, 30],
+            pageLayout: 'total, sizes, prev, pager, next, jumper'
         }
     },
 	computed: {

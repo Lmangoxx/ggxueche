@@ -4,7 +4,7 @@
     	<div class="ma-5 fl">
 	        <label>培训机构：</label>
 	        <el-input
-	            class="w-200"
+	            class="w-150"
 	            type="text"
 	            v-model="listQuery.name"
 	            placeholder="请输入"
@@ -127,13 +127,18 @@
             </el-table-column>
         </el-table>
         <pagination-page class="mt-25">
+            <el-button-group>
+                <el-button size="small" type="primary">下载模版</el-button>
+                <el-button size="small" type="primary">批量上传</el-button>
+                <el-button size="small" type="primary">修改排序</el-button>
+            </el-button-group>
             <el-pagination
                 @size-change="sizeChange"
                 @current-change="currentChange"
                 :current-page="currentNumber"
                 :page-sizes="pageSizes"
                 :page-size="listData.pageSize"
-                layout="total, sizes, prev, pager, next, jumper"
+                :layout="pageLayout"
                 :total="listData.total"
             >
             </el-pagination>
