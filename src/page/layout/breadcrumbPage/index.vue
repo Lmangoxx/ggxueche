@@ -5,8 +5,9 @@
             v-for="(item, index) in levelList"
             :to="item.meta.submenu ? '' : item.path"
             :key="item.path"
+            v-if="item.path.indexOf('/home') === -1"
         >
-            {{item.path.indexOf('/mamanger') > 0 ? '列表' : item.path.indexOf('/edit') > 0 ? '编辑' : item.meta.name}}
+            {{item.path.indexOf('/mamanger') > 0 ? '列表' : item.path.indexOf('/detail') > 0 ? '编辑' : item.meta.name}}
         </el-breadcrumb-item>
     </transition-group>
 </el-breadcrumb>

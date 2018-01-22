@@ -3,19 +3,36 @@ import queryPage from '@/page/layout/queryPage'
 import paginationPage from '@/page/layout/paginationPage'
 import Cookies from 'js-cookie'
 export default {
+	data () {
+        return {
+			getListNum: false,
+            listData: {},
+            listQuery: Object.assign({
+                pageNumber: 0,
+                pageSize: 25
+            }, Cookies.getJSON('__listQuery') || {})
+        }
+    },
 	computed: {
 		currentNumber () {
-			this.listData.pageNumber = this.listData.pageNumber + 1
-			return this.listData.pageNumber
+			return this.listData.pageNumber + 1
 		}
 	},
+    created () {
+        this.getList()
+    },
 	methods: {
 		sizeChange (num) {
 			this.listQuery.pageSize = num
 			this.getList()
 		},
 		currentChange (num) {
+			if (!this.getListNum) {
+				this.getListNum = !this.getListNum
+				return
+			}
 			this.listQuery.pageNumber = num - 1
+			this.getListNum++
 			this.getList()
 		}
 	},

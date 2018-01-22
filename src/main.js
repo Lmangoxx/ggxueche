@@ -7,7 +7,7 @@ import '../static/fonts/simple-line-icons/css/simple-line-icons.css'
 import '../static/style/common'
 // 引入路由配置文件
 import router from './router'
-// 引入全局vue插件文件
+// 引入全局vue公共文件
 import './config'
 
 import Axios from '@/utils/axios'
@@ -22,28 +22,23 @@ if (process.env.NODE_ENV === 'production') {
 	}
 }
 
-// 引入Element插件
+// 引入Element-ui
 import Element from 'element-ui'
 import '../theme/index.css'
 Vue.use(Element)
-
-// 引入vue-lazyload实现异步加载
-import VueLazyload from 'vue-lazyload'
-Vue.use(VueLazyload, {
-	preLoad: 1,
-	error: '/static/images/error.jpg',
-	loading: '/static/images/loading.jpg',
-	attempt: 2
-})
 
 /* eslint-disable no-new */
 // 引入模块
 import app from './app'
 import Cookies from 'js-cookie'
 
+// 这里通过判断to，from的matched判断是否清空__listQuery的cookie值
 router.beforeEach((to, from, next) => {
-	console.log(to)
-	console.log(from)
+	if (from.path !== '/' && from.matched.length > 0) {
+		if (from.matched.length !== to.matched.length || from.matched[0].path !== to.matched[0].path || from.matched[1].path !== to.matched[1].path) {
+			Cookies.set('__listQuery', {})
+		}
+	}
 	next()
 })
 
@@ -67,7 +62,7 @@ new Vue({
 		}
 	},
 	created () {
-		let vm = this
+		const vm = this
 		// request拦截器
 		vm.$axios.interceptors.request.use(config => {
 			if (!vm.loadingInstance) {
@@ -114,7 +109,7 @@ new Vue({
 							return resData
 						default:
 							vm.$notify.error({
-								title: '错误',
+								title: '错误(' + (resData.code || '>_<') + ')',
 								message: resData.msg || '出错了'
 							})
 					}

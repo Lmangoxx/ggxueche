@@ -8,6 +8,7 @@ const notFound = r => require.ensure([], () => r(require('@/page/notFound/index'
 const home = r => require.ensure([], () => r(require('@/page/home')), 'home')
 const terminalDeviceSettingMamanger = r => require.ensure([], () => r(require('@/page/terminalDeviceSetting/mamanger')), 'terminalDeviceSettingMamanger')
 const schoolMamanger = r => require.ensure([], () => r(require('@/page/school/mamanger')), 'schoolMamanger')
+const schoolDetail = r => require.ensure([], () => r(require('@/page/school/detail')), 'schoolDetail')
 
 Vue.use(Router)
 
@@ -76,6 +77,10 @@ export default new Router({
                         {
                             path: 'mamanger',
                             component: schoolMamanger
+                        },
+                        {
+                            path: 'detail',
+                            component: schoolDetail
                         }
                     ]
                 }

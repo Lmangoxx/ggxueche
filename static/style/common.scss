@@ -161,13 +161,22 @@ table {
 	& .btn-prev,& .btn-next {
 		padding: 0 6px !important;
 	}
+	.el-pagination__total {
+		margin-right: 5px;
+	}
+	.el-pagination__sizes {
+		margin: 0 5px 0 0;
+	}
+	.el-pagination__jump {
+		margin-left: 10px;
+	}
 }
 .el-pager {
-	margin: 0 8px !important;
+	margin: 0 5px !important;
 	li {
 		border: 1px solid $--border-color-base !important;
 		border-radius: $--pagination-border-radius !important;
-		margin-right: 8px !important;
+		margin-right: 5px !important;
 		&:last-child {
 			margin-right: 0 !important;
 		}

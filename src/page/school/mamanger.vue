@@ -120,7 +120,9 @@
                 label="操作"
             >
                 <template slot-scope="scope">
-                    <el-button type="primary" size="small" icon="el-icon-edit">编辑</el-button>
+                    <router-link :to="{path: $route.path.replace(/mamanger/g, 'detail'), query: {id: scope.row.id}}">
+                        <el-button type="primary" size="small" icon="el-icon-edit">编辑</el-button>
+                    </router-link>
                 </template>
             </el-table-column>
         </el-table>
@@ -144,22 +146,9 @@
 import mixins from '@/mixin'
 import apiDistrict from '@/components/API/district'
 import badge from '@/components/badge'
-import Cookies from 'js-cookie'
 export default {
     name: 'schoolMamanger',
     mixins: [mixins],
-    data () {
-        return {
-            listData: {},
-            listQuery: Object.assign({
-                pageNumber: 0,
-                pageSize: 25
-            }, Cookies.getJSON('__listQuery'))
-        }
-    },
-    created () {
-        this.getList()
-    },
     methods: {
         getList () {
             const vm = this
