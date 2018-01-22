@@ -6,7 +6,7 @@ export default {
 	data () {
         return {
 			getListFirst: false,
-            listData: {},
+            listData: [],
             listQuery: Object.assign({
                 pageNumber: 0,
                 pageSize: 25
