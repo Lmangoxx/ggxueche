@@ -113,15 +113,19 @@ table {
 	visibility:hidden;
 }
 // 公共样式
-.icon-bg {
-	background-image: url(/static/images/icon-bg.png);
-	background-repeat: no-repeat;
-}
 .content-cell {
     padding: $--layout-default;
     border-radius: 2px;
     background-color: #fff;
 }
+// 文本对齐方式
+$--text-align-list: left center right;
+@each $align in $--text-align-list {
+    .text-#{$align}, .text-#{$align} > * {
+        text-align: #{$align} !important;
+    }
+}
+
 // layout样式修改
 .el-header {
     margin-top: -$--layout-default;
@@ -194,17 +198,7 @@ table {
 .el-table-filter__bottom {
 	text-align: center;
 }
-// lazyload样式 
-img[lazy=loading] {
-	opacity: 0;
-}
-img[lazy=error] {
-	width: 100%;
-	height: 100%;
-}
-img[lazy=loaded] {
-	transition: opacity .15s;
-}
+
 @for $i from 1 through 10 {
 	.w-#{$i * 50} { width: 50px * $i !important;}
 
