@@ -50,14 +50,14 @@
             :default-sort = "{prop: 'name', order: 'descending'}"
         >
             <el-table-column
-                width="90"
+                width="100"
                 align="center"
                 prop="definedSort"
                 label="排序"
                 v-if="sort"
             >
                 <template slot-scope="scope">
-                    <el-input class="text-center" v-model="scope.row.definedSort" size="small"></el-input>
+                    <el-input class="text-center" v-model="scope.row.definedSort" size="small" @change="sortChange(scope.row)"></el-input>
                 </template>
             </el-table-column>
             <el-table-column
@@ -108,6 +108,7 @@
                         v-model="scope.row.showFlag"
                         active-value="SHOW"
                         inactive-value="BLANK"
+                        @change="editShowFlag(scope.row)"
                     >
                     </el-switch>
                 </template>
@@ -122,6 +123,7 @@
                         v-model="scope.row.status"
                         active-value="YES"
                         inactive-value="NO"
+                        @change="editStatus(scope.row)"
                     >
                     </el-switch>
                 </template>
@@ -140,7 +142,7 @@
         <pagination-page class="mt-25">
             <el-button-group>
                 <el-button size="small" type="primary">
-                    <a :href="this.$root.rootUrl + '/res/school/export/template'" style="color:#fff">下载模版</a>
+                    <a :href="$root.rootUrl + '/res/school/export/template'" style="color:#fff">下载模版</a>
                 </el-button>
                 <el-button size="small" type="primary" @click="upload = true">批量上传</el-button>
                 <el-dialog title="批量上传" width="40%" center :visible.sync="upload" @close="$refs.elUpload.clearFiles()">
@@ -154,6 +156,7 @@
                         :on-progress="progressFileUpload"
                         :on-success="successFileUpload"
                         :on-error="errorFileUpload"
+                        :disabled="uploading"
                     >
                         <i class="el-icon-upload"></i>
                         <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -188,7 +191,12 @@ export default {
     data () {
         return {
             upload: false,
-            sort: false
+            uploading: false,
+            sort: false,
+            sortList: {
+                ids: [],
+                sorts: []
+            }
         }
     },
     methods: {
@@ -203,33 +211,74 @@ export default {
         editSort () {
             const vm = this
             vm.sort = !vm.sort
+            vm.sortList.ids.length > -1 && vm.$axios.post('/res/school/saveSort', {
+                ids: vm.sortList.ids.join(','),
+                sorts: vm.sortList.sorts.join(',')
+            }).then(res => {
+                vm.clearSortList()
+            })
+        },
+        sortChange (row) {
+            const vm = this
+            let index = vm.sortList.ids.indexOf(row.id)
+            if (index !== -1) {
+                vm.sortList.sorts[index] = row.definedSort
+            } else {
+                vm.sortList.ids.push(row.id)
+                vm.sortList.sorts.push(row.definedSort)
+            }
+        },
+        clearSortList () {
+            this.sortList = {
+                ids: [],
+                sorts: []
+            }
+        },
+        editShowFlag (row) {
+            const vm = this
+            vm.$axios.post('/res/school/modifyShowFlag', {
+                id: row.id,
+                showFlag: row.showFlag
+            }).then(res => {
+                if (res.code !== 0) row.showFlag = !row.showFlag
+            })
+        },
+        editStatus (row) {
+            const vm = this
+            vm.$axios.post('/res/school/modifyStatus', {
+                id: row.id,
+                status: row.status
+            }).then(res => {
+                if (res.code !== 0) row.status = !row.status
+            })
         },
         beforeFileUpload (file) {
             const isLt2M = file.size / 1024 < 500
-
             if (!isLt2M) {
                 this.$message.error('上传文件大小不能超过 500KB!')
             }
             return isLt2M
         },
         progressFileUpload (event, file, fileList) {
-            this.loading = true
+            this.uploading = true
         },
         successFileUpload (response, file, fileList) {
-            this.loading = false
+            const vm = this
+            vm.uploading = false
             if (response.code !== 0) {
-                this.$notify.error({
+                vm.$notify.error({
                     title: response.code,
                     message: response.msg
                 })
             } else {
-                // this.getTableData()
-                this.$message.success('数据导入成功！')
+                vm.$message.success('数据导入成功！')
+                vm.getList()
             }
         },
         errorFileUpload (response, file, fileList) {
-            this.loading = false
-            this.$notify.error({
+            const vm = this
+            vm.uploading = false
+            vm.$notify.error({
                 title: '数据导入失败,请稍后再试'
             })
         },

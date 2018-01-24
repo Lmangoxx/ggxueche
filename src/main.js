@@ -81,6 +81,7 @@ new Vue({
 		})
 		// response响应拦截器
 		vm.$axios.interceptors.response.use(response => {
+			console.log(response)
 			let resData = response.data
 			// 对响应数据做点什么
 			vm.loadingInstance.close()
@@ -111,6 +112,9 @@ new Vue({
 							vm.$router.push('/login')
 							break
 						case 0:
+							response.config.method === 'post' && vm.$notify.success({
+								title: '操作成功'
+							})
 							return resData
 						default:
 							vm.$notify.error({
