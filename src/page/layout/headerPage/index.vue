@@ -1,6 +1,7 @@
 <template>
 <div class="header-cell cf">
-    <i class="fa pl-20 pr-20" :class="$root.settings.sidebarToggler ? 'fa-indent' : 'fa-dedent'" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler" hover></i>
+    <i class="fa pl-20 pr-20 fl" :class="$root.settings.sidebarToggler ? 'fa-indent' : 'fa-dedent'" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler" hover></i>
+    <breadcrumb-page class="breadcrumb"></breadcrumb-page>
     <div class="fr cf">
         <div class="action" :class="{'is-open': isOpen}" @click.stop="isOpen = true">
             <el-input ref="search" class="search" size="small" placeholder="站内搜索" clearable></el-input>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import breadcrumbPage from '@/page/layout/breadcrumbPage'
 import screenfull from '@/components/screenfull'
 export default {
     name: 'headerPage',
@@ -66,7 +68,8 @@ export default {
         }
     },
 	components: {
-		screenfull
+		screenfull,
+        breadcrumbPage
 	}
 }
 </script>
@@ -106,6 +109,13 @@ export default {
     .is-open .search {
         width: 180px;
         margin-left: 5px;
+    }
+    .breadcrumb {
+        float: left;
+        height: $--header-height;
+        line-height: $--header-height;
+        padding-left: 15px;
+        border-left: 1px solid $--border-color-lighter;
     }
 }
 </style>

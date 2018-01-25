@@ -3,7 +3,7 @@
     <sidebar-page :nav-lists="navLists"></sidebar-page>
     <el-main :class="{'is-noOpen': $root.settings.sidebarToggler}">
         <el-header height="64px"><header-page :user-data="userData"></header-page></el-header>
-        <breadcrumb-page class="mb-25"></breadcrumb-page>
+        <tags-page></tags-page>
         <transition name="el-fade-in">
             <router-view></router-view>
         </transition>
@@ -16,7 +16,7 @@
 import headerPage from '@/page/layout/headerPage'
 import footerPage from '@/page/layout/footerPage'
 import sidebarPage from '@/page/layout/sidebarPage'
-import breadcrumbPage from '@/page/layout/breadcrumbPage'
+import tagsPage from '@/page/layout/tagsPage'
 export default {
 	name: 'operation',
 	data () {
@@ -118,7 +118,7 @@ export default {
         headerPage,
         footerPage,
         sidebarPage,
-        breadcrumbPage
+        tagsPage
     }
 }
 </script>

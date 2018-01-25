@@ -35,8 +35,12 @@ import Cookies from 'js-cookie'
 // 这里通过判断to，from的matched判断是否清空__listQuery的cookie值
 router.beforeEach((to, from, next) => {
 	if (from.path !== '/' && from.matched.length > 0) {
-		if (from.matched.length !== to.matched.length || from.matched[0].path !== to.matched[0].path || from.matched[1].path !== to.matched[1].path) {
-			Cookies.set('__listQuery', {})
+		let listLength = to.matched.length >= from.matched.length ? from.matched.length : to.matched.length
+		for (let i = 0; i < listLength - 1; i++) {
+			if (from.matched[i].path !== to.matched[i].path) {
+				console.log(`${from.matched[i].path},${to.matched[i].path}`)
+				Cookies.set('__listQuery', {})
+			}
 		}
 	}
 	next()
@@ -54,6 +58,7 @@ new Vue({
 				如果访问a路由的时候，提示没登录并跳转到登录页面，这个时候会把a路由存储在这里，等登录成功后再跳转到a
 			*/
 			temporaryUrl: '/operation',
+			tagsList: [],
 			app: {
 				name: '呱呱学车管理平台'
 			},
@@ -81,7 +86,7 @@ new Vue({
 		})
 		// response响应拦截器
 		vm.$axios.interceptors.response.use(response => {
-			console.log(response)
+			// console.log(response)
 			let resData = response.data
 			// 对响应数据做点什么
 			vm.loadingInstance.close()

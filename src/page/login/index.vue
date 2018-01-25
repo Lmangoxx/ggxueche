@@ -84,10 +84,6 @@
                         if (res.code === 0) {
                             // 登录成功后跳转到访问页或者主页
                             vm.$router.push(vm.$root.temporaryUrl)
-                            vm.$message({
-                                type: 'success',
-                                message: '登录成功'
-                            })
                         } else {
                             vm.$message.error(res.msg)
                         }

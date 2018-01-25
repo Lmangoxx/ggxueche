@@ -15,9 +15,7 @@
                 <i :class="nav.icon"></i>
                 <span slot="title">{{nav.name}}</span>
             </template>
-            <template v-for="menu in nav.subNav">
-                <el-menu-item :index="menu.code" :key="menu.code">{{menu.name}}</el-menu-item>
-            </template>
+            <el-menu-item v-for="menu in nav.subNav" :index="menu.code" :key="menu.code" @click="tagClick(menu)">{{menu.name}}</el-menu-item>
         </el-submenu>
         <el-menu-item index="2">
             <i class="icon-book-open"></i>
@@ -34,6 +32,15 @@ export default {
         navLists: {
             type: Array,
             default: []
+        }
+    },
+    methods: {
+        tagClick (row) {
+            // console.log('11')
+            const vm = this
+            if (vm.$root.tagsList.indexOf(row) === -1) {
+                vm.$root.tagsList.push(row)
+            }
         }
     }
 }
