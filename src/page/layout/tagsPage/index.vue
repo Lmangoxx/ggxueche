@@ -1,8 +1,8 @@
 <template>
 <div class="tags-cell">
 	<el-tabs type="border-card" v-model="activeTag">
-		<el-tab-pane v-for="tag in tagsList" :name="tag.path" :key="tag.path">
-			<router-link slot="label" :to="tag.path" tag="span" style="display:inline-block;padding-left:-20px;padding-right:-20px;">{{tag.meta.name}} <i class="el-icon-error ml-5" @click.stop="closeTag(tag)"></i></router-link>
+		<el-tab-pane v-for="(tag, index) in tagsList" :name="tag.path" :key="tag.path">
+			<router-link slot="label" :to="tag.path" tag="span" style="display:inline-block;padding-left:-20px;padding-right:-20px;">{{tag.meta.name}} <i class="el-icon-error ml-5" @click.stop="closeTag(tag, index)"></i></router-link>
 		</el-tab-pane>
 	</el-tabs>
 </div>
@@ -41,8 +41,17 @@ export default {
             }
             return flag
         },
-        closeTag (row) {
-			this.tagsList.splice(row, 1)
+        closeTag (row, index) {
+			// 如果当前只剩下首页一个tag,不允许关闭
+			if (this.tagsList.length === 1 && row.path === '/operation/home') return
+			this.tagsList.splice(index, 1)
+			if (row.path === this.activeTag && this.tagsList.length > 0) {
+				let to = this.tagsList[index] ? this.tagsList[index].path : this.tagsList[index - 1].path
+				this.$router.push(to)
+			}
+			if (this.tagsList.length === 0) {
+				this.$router.push('/operation/home')
+			}
         }
     },
     watch: {
@@ -77,6 +86,7 @@ export default {
 				&.is-active {
 					color: #fff;
 					background-color: $--color-primary;
+					border: none;
 				}
 			}
 		}

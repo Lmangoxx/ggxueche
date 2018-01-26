@@ -108,10 +108,10 @@ new Vue({
 				case 200:
 					switch (resData.code) {
 						case 401:
-							// 未登录提示
-							vm.$message.warning(vm.CONFIG['401'])
 							// 先存储当前访问页面
 							vm.$root.temporaryUrl = vm.$route.path
+							// 未登录提示
+							vm.$message.warning(vm.CONFIG['401'])
 							// 跳转到登录页
 							vm.$router.push('/login')
 							break
