@@ -28,6 +28,7 @@ export default new Router({
                     redirect: 'home'
                 },
                 {
+                    meta: {name: '首页', tag: true},
                     path: 'home',
                     component: home
                 },
@@ -44,7 +45,7 @@ export default new Router({
             component: login
         },
         {
-            meta: {name: '驾校业务', submenu: true},
+            meta: {name: '驾校业务'},
             path: '/serviceschool',
             component: layout,
             children: [
@@ -75,6 +76,7 @@ export default new Router({
                             redirect: 'mamanger'
                         },
                         {
+                            meta: {name: '驾校管理', tag: true},
                             path: 'mamanger',
                             component: schoolMamanger
                         },

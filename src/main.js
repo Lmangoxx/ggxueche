@@ -38,7 +38,7 @@ router.beforeEach((to, from, next) => {
 		let listLength = to.matched.length >= from.matched.length ? from.matched.length : to.matched.length
 		for (let i = 0; i < listLength - 1; i++) {
 			if (from.matched[i].path !== to.matched[i].path) {
-				console.log(`${from.matched[i].path},${to.matched[i].path}`)
+				// console.log(`${from.matched[i].path},${to.matched[i].path}`)
 				Cookies.set('__listQuery', {})
 			}
 		}
@@ -58,7 +58,6 @@ new Vue({
 				如果访问a路由的时候，提示没登录并跳转到登录页面，这个时候会把a路由存储在这里，等登录成功后再跳转到a
 			*/
 			temporaryUrl: '/operation',
-			tagsList: [],
 			app: {
 				name: '呱呱学车管理平台'
 			},

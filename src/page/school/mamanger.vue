@@ -13,7 +13,7 @@
         </div>
         <div class="ma-5 fl">
         	<label>区域：</label>
-        	<api-district class="w-150" v-model="listQuery.districtCode"></api-district>
+        	<api-district class="w-150" v-model="listQuery.districtCode" multiple></api-district>
         </div>
         <div class="ma-5 fl">
         	<label>显示状态：</label>

@@ -1,5 +1,5 @@
 <template>
-	<el-select size="medium" v-model="currentValue" placeholder="请选择" filterable clearable>
+	<el-select size="medium" v-model="currentValue" placeholder="请选择" filterable clearable :loading="aaa">
         <el-option v-for="item in listData" :label="item.name" :value="item.code" :key="item.code"></el-option>
     </el-select>
 </template>
@@ -12,6 +12,7 @@ export default {
 	},
 	data () {
 		return {
+            aaa: false,
 			currentValue: this.value,
             listData: []
 		}
@@ -22,9 +23,12 @@ export default {
 	methods: {
         getList () {
             const vm = this
+            vm.aaa = true
             vm.$axios.get('/sys/district/listNoPage').then(res => {
+                vm.aaa = false
                 vm.listData = res.data
             })
+            // console.log(vm.$attrs)
         }
     },
     watch: {
