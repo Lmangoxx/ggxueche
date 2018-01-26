@@ -2,7 +2,7 @@
 <div class="tags-cell">
 	<el-tabs type="border-card" v-model="activeTag">
 		<el-tab-pane v-for="(tag, index) in tagsList" :name="tag.path" :key="tag.path">
-			<router-link slot="label" :to="tag.path" tag="span" style="display:inline-block;padding-left:-20px;padding-right:-20px;">{{tag.meta.name}} <i class="el-icon-error ml-5" @click.stop="closeTag(tag, index)"></i></router-link>
+			<router-link slot="label" :to="tag.path" tag="span">{{tag.meta.name}} <i class="el-icon-error ml-5" @click.stop="closeTag(tag, index)"></i></router-link>
 		</el-tab-pane>
 	</el-tabs>
 </div>
