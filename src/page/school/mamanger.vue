@@ -211,7 +211,7 @@ export default {
         editSort () {
             const vm = this
             vm.sort = !vm.sort
-            vm.sortList.ids.length > -1 && vm.$axios.post('/res/school/saveSort', {
+            vm.sortList.ids.length > 0 && vm.$axios.post('/res/school/saveSort', {
                 ids: vm.sortList.ids.join(','),
                 sorts: vm.sortList.sorts.join(',')
             }).then(res => {

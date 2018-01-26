@@ -19,7 +19,6 @@ export default new Router({
             redirect: '/operation'
         },
         {
-            meta: {name: '首页'},
             path: '/operation',
             component: layout,
             children: [
@@ -60,6 +59,7 @@ export default new Router({
                             redirect: 'mamanger'
                         },
                         {
+							meta: {name: '终端控制', tag: true},
                             path: 'mamanger',
                             component: terminalDeviceSettingMamanger
                         }
