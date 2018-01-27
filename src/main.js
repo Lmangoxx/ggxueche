@@ -109,7 +109,7 @@ new Vue({
 					switch (resData.code) {
 						case 401:
 							// 先存储当前访问页面
-							vm.$root.temporaryUrl = vm.$route.path
+							if (vm.$route.path !== '/login') vm.temporaryUrl = vm.$route.path
 							// 未登录提示
 							vm.$message.warning(vm.CONFIG['401'])
 							// 跳转到登录页
