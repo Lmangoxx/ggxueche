@@ -4,7 +4,8 @@
 		<el-tab-pane v-for="(tag, index) in tagsList" :name="tag.path" :key="tag.path">
 			<router-link slot="label" :to="tag.path" tag="span">
                 {{tag.meta.name}}
-                <i class="el-icon-error ml-5" @click.stop="closeTag(tag, index)"></i></router-link>
+                <i class="el-icon-error ml-5" @click.stop="closeTag(tag, index)"></i>
+            </router-link>
 		</el-tab-pane>
 	</el-tabs>
 </div>
@@ -83,6 +84,7 @@ export default {
 					border-left: 1px solid $--border-color-lighter;
 				}
 				span {
+                    display: block;
                     padding: 0 18px;
                     i {
                         font-size: 13px;
