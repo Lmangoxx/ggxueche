@@ -1,0 +1,9 @@
+<script>
+export default {
+	methods: {
+		resetForm (formName) {
+			this.$refs[formName].resetFields()
+		}
+	}
+}
+</script>

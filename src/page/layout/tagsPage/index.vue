@@ -1,6 +1,6 @@
 <template>
 <div class="tags-cell">
-	<el-tabs type="border-card" v-model="activeTag">
+	<el-tabs type="border-card" v-model="activeTag" v-if="tagsList.length > 0">
 		<el-tab-pane v-for="(tag, index) in tagsList" :name="tag.path" :key="tag.path">
 			<router-link slot="label" :to="tag.path" tag="span">
                 {{tag.meta.name}}

@@ -182,12 +182,12 @@
 </template>
 
 <script>
-import mixins from '@/mixin'
+import mamanger from '@/mixin/mamanger'
 import apiDistrict from '@/components/API/district'
 import badge from '@/components/badge'
 export default {
     name: 'schoolMamanger',
-    mixins: [mixins],
+    mixins: [mamanger],
     data () {
         return {
             upload: false,

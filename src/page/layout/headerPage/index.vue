@@ -3,7 +3,7 @@
     <i class="fa pl-20 pr-20 fl" :class="$root.settings.sidebarToggler ? 'fa-indent' : 'fa-dedent'" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler" hover></i>
     <breadcrumb-page class="breadcrumb"></breadcrumb-page>
     <div class="fr cf">
-        <div class="action" :class="{'is-open': isOpen}" @click.stop="isOpen = true">
+        <div class="action" :class="{'is-open': isOpen}" @click.stop.self="isOpen = true">
             <el-input ref="search" class="search" size="small" placeholder="站内搜索" clearable></el-input>
             <i class="icon-magnifier" @click="searchToggle"></i>
         </div>
