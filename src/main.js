@@ -85,51 +85,56 @@ new Vue({
 		})
 		// response响应拦截器
 		vm.$axios.interceptors.response.use(response => {
-			// console.log(response)
 			let resData = response.data
 			// 对响应数据做点什么
 			vm.loadingInstance.close()
-			switch (response.status) {
-				case 504:
-					vm.$notify.error({
-						title: '504错误',
-						message: vm.CONFIG['504']
+			switch (resData.code) {
+				case 401:
+					// 先存储当前访问页面
+					if (vm.$route.path !== '/login') vm.temporaryUrl = vm.$route.path
+					// 未登录提示
+					vm.$message.warning(vm.CONFIG['401'])
+					// 跳转到登录页
+					vm.$router.push('/login')
+					break
+				case 0:
+					response.config.method === 'post' && vm.$notify.success({
+						title: '操作成功'
 					})
-					break
-				case 502:
+					return resData
+				default:
 					vm.$notify.error({
-						title: '502错误',
-						message: vm.CONFIG['502']
+						title: '错误 ' + (resData.code + ':' + response.config.url.replace(/\/api/g, '') || '>_<'),
+						message: resData.msg || '出错了'
 					})
-					break
-				case 404:
-					vm.$router.push('/operation/404')
-					break
-				case 200:
-					switch (resData.code) {
-						case 401:
-							// 先存储当前访问页面
-							if (vm.$route.path !== '/login') vm.temporaryUrl = vm.$route.path
-							// 未登录提示
-							vm.$message.warning(vm.CONFIG['401'])
-							// 跳转到登录页
-							vm.$router.push('/login')
-							break
-						case 0:
-							response.config.method === 'post' && vm.$notify.success({
-								title: '操作成功'
-							})
-							return resData
-						default:
-							vm.$notify.error({
-								title: '错误 ' + (resData.code + ':' + response.config.url.replace(/\/api/g, '') || '>_<'),
-								message: resData.msg || '出错了'
-							})
-					}
 			}
 		}, error => {
 			// 对响应错误做点什么
 			vm.loadingInstance.close()
+			if (error && error.response) {
+				switch (error.response.status) {
+					case 504:
+						vm.$notify.error({
+							title: '504错误',
+							message: vm.CONFIG['504']
+						})
+						break
+					case 502:
+						vm.$notify.error({
+							title: '502错误',
+							message: vm.CONFIG['502']
+						})
+						break
+					case 404:
+						vm.$router.push('/operation/404')
+						break
+					default:
+						vm.$notify.error({
+							title: error.response.status,
+							message: '未知错误'
+						})
+				}
+			}
 			return Promise.reject(error)
 		})
 	},

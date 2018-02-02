@@ -62,6 +62,7 @@
                         placeholder="选择日期"
                         format="yyyy 年 MM 月 dd 日"
                         value-format="yyyy-MM-dd"
+                        clearable
                     >
                     </el-date-picker>
                 </el-form-item>
@@ -90,7 +91,13 @@ export default {
     created () {
     },
     methods: {
-        onSubmit () {}
+        onSubmit () {
+            const vm = this
+            vm.$refs.basicInfo.validate(valid => {
+                if (valid) {
+                }
+            })
+        }
     }
 }
 </script>
