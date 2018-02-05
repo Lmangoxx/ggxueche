@@ -4,7 +4,7 @@ import Qs from 'qs'
 export default {
 	install (Vue, options = {}) {
 		// 创建axios实例
-		const service = axios.create(Object.assign({}, {
+		const service = axios.create(Object.assign({
 			baseURL: process.env.BASE_URL,
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'

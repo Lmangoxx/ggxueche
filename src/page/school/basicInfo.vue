@@ -15,8 +15,7 @@
             <el-col :span="24">
                 <el-form-item label="地区：">
                     <el-select v-model="basicInfo.region" placeholder="请选择省份" clearable>
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
+                        <el-option v-for="add in addList()" :label="add.label" :value="add.value" :key="add.value"></el-option>
                     </el-select>
                     <el-select class="ml-15" v-model="basicInfo.region" placeholder="请选择城市" clearable>
                         <el-option label="区域一" value="shanghai"></el-option>
@@ -35,7 +34,9 @@
             </el-col>
             <el-col :span="9" :offset="1">
                 <el-form-item label="培训机构地址：">
-                    <el-input v-model="basicInfo.address" placeholder="请输入" clearable></el-input>
+                    <el-input v-model="basicInfo.address" placeholder="请输入" clearable>
+                        <el-button slot="append" icon="el-icon-location"></el-button>
+                    </el-input>
                 </el-form-item>
             </el-col>
             <el-col :span="9">
@@ -83,14 +84,23 @@ export default {
     mixins: [detail],
     data () {
         return {
-            basicInfo: {
-                fullName: ''
-            }
+            basicInfo: {}
         }
     },
     created () {
+        this.$axios.get('/res/school/detailOne', {
+            params: this.$route.query
+        }).then(res => {
+            this.basicInfo = res.data
+        })
     },
     methods: {
+        addList () {
+            return [
+                {label: '上海', value: 'shanghai'},
+                {label: '北京', value: 'beijing'}
+            ]
+        },
         onSubmit () {
             const vm = this
             vm.$refs.basicInfo.validate(valid => {

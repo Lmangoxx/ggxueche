@@ -57,7 +57,10 @@ new Vue({
 			/* {temporaryUrl}
 				如果访问a路由的时候，提示没登录并跳转到登录页面，这个时候会把a路由存储在这里，等登录成功后再跳转到a
 			*/
-			temporaryUrl: '/operation',
+			temporaryUrl: {
+				path: '/operation',
+				query: {}
+			},
 			app: {
 				name: '呱呱学车管理平台'
 			},
@@ -91,7 +94,7 @@ new Vue({
 			switch (resData.code) {
 				case 401:
 					// 先存储当前访问页面
-					if (vm.$route.path !== '/login') vm.temporaryUrl = vm.$route.path
+					if (vm.$route.path !== '/login') vm.temporaryUrl = {path: vm.$route.path, query: vm.$route.query}
 					// 未登录提示
 					vm.$message.warning(vm.CONFIG['401'])
 					// 跳转到登录页

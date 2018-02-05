@@ -1,6 +1,6 @@
 <template>
 <div class="page-cell content-cell">
-    <el-tabs v-model="activeTabs" type="card" @tab-click="handleClick">
+    <el-tabs v-model="activeTabs" type="card">
         <el-tab-pane label="基本信息" name="first">
             <basic-info v-if="activeTabs === 'first'"></basic-info>
         </el-tab-pane>
@@ -21,8 +21,6 @@ export default {
         }
     },
     methods: {
-        handleClick () {
-        }
     },
     components: {
         basicInfo
