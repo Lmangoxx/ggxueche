@@ -1,0 +1,82 @@
+<template>
+	<el-select v-model="currentValue"
+        :disabled="options.disabled || loading"
+        :size="options.size"
+        :clearable="options.clearable || true"
+        :collapse-tags="options.collapseTags"
+        :multiple="options.multiple"
+        :multiple-limit="options.multipleLimit"
+        :name="options.name"
+        :filterable="options.filterable || true"
+        :placeholder="options.placeholder"
+    >
+        <el-option
+            v-for="item in listData"
+            :label="item[options.option.label]"
+            :value="item[options.option.value]"
+            :key="item[options.option.value]"
+        ></el-option>
+    </el-select>
+</template>
+
+<script>
+import apiConfig from '../api-config.vue'
+export default {
+    name: 'api-select',
+	props: {
+		value: [String, Number, Array],
+        options: {
+            type: Object,
+            required: true,
+            default () {
+                return {
+                    option: {}
+                }
+            }
+        }
+	},
+	data () {
+		return {
+            loading: false,
+			currentValue: '',
+            listData: []
+		}
+	},
+    created () {
+		this.getList()
+    },
+	methods: {
+        getList () {
+            const vm = this
+            vm.startGetList()
+            if (vm.options.api) {
+                vm.$axios.get(apiConfig[vm.options.api].url, {
+                    params: apiConfig[vm.options.api].params
+                }).then(res => {
+                    vm.listData = res.data
+                    vm.endGetList()
+                }).catch(error => {
+                    vm.endGetList()
+                    return error
+                })
+            } else {
+                vm.endGetList()
+            }
+        },
+        startGetList () {
+            this.loading = true
+        },
+        endGetList () {
+            this.loading = false
+        }
+    },
+    watch: {
+        value (val) {
+            this.currentValue = val
+        },
+		currentValue (val) {
+			this.$emit('input', val)
+		}
+	}
+}
+</script>

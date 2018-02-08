@@ -16,9 +16,8 @@ export default {
 			}],
 			// 设置允许跨域
 			withCredentials: true,
-			timeout: 5000
+			timeout: 30000
 		}, options))
-
 		Vue.axios = Vue.prototype.$axios = service
 	}
 }

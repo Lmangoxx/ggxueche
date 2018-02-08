@@ -13,7 +13,7 @@
         </div>
         <div class="ma-5 fl">
         	<label>区域：</label>
-        	<api-district class="w-150" v-model="listQuery.districtCode" multiple></api-district>
+        	<api-select class="w-150" :options="{api: 'listNoPage', option: {label: 'name', value: 'code'}}" v-model="listQuery.districtCode"></api-select>
         </div>
         <div class="ma-5 fl">
         	<label>显示状态：</label>
@@ -183,7 +183,7 @@
 
 <script>
 import mamanger from '@/mixin/mamanger'
-import apiDistrict from '@/components/API/district'
+import apiSelect from '@/components/API/select'
 import badge from '@/components/badge'
 export default {
     name: 'schoolMamanger',
@@ -287,7 +287,7 @@ export default {
         }
     },
     components: {
-        apiDistrict,
+        apiSelect,
         badge
     }
 }

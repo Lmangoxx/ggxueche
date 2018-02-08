@@ -20,8 +20,6 @@ export default {
             activeTabs: 'first'
         }
     },
-    methods: {
-    },
     components: {
         basicInfo
     }

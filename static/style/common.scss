@@ -213,3 +213,6 @@ $--text-align-list: left center right;
 	.ml-#{$i * 5} { margin-left: 5px * $i !important;}
 	.mr-#{$i * 5} { margin-right: 5px * $i !important;}
 }
+.w-full {
+	width: 100% !important;
+}

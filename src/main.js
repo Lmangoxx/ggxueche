@@ -62,6 +62,7 @@ new Vue({
 				query: {}
 			},
 			app: {
+				vesion: '1.0.0',
 				name: '呱呱学车管理平台'
 			},
 			/* {settings} 这里是一些全局配置类的东西 */
@@ -71,26 +72,25 @@ new Vue({
 			loadingInstance: null,
 			loadingOptions: {
 				text: '加载中'
-			}
+			},
+			axiosing: false
 		}
 	},
 	created () {
 		const vm = this
 		// request拦截器
 		vm.$axios.interceptors.request.use(config => {
-			if (!vm.loadingInstance) {
-				vm.loadingInstance = vm.$loading(vm.loadingOptions)
-			}
+			vm.axiosStart()
 			return config
 		}, error => {
-			vm.loadingInstance.close()
+			vm.axiosEnd()
 			return Promise.reject(error)
 		})
 		// response响应拦截器
 		vm.$axios.interceptors.response.use(response => {
+			vm.axiosEnd()
 			let resData = response.data
 			// 对响应数据做点什么
-			vm.loadingInstance.close()
 			switch (resData.code) {
 				case 401:
 					// 先存储当前访问页面
@@ -113,7 +113,7 @@ new Vue({
 			}
 		}, error => {
 			// 对响应错误做点什么
-			vm.loadingInstance.close()
+			vm.axiosEnd()
 			if (error && error.response) {
 				switch (error.response.status) {
 					case 504:
@@ -140,6 +140,20 @@ new Vue({
 			}
 			return Promise.reject(error)
 		})
+	},
+	methods: {
+		axiosStart () {
+			const vm = this
+			vm.axiosing = true
+			vm.loadingInstance = vm.$loading(vm.loadingOptions)
+		},
+		axiosEnd () {
+			const vm = this
+			vm.loadingInstance.close()
+			setTimeout(() => {
+				vm.axiosing = false
+			}, 500)
+		}
 	},
 	components: {
 		app

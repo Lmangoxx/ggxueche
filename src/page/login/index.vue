@@ -23,6 +23,7 @@
         </el-row>
         <el-button
             type="primary"
+            :disabled="$root.axiosing"
             @click="login()"
         >
             登 录
