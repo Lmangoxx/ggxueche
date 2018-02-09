@@ -13,7 +13,7 @@
         </div>
         <div class="ma-5 fl">
         	<label>区域：</label>
-        	<api-select class="w-150" :options="{api: 'listNoPage', option: {label: 'name', value: 'code'}}" v-model="listQuery.districtCode"></api-select>
+            <api-select class="w-150" :options="{api: 'listNoPage', option: {label: 'name', value: 'code'}}" v-model="listQuery.districtCode"></api-select>
         </div>
         <div class="ma-5 fl">
         	<label>显示状态：</label>

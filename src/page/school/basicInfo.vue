@@ -54,7 +54,7 @@
                     <api-select
                         class="w-full"
                         v-model="basicInfo.businessScope"
-                        :options="{multiple: true, option: {label: 'description', value: 'enumValue'}, placeholder: '请选择经营范围'}"
+                        :options="{api: 'DrivingPermitted', multiple: true, option: {label: 'description', value: 'enumValue'}, placeholder: '请选择经营范围'}"
                     ></api-select>
                 </el-form-item>
             </el-col>

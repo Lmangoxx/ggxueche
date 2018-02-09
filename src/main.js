@@ -40,6 +40,7 @@ router.beforeEach((to, from, next) => {
 			if (from.matched[i].path !== to.matched[i].path) {
 				// console.log(`${from.matched[i].path},${to.matched[i].path}`)
 				Cookies.set('__listQuery', {})
+				break
 			}
 		}
 	}

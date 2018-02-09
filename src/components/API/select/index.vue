@@ -43,25 +43,20 @@ export default {
 		}
 	},
     created () {
-		this.getList()
+		this.options.api && this.getList(apiConfig[this.options.api])
     },
 	methods: {
-        getList () {
+        getList (api) {
             const vm = this
+            if (!api) return
             vm.startGetList()
-            if (vm.options.api) {
-                vm.$axios.get(apiConfig[vm.options.api].url, {
-                    params: apiConfig[vm.options.api].params
-                }).then(res => {
-                    vm.listData = res.data
-                    vm.endGetList()
-                }).catch(error => {
-                    vm.endGetList()
-                    return error
-                })
-            } else {
+            vm.$axios.get(api.url || '', {params: api.params || {}}).then(res => {
                 vm.endGetList()
-            }
+                vm.listData = res.data
+            }).catch(error => {
+                vm.endGetList()
+                return error
+            })
         },
         startGetList () {
             this.loading = true
