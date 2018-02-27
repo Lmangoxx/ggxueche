@@ -56,7 +56,7 @@ export default {
                     icon: 'icon-wallet'
                 }
             ],
-			navLists: []// 菜单列表数据
+			navLists: [] // 菜单列表数据
 		}
 	},
 	mounted () {

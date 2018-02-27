@@ -63,11 +63,15 @@ export default {
         },
         endGetList () {
             this.loading = false
+        },
+        setCurrentValue (val) {
+            if (val === this.currentValue) return
+            this.currentValue = val
         }
     },
     watch: {
         value (val) {
-            this.currentValue = val
+            this.setCurrentValue(val)
         },
 		currentValue (val) {
 			this.$emit('input', val)

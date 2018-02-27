@@ -13,18 +13,8 @@
                 </el-form-item>
             </el-col>
             <el-col :span="24">
-                <el-form-item label="地区：">
-                    <el-select v-model="basicInfo.region" placeholder="请选择省份" clearable>
-                        <el-option v-for="add in addList()" :label="add.label" :value="add.value" :key="add.value"></el-option>
-                    </el-select>
-                    <el-select class="ml-15" v-model="basicInfo.region" placeholder="请选择城市" clearable>
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
-                    </el-select>
-                    <el-select class="ml-15" v-model="basicInfo.region" placeholder="请选择县区" clearable>
-                        <el-option label="区域一" value="shanghai"></el-option>
-                        <el-option label="区域二" value="beijing"></el-option>
-                    </el-select>
+                <el-form-item label="地区：" prop="districtName" :rules="[{required: true, message: '地区不能为空', trigger: 'blur'}]">
+                    <district v-model="basicInfo.districtName"></district>
                 </el-form-item>
             </el-col>
             <el-col :span="9">
@@ -84,6 +74,7 @@
 <script>
 import detail from '@/mixin/detail'
 import apiSelect from '@/components/API/select'
+import district from '@/components/district'
 export default {
     name: 'basicInfo',
     mixins: [detail],
@@ -113,10 +104,23 @@ export default {
                 if (valid) {
                 }
             })
+        },
+        removeDomain (item) {
+            var index = this.dynamicValidateForm.domains.indexOf(item)
+            if (index !== -1) {
+                this.dynamicValidateForm.domains.splice(index, 1)
+            }
+        },
+        addDomain () {
+            this.dynamicValidateForm.domains.push({
+                value: '',
+                key: Date.now()
+            })
         }
     },
     components: {
-        apiSelect
+        apiSelect,
+        district
     }
 }
 </script>
