@@ -13,12 +13,12 @@
                 </el-form-item>
             </el-col>
             <el-col :span="24">
-                <el-form-item label="地区：" prop="districtName" :rules="[{required: true, message: '地区不能为空', trigger: 'blur'}]">
-                    <district v-model="basicInfo.districtName"></district>
+                <el-form-item label="地区：" prop="district" :rules="[{required: true, message: '地区不能为空', trigger: 'blur'}]">
+                    <district v-model="basicInfo.district"></district>
                 </el-form-item>
             </el-col>
             <el-col :span="9">
-                <el-form-item label="法人代表：" prop="legal">
+                <el-form-item label="法人代表：" prop="legal" :rules="[{required: true, message: '法人代表不能为空', trigger: 'blur'}]">
                     <el-input v-model="basicInfo.legal" placeholder="请输入" clearable></el-input>
                 </el-form-item>
             </el-col>
@@ -88,16 +88,14 @@ export default {
             params: this.$route.query
         }).then(res => {
             this.basicInfo = res.data
+            this.basicInfo.district = {
+                name: this.basicInfo.districtName,
+                code: this.basicInfo.districtCode
+            }
             this.basicInfo.businessScope = this.basicInfo.businessScope.split(',')
         })
     },
     methods: {
-        addList () {
-            return [
-                {label: '上海', value: 'shanghai'},
-                {label: '北京', value: 'beijing'}
-            ]
-        },
         onSubmit () {
             const vm = this
             vm.$refs.basicInfo.validate(valid => {
