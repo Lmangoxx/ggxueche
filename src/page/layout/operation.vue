@@ -1,22 +1,22 @@
 <template>
 <el-container>
-    <sidebar-page :nav-lists="navLists"></sidebar-page>
+    <layout-sidebar :nav-lists="navLists"></layout-sidebar>
     <el-main :class="{'is-noOpen': $root.settings.sidebarToggler}">
-        <el-header height="64px"><header-page :user-data="userData"></header-page></el-header>
-        <tags-page></tags-page>
+        <el-header height="64px"><layout-header :user-data="userData"></layout-header></el-header>
+        <layout-tags></layout-tags>
         <transition name="el-fade-in">
             <router-view></router-view>
         </transition>
-        <footer-page></footer-page>
+        <layout-footer></layout-footer>
     </el-main>
 </el-container>
 </template>
 
 <script>
-import headerPage from '@/page/layout/headerPage'
-import footerPage from '@/page/layout/footerPage'
-import sidebarPage from '@/page/layout/sidebarPage'
-import tagsPage from '@/page/layout/tagsPage'
+import LayoutHeader from '@/page/layout/layout-header'
+import LayoutFooter from '@/page/layout/layout-footer'
+import LayoutSidebar from '@/page/layout/layout-sidebar'
+import LayoutTags from '@/page/layout/layout-tags'
 export default {
 	name: 'operation',
 	data () {
@@ -115,10 +115,10 @@ export default {
         }
 	},
     components: {
-        headerPage,
-        footerPage,
-        sidebarPage,
-        tagsPage
+        LayoutHeader,
+        LayoutFooter,
+        LayoutSidebar,
+        LayoutTags
     }
 }
 </script>

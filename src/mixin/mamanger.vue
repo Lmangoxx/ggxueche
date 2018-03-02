@@ -1,6 +1,6 @@
 <script>
-import queryPage from '@/page/layout/queryPage'
-import paginationPage from '@/page/layout/paginationPage'
+import LayoutQuery from '@/page/layout/layout-query'
+import LayoutPagination from '@/page/layout/layout-pagination'
 import Cookies from 'js-cookie'
 export default {
 	data () {
@@ -46,8 +46,8 @@ export default {
 		}
 	},
 	components: {
-		queryPage,
-		paginationPage
+		LayoutQuery,
+		LayoutPagination
     }
 }
 </script>

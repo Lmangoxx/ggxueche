@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: 'badge',
+    name: 'GGBadge',
 	props: {
         type: {
             type: String,

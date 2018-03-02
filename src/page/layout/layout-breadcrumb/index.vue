@@ -15,7 +15,7 @@
 
 <script>
 export default {
-    name: 'breadcrumbPage',
+    name: 'LayoutBreadcrumb',
 	data () {
 		return {
             levelList: null

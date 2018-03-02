@@ -1,13 +1,13 @@
 <template>
 <div class="header-cell cf">
     <i class="fa pl-20 pr-20 fl" :class="$root.settings.sidebarToggler ? 'fa-indent' : 'fa-dedent'" @click="$root.settings.sidebarToggler = !$root.settings.sidebarToggler" hover></i>
-    <breadcrumb-page class="breadcrumb"></breadcrumb-page>
+    <layout-breadcrumb class="breadcrumb"></layout-breadcrumb>
     <div class="fr cf">
         <div class="action" :class="{'is-open': isOpen}" @click.stop.self="isOpen = true">
             <el-input ref="search" class="search" size="small" placeholder="站内搜索" clearable></el-input>
             <i class="icon-magnifier" @click="searchToggle"></i>
         </div>
-        <screenfull class="action" hover></screenfull>
+        <gg-screenfull class="action" hover></gg-screenfull>
 		<el-dropdown v-if="userData.user">
 			<i class="action el-dropdown-link" hover>
 				<img class="mr-5" src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" width="30" alt="">
@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import breadcrumbPage from '@/page/layout/breadcrumbPage'
-import screenfull from '@/components/screenfull'
+import LayoutBreadcrumb from '@/page/layout/layout-breadcrumb'
+import GgScreenfull from '@/components/screenfull'
 export default {
-    name: 'headerPage',
+    name: 'LayoutHeader',
     props: {
         userData: {
             type: Object,
@@ -52,9 +52,6 @@ export default {
                     vm.$router.push('/login')
                 }
             })
-        },
-        search () {
-            alert('111')
         }
 	},
     watch: {
@@ -68,8 +65,8 @@ export default {
         }
     },
 	components: {
-		screenfull,
-        breadcrumbPage
+		GgScreenfull,
+        LayoutBreadcrumb
 	}
 }
 </script>

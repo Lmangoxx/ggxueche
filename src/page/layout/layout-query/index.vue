@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'queryPage'
+    name: 'LayoutQuery'
 }
 </script>
 <style lang="scss" scoped>

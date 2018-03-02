@@ -14,7 +14,8 @@
             </el-col>
             <el-col :span="24">
                 <el-form-item label="地区：" prop="district" :rules="[{required: true, message: '地区不能为空', trigger: 'blur'}]">
-                    <district v-model="basicInfo.district"></district>
+                    {{basicInfo.district}}
+                    <gg-district v-model="basicInfo.district"></gg-district>
                 </el-form-item>
             </el-col>
             <el-col :span="9">
@@ -73,8 +74,8 @@
 
 <script>
 import detail from '@/mixin/detail'
-import apiSelect from '@/components/API/select'
-import district from '@/components/district'
+import apiSelect from '@/components/API/APISelect'
+import GgDistrict from '@/components/district'
 export default {
     name: 'basicInfo',
     mixins: [detail],
@@ -102,23 +103,11 @@ export default {
                 if (valid) {
                 }
             })
-        },
-        removeDomain (item) {
-            var index = this.dynamicValidateForm.domains.indexOf(item)
-            if (index !== -1) {
-                this.dynamicValidateForm.domains.splice(index, 1)
-            }
-        },
-        addDomain () {
-            this.dynamicValidateForm.domains.push({
-                value: '',
-                key: Date.now()
-            })
         }
     },
     components: {
         apiSelect,
-        district
+        GgDistrict
     }
 }
 </script>

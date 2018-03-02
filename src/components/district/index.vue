@@ -47,7 +47,7 @@
 
 <script>
 export default {
-    name: 'district',
+    name: 'GGDistrict',
 	props: {
         value: [String, Number, Object]
     },
@@ -87,7 +87,7 @@ export default {
                     if (res.data.length > 0) { // 如果数据不为空，length为4时是城市数据，为6时是县区数据
                         length === 4 ? vm.cityList = res.data : vm.districtList = res.data
                     } else { // 如果数据为空，城市跟县区清空
-                        vm.cityList = []
+                        if (length === 4) vm.cityList = []
                         vm.districtList = []
                     }
                 })
@@ -103,7 +103,6 @@ export default {
         },
         'currentValue' (val, oldValue) {
             this.$emit('input', val)
-            this.$emit('change', val)
         }
     }
 }

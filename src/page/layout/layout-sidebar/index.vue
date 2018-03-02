@@ -27,7 +27,7 @@
 
 <script>
 export default {
-    name: 'sidebarPage',
+    name: 'LayoutSidebar',
     props: {
         navLists: {
             type: Array,

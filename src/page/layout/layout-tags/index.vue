@@ -13,7 +13,7 @@
 
 <script>
 export default {
-    name: 'tagsPage',
+    name: 'LayoutTags',
     data () {
         return {
 			activeTag: this.$route.path,

@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    name: 'footerPage',
+    name: 'LayoutFooter',
     data () {
 		return {
 			newYear: new Date().getFullYear().toString()

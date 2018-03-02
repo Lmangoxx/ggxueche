@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import apiConfig from '../api-config.vue'
+import APIConfig from '../APIConfig.vue'
 export default {
-    name: 'api-select',
+    name: 'apiSelect',
 	props: {
 		value: [String, Number, Array],
         options: {
@@ -43,7 +43,7 @@ export default {
 		}
 	},
     created () {
-		this.options.api && this.getList(apiConfig[this.options.api])
+		this.options.api && this.getList(APIConfig[this.options.api])
     },
 	methods: {
         getList (api) {

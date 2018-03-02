@@ -1,6 +1,6 @@
 <template>
 <div class="page-cell">
-    <query-page class="cf">
+    <layout-query class="cf">
     	<div class="ma-5 fl">
 	        <label>培训机构：</label>
 	        <el-input
@@ -43,7 +43,7 @@
         >
             查询
         </el-button>
-    </query-page>
+    </layout-query>
     <div class="content-cell mt-20">
         <el-table
             :data="listData.content"
@@ -95,7 +95,7 @@
           		filter-placement="bottom-end"
             >
                 <template slot-scope="scope">
-                    <badge :type="scope.row.backupStatusName === '已备案' ? 'success' : 'danger'">{{scope.row.backupStatusName}}</badge>
+                    <gg-badge :type="scope.row.backupStatusName === '已备案' ? 'success' : 'danger'">{{scope.row.backupStatusName}}</gg-badge>
                 </template>
             </el-table-column>
             <el-table-column
@@ -139,7 +139,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <pagination-page class="mt-25">
+        <layout-pagination class="mt-25">
             <el-button-group>
                 <el-button size="small" type="primary">
                     <a :href="$root.rootUrl + '/res/school/export/template'" style="color:#fff">下载模版</a>
@@ -176,15 +176,15 @@
                 :total="listData.total"
             >
             </el-pagination>
-        </pagination-page>
+        </layout-pagination>
     </div>
 </div>
 </template>
 
 <script>
 import mamanger from '@/mixin/mamanger'
-import apiSelect from '@/components/API/select'
-import badge from '@/components/badge'
+import apiSelect from '@/components/API/APISelect'
+import GgBadge from '@/components/badge'
 export default {
     name: 'schoolMamanger',
     mixins: [mamanger],
@@ -288,7 +288,7 @@ export default {
     },
     components: {
         apiSelect,
-        badge
+        GgBadge
     }
 }
 </script>

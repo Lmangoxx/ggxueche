@@ -51,31 +51,29 @@ new Vue({
 	el: '#app',
 	router,
 	template: `<app/>`,
-	data () {
-		return {
-			/* {rootUrl} api接口的根路径，根据env变化，在/config/[dev.env.js,prod.env.js]里配置BASE_URL即可 */
-			rootUrl: process.env.BASE_URL,
-			/* {temporaryUrl}
-				如果访问a路由的时候，提示没登录并跳转到登录页面，这个时候会把a路由存储在这里，等登录成功后再跳转到a
-			*/
-			temporaryUrl: {
-				path: '/operation',
-				query: {}
-			},
-			app: {
-				vesion: '1.0.0',
-				name: '呱呱学车管理平台'
-			},
-			/* {settings} 这里是一些全局配置类的东西 */
-			settings: Object.assign({
-				sidebarToggler: false
-			}, Cookies.getJSON('__appSetting')),
-			loadingInstance: null,
-			loadingOptions: {
-				text: '加载中'
-			},
-			axiosing: false
-		}
+	data: {
+		/* {rootUrl} api接口的根路径，根据env变化，在/config/[dev.env.js,prod.env.js]里配置BASE_URL即可 */
+		rootUrl: process.env.BASE_URL,
+		/* {temporaryUrl}
+			如果访问a路由的时候，提示没登录并跳转到登录页面，这个时候会把a路由存储在这里，等登录成功后再跳转到a
+		*/
+		temporaryUrl: {
+			path: '/operation',
+			query: {}
+		},
+		app: {
+			vesion: '1.0.0',
+			name: '呱呱学车管理平台'
+		},
+		/* {settings} 这里是一些全局配置类的东西 */
+		settings: Object.assign({
+			sidebarToggler: false
+		}, Cookies.getJSON('__appSetting')),
+		loadingInstance: null,
+		loadingOptions: {
+			text: '加载中'
+		},
+		axiosing: false
 	},
 	created () {
 		const vm = this

@@ -5,7 +5,7 @@
 <script>
 import screenfull from 'screenfull'
 export default {
-    name: 'screenfull',
+    name: 'GGScreenfull',
 	data () {
 		return {
             isFullscreen: false,

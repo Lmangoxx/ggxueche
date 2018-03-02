@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'paginationPage'
+    name: 'LayoutPagination'
 }
 </script>
 <style lang="scss" scoped>
