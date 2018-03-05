@@ -14,7 +14,6 @@
             </el-col>
             <el-col :span="24">
                 <el-form-item label="地区：" prop="district" :rules="[{required: true, message: '地区不能为空', trigger: 'blur'}]">
-                    {{basicInfo.district}}
                     <gg-district v-model="basicInfo.district"></gg-district>
                 </el-form-item>
             </el-col>
@@ -89,10 +88,10 @@ export default {
             params: this.$route.query
         }).then(res => {
             this.basicInfo = res.data
-            this.basicInfo.district = {
+            this.$set(this.basicInfo, 'district', {
                 name: this.basicInfo.districtName,
                 code: this.basicInfo.districtCode
-            }
+            })
             this.basicInfo.businessScope = this.basicInfo.businessScope.split(',')
         })
     },
