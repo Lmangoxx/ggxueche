@@ -46,6 +46,10 @@
 </template>
 
 <script>
+/**
+ * gg-district 省市县三级联动
+ * prop: value 默认省市县值
+ */
 export default {
     name: 'GGDistrict',
 	props: {
