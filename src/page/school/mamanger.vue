@@ -70,6 +70,7 @@
             <el-table-column
                 align="center"
                 prop="districtName"
+                :render-header="renderHeader"
                 label="区域"
             >
             </el-table-column>
@@ -284,6 +285,25 @@ export default {
         },
         filterBackupStatusName (val, row) {
 			return row.backupStatusName === val
+        },
+        renderHeader (createElement, { column, _self }) {
+            let label = column.label
+            return createElement('div', {'class': 'header-center'},
+                [
+                    createElement('span', {attrs: { type: 'text' }}, [label]),
+                    createElement('el-tooltip',
+                        {
+                            attrs: {
+                                'content': '这是一个提示',
+                                'placement': 'top'
+                            }
+                        },
+                        [
+                            createElement('i', {'class': 'el-icon-question ml-5'})
+                        ]
+                    )
+                ]
+            )
         }
     },
     components: {

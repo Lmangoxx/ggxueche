@@ -8,7 +8,7 @@
         :multiple-limit="options.multipleLimit"
         :name="options.name"
         :filterable="options.filterable || true"
-        :placeholder="options.placeholder"
+        :placeholder="loading ? '加载中...' : options.placeholder"
     >
         <el-option
             v-for="item in listData"
@@ -22,7 +22,7 @@
 <script>
 import APIConfig from '../APIConfig.vue'
 export default {
-    name: 'apiSelect',
+    name: 'ApiSelect',
 	props: {
 		value: [String, Number, Array],
         options: {

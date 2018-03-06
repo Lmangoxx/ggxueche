@@ -23,7 +23,7 @@
                 </el-form-item>
             </el-col>
             <el-col :span="9" :offset="1">
-                <el-form-item label="培训机构地址：">
+                <el-form-item label="培训机构地址：" prop="address" :rules="[{required: true, message: '培训机构地址不能为空', trigger: 'blur'}]">
                     <el-input v-model="basicInfo.address" placeholder="请输入" clearable>
                         <el-button slot="append" icon="el-icon-location" @click="basicInfo.region = 'beijing'"></el-button>
                     </el-input>
@@ -73,10 +73,10 @@
 
 <script>
 import detail from '@/mixin/detail'
-import apiSelect from '@/components/API/APISelect'
+import ApiSelect from '@/components/API/APISelect'
 import GgDistrict from '@/components/district'
 export default {
-    name: 'basicInfo',
+    name: 'BasicInfo',
     mixins: [detail],
     data () {
         return {
@@ -100,12 +100,30 @@ export default {
             const vm = this
             vm.$refs.basicInfo.validate(valid => {
                 if (valid) {
+                    vm.$axios.post('/res/school/updateOne', {
+                        id: vm.$route.query.id,
+                        fullName: vm.basicInfo.fullName,
+                        name: vm.basicInfo.name,
+                        districtName: this.basicInfo.districtName,
+                        districtCode: this.basicInfo.districtCode,
+                        address: vm.basicInfo.address,
+                        // lng: lng,
+                        // lat: lat,
+                        legal: vm.basicInfo.legal,
+                        admissionsPhone: vm.basicInfo.admissionsPhone,
+                        scale: vm.basicInfo.scale,
+                        running: vm.basicInfo.running,
+                        businessScope: vm.basicInfo.businessScope.join(','),
+                        status: vm.schoolStatus,
+                        backupStatus: vm.backupStatus,
+                        showFlag: vm.showFlag
+                    })
                 }
             })
         }
     },
     components: {
-        apiSelect,
+        ApiSelect,
         GgDistrict
     }
 }
