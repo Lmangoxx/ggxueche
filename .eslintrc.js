@@ -15,6 +15,10 @@ module.exports = {
   plugins: [
     'html'
   ],
+  // 过滤no-undef规则，即BMap在不声明的情况下也可以使用
+  'globals': {
+    'BMap': true
+  },
   // add your custom rules here
   'rules': {
     // allow paren-less arrow functions
