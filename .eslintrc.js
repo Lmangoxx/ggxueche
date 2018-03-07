@@ -15,7 +15,7 @@ module.exports = {
   plugins: [
     'html'
   ],
-  // 过滤no-undef规则，即BMap在不声明的情况下也可以使用
+  // 指定全局变量
   'globals': {
     'BMap': true
   },
