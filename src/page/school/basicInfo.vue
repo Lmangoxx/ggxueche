@@ -25,8 +25,58 @@
             <el-col :span="9" :offset="1">
                 <el-form-item label="培训机构地址：" prop="address" :rules="[{required: true, message: '培训机构地址不能为空', trigger: 'blur'}]">
                     <el-input v-model="basicInfo.address" placeholder="请输入" clearable>
-                        <el-button slot="append" icon="el-icon-location" @click="basicInfo.region = 'beijing'"></el-button>
+                        <el-button slot="append" icon="el-icon-location" @click="addressStatus = true"></el-button>
                     </el-input>
+                    <el-dialog fullscreen :visible.sync="addressStatus" @open="baiduMap">
+                        <div slot="title" class="cf">
+                            <div class="mr-10 fl">
+                                <label>查询地址：</label>
+                                <el-input
+                                    class="w-250"
+                                    type="text"
+                                    v-model="addressDialog.search"
+                                    placeholder="请输入查询地址"
+                                    clearable>
+                                </el-input>
+                            </div>
+                            <el-button
+                                class="mr-35 fl"
+                                type="primary"
+                                @click="getList()">
+                                查询
+                            </el-button>
+                            <div class="mr-15 fl">
+                                <label>经度：</label>
+                                <el-input
+                                    class="w-150"
+                                    type="text"
+                                    v-model="addressDialog.lng"
+                                    readonly>
+                                </el-input>
+                            </div>
+                            <div class="mr-10 fl">
+                                <label>经度：</label>
+                                <el-input
+                                    class="w-150"
+                                    type="text"
+                                    v-model="addressDialog.lat"
+                                    readonly>
+                                </el-input>
+                            </div>
+                            <el-button
+                                class="fl"
+                                type="primary"
+                                @click="addressSave()">
+                                提交
+                            </el-button>
+                            <el-button
+                                class="fl"
+                                @click="addressStatus = false">
+                                取消
+                            </el-button>
+                        </div>
+                        <div id="allmap"></div>
+                    </el-dialog>
                 </el-form-item>
             </el-col>
             <el-col :span="9">
@@ -68,20 +118,21 @@
             <el-button @click="resetForm('basicInfo')">重置</el-button>
         </el-form-item>
     </el-form>
-    <div id="allmap" style="height:500px;"></div>
 </div>
 </template>
 
 <script>
-import detail from '@/mixin/detail'
+import Detail from '@/mixin/detail'
 import ApiSelect from '@/components/API/APISelect'
 import GgDistrict from '@/components/district'
 import BaiduMap from '@/utils/baiduMap'
 export default {
     name: 'BasicInfo',
-    mixins: [detail],
+    mixins: [Detail],
     data () {
         return {
+            addressStatus: false,
+            addressDialog: {},
             basicInfo: {}
         }
     },
@@ -97,17 +148,15 @@ export default {
             this.basicInfo.businessScope = this.basicInfo.businessScope.split(',')
         })
     },
-    mounted () {
-        this.$nextTick(() => {
+    methods: {
+        baiduMap () {
             BaiduMap().then(BMap => {
                 var map = new BMap.Map('allmap')    // 创建Map实例
                 map.centerAndZoom(new BMap.Point(116.404, 39.915), 11)  // 初始化地图,设置中心点坐标和地图级别
                 map.setCurrentCity('北京')    // 设置地图显示的城市 此项是必须设置的
                 map.enableScrollWheelZoom(true) // 开启鼠标滚轮缩放
             })
-        })
-    },
-    methods: {
+        },
         onSubmit () {
             const vm = this
             vm.$refs.basicInfo.validate(valid => {
@@ -140,3 +189,11 @@ export default {
     }
 }
 </script>
+<style lang="scss" scope>
+.el-dialog__body {
+    padding: 0 !important;
+}
+#allmap {
+    height: calc(100vh - 65px);
+}
+</style>
