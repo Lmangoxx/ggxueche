@@ -75,7 +75,7 @@
                                 取消
                             </el-button>
                         </div>
-                        <div id="allmap"></div>
+                        <div id="allmap" :loading="mapLoading"></div>
                     </el-dialog>
                 </el-form-item>
             </el-col>
@@ -133,6 +133,7 @@ export default {
         return {
             addressStatus: false,
             addressDialog: {},
+            mapLoading: false,
             basicInfo: {}
         }
     },
@@ -150,11 +151,15 @@ export default {
     },
     methods: {
         baiduMap () {
+            this.mapLoading = true
             BaiduMap().then(BMap => {
                 var map = new BMap.Map('allmap')    // 创建Map实例
                 map.centerAndZoom(new BMap.Point(116.404, 39.915), 11)  // 初始化地图,设置中心点坐标和地图级别
                 map.setCurrentCity('北京')    // 设置地图显示的城市 此项是必须设置的
                 map.enableScrollWheelZoom(true) // 开启鼠标滚轮缩放
+                setTimeout(() => {
+                    // this.mapLoading = false
+                }, 2000)
             })
         },
         onSubmit () {
