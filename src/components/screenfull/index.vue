@@ -13,7 +13,7 @@ export default {
 		}
 	},
     created () {
-		let vm = this
+		const vm = this
 		// 如果浏览器支持全屏，显示图标
         if (screenfull.enabled && !navigator.userAgent.match(/Trident.*rv:11\./)) {
             vm.screenfullStatus = true

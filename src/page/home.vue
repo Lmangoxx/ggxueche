@@ -1,18 +1,27 @@
 <template>
-<div class="page-cell"></div>
+<div class="page-cell">
+	<ceshi @change="aaa"></ceshi>
+	{{bbb}}
+</div>
 </template>
 <script>
+import ceshi from '@/components/ceshi'
 export default {
-    name: 'home',
-    data () {
-        return {
-        }
-    },
+	name: 'home',
+	data () {
+		return {
+			bbb: ''
+		}
+	},
     mounted () {
     },
     methods: {
-    },
-    components: {
+		aaa (val) {
+			this.bbb = val
+		}
+	},
+	components: {
+		ceshi
     }
 }
 </script>
