@@ -7,6 +7,8 @@ import '../static/fonts/simple-line-icons/css/simple-line-icons.css'
 import '../static/style/common'
 // 引入路由配置文件
 import router from './router'
+// 引入store状态管理
+import store from './store'
 // 引入全局vue公共文件
 import './config'
 
@@ -50,6 +52,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
 	el: '#app',
 	router,
+	store,
 	template: `<app/>`,
 	data: {
 		/* {rootUrl} api接口的根路径，根据env变化，在/config/[dev.env.js,prod.env.js]里配置BASE_URL即可 */

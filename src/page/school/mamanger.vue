@@ -17,21 +17,21 @@
         </div>
         <div class="ma-5 fl">
         	<label>显示状态：</label>
-	        <el-select class="w-100" v-model="listQuery.showFlag" placeholder="请选择" clearable>
+	        <el-select class="w-150" v-model="listQuery.showFlag" placeholder="请选择" clearable>
 	            <el-option label="显示" value="SHOW"></el-option>
 	            <el-option label="隐藏" value="BLANK"></el-option>
 	        </el-select>
         </div>
         <div class="ma-5 fl">
         	<label>启用状态：</label>
-	        <el-select class="w-100" v-model="listQuery.status" placeholder="请选择" clearable>
+	        <el-select class="w-150" v-model="listQuery.status" placeholder="请选择" clearable>
 	            <el-option :label="'启用'" :value="'YES'"></el-option>
 	            <el-option :label="'禁用'" :value="'NO'"></el-option>
 	        </el-select>
         </div>
         <div class="ma-5 fl">
 	        <label>计时平台：</label>
-	        <el-select class="w-100" v-model="listQuery.plateFlag" placeholder="请选择" clearable>
+	        <el-select class="w-150" v-model="listQuery.plateFlag" placeholder="请选择" clearable>
 	            <el-option :label="'开通'" :value="'YES'"></el-option>
 	            <el-option :label="'未开通'" :value="'NO'"></el-option>
 	        </el-select>
@@ -50,7 +50,7 @@
             :default-sort = "{prop: 'name', order: 'descending'}"
         >
             <el-table-column
-                width="100"
+                width="80"
                 align="center"
                 prop="definedSort"
                 label="排序"
@@ -203,6 +203,8 @@ export default {
     methods: {
         getList () {
             const vm = this
+            vm.$store.commit('addCount')
+            console.log(vm.$store.state.count)
             vm.$axios.get('/res/school/list', {
                 params: vm.listQuery
             }).then(res => {
