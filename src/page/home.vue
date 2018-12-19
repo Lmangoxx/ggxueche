@@ -1,7 +1,9 @@
 <template>
 <div class="page-cell">
-	<ceshi @change="aaa"></ceshi>
-	{{bbb}}
+	<div v-for="i in abc" :key="i">
+		<ceshi @change="aaa"></ceshi>
+	</div>
+	<span @click="add">添加</span>
 </div>
 </template>
 <script>
@@ -10,7 +12,8 @@ export default {
 	name: 'home',
 	data () {
 		return {
-			bbb: ''
+			bbb: '',
+			abc: [0, 1, 2, 3, 4]
 		}
 	},
     mounted () {
@@ -18,6 +21,9 @@ export default {
     methods: {
 		aaa (val) {
 			this.bbb = val
+		},
+		add () {
+			this.abc.push(this.abc.length)
 		}
 	},
 	components: {
